@@ -17,12 +17,13 @@ class M_Registration extends CI_Model {
        
       }
 
-      public function register_user($data)
+      public function register_user($data,$promocode)
       {
           $data=array(
                   'user_fullname'=>$_POST['name'],
                   'user_email'=>$_POST['email'],
                   'user_phone'=>$_POST['phone'],
+                  'promocode'=>$promocode,
                   'user_password'=>$_POST['password'],
                   'user_created_at' => $data['user_created_at']
                   );

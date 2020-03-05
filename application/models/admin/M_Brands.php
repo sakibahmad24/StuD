@@ -19,7 +19,7 @@ class M_Brands extends CI_Model {
 
     public function sell_entry() {
         $data= array();
-        $data['sale_brand_id']= $this->input->post('brand_name',true);
+        $data['sale_brand_name']= $this->input->post('brand_name',true);
         $data['sale_phone_number']= $this->input->post('phone',true);
         $data['sale_promocode']= $this->input->post('promocode',true);
         $this->db->insert('sale',$data);

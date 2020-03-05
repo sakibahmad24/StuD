@@ -5,6 +5,9 @@ $route['default_controller'] = 'HomeController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+//route for home pages
+$route['blog-details/(:num)'] = 'HomeController/blogDetails/$1';
+
 
 //route for common pages
 $route['restaurant'] = 'RestaurantController';

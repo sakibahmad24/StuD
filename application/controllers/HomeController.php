@@ -12,9 +12,20 @@ class HomeController extends CI_Controller {
 	public function index()
 	{
 		$data['class']='home';
-		$data['body']= $this->load->view('users/home','',true);
+		$data['homeblog']= $this->M_home->homeblog();
+		// echo "<pre>"; print_r($data['homeblog']); exit();
+		$data['body']= $this->load->view('users/home',$data,true);
 		$this->load->view('users/layout',$data);
-		// $this->load->view('users/layout');
+	}
+	
+	
+	public function blogDetails($review_id)
+	{
+		$data['class']='home';
+		$data['blogDetails']= $this->M_home->blogDetails($review_id);
+		// echo "<pre>"; print_r($data['blogDetails']); exit();
+		$data['body']= $this->load->view('users/blog-details',$data,true);
+		$this->load->view('users/layout',$data);
 	}
 	
     

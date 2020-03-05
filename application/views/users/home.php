@@ -220,73 +220,35 @@
         </div>
         <!-- End Title -->
 
-        <div class="card-deck d-block d-lg-flex">
-          <article class="card border-0 mb-5">
-            <div class="card-body row align-items-stretch no-gutters p-0">
-              <!-- News Blog Card -->
-              <div class="col-7 border border-right-0 rounded-left">
-                <div class="p-5">
-                  <h2 class="h5 mb-3">
-                    <a href="../blog/single-article-classic.html">Announcing a free plan for small teams</a>
-                  </h2>
-                  <p class="mb-0">We've always believed that by providing a space where.</p>
-                </div>
-              </div>
-              <div class="col-5 card-img-right border border-left-0 bg-img-hero" data-bg-img-src="<?php echo base_url('assets/assets_user/img/500x550/img1.jpg') ?>"></div>
-            </div>
-            <!-- End News Blog Card -->
-          </article>
+        <div class="row">
 
+       <?php foreach($homeblog as $value) { ?> 
+
+        <div class="card-deck d-block d-lg-flex col-md-6">
           <article class="card border-0 mb-5">
             <div class="card-body row align-items-stretch no-gutters p-0">
               <!-- News Blog Card -->
               <div class="col-7 border border-right-0 rounded-left">
                 <div class="p-5">
                   <h2 class="h5 mb-3">
-                    <a href="../blog/single-article-classic.html">2018's most expensive house</a>
+                    <a href="<?php echo base_url('blog-details/').$value['review_id'] ?>"><?php echo $value['review_title'] ?></a>
                   </h2>
-                  <p class="mb-0">At Wake, our mission has always been focused on..</p>
+                  <p class="mb-0"><?php echo $value['sale_brand_name'] ?></p>
                 </div>
               </div>
-              <div class="col-5 card-img-right border border-left-0 bg-img-hero" data-bg-img-src="<?php echo base_url('assets/assets_user/img/500x550/img2.jpg') ?>"></div>
+              <div class="col-5 card-img-right border border-left-0 bg-img-hero" data-bg-img-src="<?php echo base_url('assets/assets_user/review_image/').$value['review_image'] ?>"></div>
             </div>
             <!-- End News Blog Card -->
           </article>
         </div>
 
-        <div class="card-deck d-block d-lg-flex">
-          <article class="card border-0 mb-5">
-            <div class="card-body row align-items-stretch no-gutters p-0">
-              <!-- News Blog Card -->
-              <div class="col-7 border border-right-0 rounded-left">
-                <div class="p-5">
-                  <h2 class="h5 mb-3">
-                    <a href="../blog/single-article-classic.html">Key benefits of my portfolio update</a>
-                  </h2>
-                  <p class="mb-0">Portfolio offers a user a new way of experiencing design.</p>
-                </div>
-              </div>
-              <div class="col-5 card-img-right border border-left-0 bg-img-hero" data-bg-img-src="<?php echo base_url('assets/assets_user/img/500x550/img3.jpg') ?>"></div>
-            </div>
-            <!-- End News Blog Card -->
-          </article>
+       <?php } ?>
 
-          <article class="card border-0 mb-5">
-            <div class="card-body row align-items-stretch no-gutters p-0">
-              <!-- News Blog Card -->
-              <div class="col-7 border border-right-0 rounded-left">
-                <div class="p-5">
-                  <h2 class="h5 mb-3">
-                    <a href="../blog/single-article-classic.html">ICOs have raised $2 billion this year</a>
-                  </h2>
-                  <p class="mb-0">Despite the quality of this year's initial crowd offerings.</p>
-                </div>
-              </div>
-              <div class="col-5 card-img-right border border-left-0 bg-img-hero" data-bg-img-src="<?php echo base_url('assets/assets_user/img/500x550/img4.jpg') ?>"></div>
-            </div>
-            <!-- End News Blog Card -->
-          </article>
         </div>
+
+        
+
+        
       </div>
     </div>
     <!-- End News Section -->

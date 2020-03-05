@@ -116,6 +116,7 @@ class RegistrationController extends CI_Controller {
 
       date_default_timezone_set("Asia/Dhaka");
       $dateTime = date("Y-m-d h:i:sa");
+      $promocode = 'stud_'.substr(md5(microtime()), 0, 5);
         
       $user_reg_info = array(
           'user_fullname'=>$this->input->post('name'),
@@ -129,7 +130,7 @@ class RegistrationController extends CI_Controller {
       $phone_check=$this->M_Registration->phone_check($user_reg_info['user_phone']);  
 
       if($phone_check){
-        $this->M_Registration->register_user($user_reg_info);
+        $this->M_Registration->register_user($user_reg_info,$promocode);
         $this->uploadProfilePic($phone_user);
         $this->uploadSidPic($phone_user);
         $this->session->set_flashdata('success_msg', 'Registered successfully.Now login to your account.');

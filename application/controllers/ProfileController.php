@@ -83,7 +83,9 @@ class ProfileController extends CI_Controller {
           //   $this->session->set_flashdata('notification', 'Review added successfully');
           //   redirect('admin/BrandsController/add', 'refresh');
 
-           $data['body']= $this->load->view('users/inc/review_history','',true);
+           $data['review_history'] = $this->M_Profile->get_review_history($phone_number);
+
+           $data['body']= $this->load->view('users/inc/review_history',$data,true);
            $this->load->view('users/layout',$data);
 
     }

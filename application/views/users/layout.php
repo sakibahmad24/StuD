@@ -71,7 +71,7 @@
               <li class="nav-item hs-has-sub-menu u-header__nav-item" data-event="hover" data-animation-in="fadeInUp" data-animation-out="fadeOut">
                 <a id="homeMegaMenu" class="nav-link u-header__nav-link" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="homeSubMenu">
                   Health and Fitness
-                  <span class="fa fa-angle-down u-header__nav-link-icon"></span>
+                  <!--<span class="fa fa-angle-down u-header__nav-link-icon"></span>-->
                 </a>
 
                 <!-- Home - Submenu -->
@@ -84,7 +84,7 @@
               <li class="nav-item hs-has-mega-menu u-header__nav-item" data-event="hover" data-animation-in="fadeInUp" data-animation-out="fadeOut" data-position="right">
                 <a id="PagesMegaMenu" class="nav-link u-header__nav-link" href="<?= base_url('restaurant') ?>">
                   Food and Drinks
-                  <span class="fa fa-angle-down u-header__nav-link-icon"></span>
+                  <!--<span class="fa fa-angle-down u-header__nav-link-icon"></span>-->
                 </a>
 
                 <!-- Pages - Mega Menu -->
@@ -97,7 +97,7 @@
               <li class="nav-item hs-has-sub-menu u-header__nav-item" data-event="hover" data-animation-in="fadeInUp" data-animation-out="fadeOut">
                 <a id="worksMegaMenu" class="nav-link u-header__nav-link" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="worksSubMenu">
                   Fashion
-                  <span class="fa fa-angle-down u-header__nav-link-icon"></span>
+                  <!--<span class="fa fa-angle-down u-header__nav-link-icon"></span>-->
                 </a>
 
               </li>
@@ -107,7 +107,7 @@
               <li class="nav-item hs-has-sub-menu u-header__nav-item" data-event="hover" data-animation-in="fadeInUp" data-animation-out="fadeOut">
                 <a id="blogMegaMenu" class="nav-link u-header__nav-link" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="blogSubMenu">
                   Beauty
-                  <span class="fa fa-angle-down u-header__nav-link-icon"></span>
+                  <!--<span class="fa fa-angle-down u-header__nav-link-icon"></span>-->
                 </a> </li>
               <!-- End Button -->
               <?php if($class=='home' || $class=='signup') { ?>

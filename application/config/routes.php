@@ -6,7 +6,9 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //route for home pages
+$route['blogs'] = 'BlogController/blogs';
 $route['blog-details/(:num)'] = 'HomeController/blogDetails/$1';
+$route['shops'] = 'ShopController/shops';
 
 
 //route for common pages
@@ -14,6 +16,8 @@ $route['restaurant'] = 'RestaurantController';
 
 //route for user panel
 $route['user/signup'] = 'RegistrationController/signup';
+$route['user/profile'] = 'LoginController/login';
+$route['user/profile/home'] = 'ProfileController/home';
 $route['user/profile/promo'] = 'ProfileController/promocode';
 $route['user/profile/review/(:num)'] = 'ProfileController/review/$1';
 $route['user/profile/history'] = 'ProfileController/history';

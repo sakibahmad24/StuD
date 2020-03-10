@@ -13,7 +13,8 @@ class HomeController extends CI_Controller {
 	{
 		$data['class']='home';
 		$data['homeblog']= $this->M_home->homeblog();
-		// echo "<pre>"; print_r($data['homeblog']); exit();
+		$data['homesliders']= $this->M_home->homesliders();
+// 		echo "<pre>"; print_r($data['homesliders']); exit();
 		$data['body']= $this->load->view('users/home',$data,true);
 		$this->load->view('users/layout',$data);
 	}

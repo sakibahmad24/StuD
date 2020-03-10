@@ -10,19 +10,27 @@
          data-arrow-left-classes="fa fa-arrow-left u-slick__arrow-classic-inner u-slick__arrow-classic-inner--left ml-lg-2 ml-xl-4"
          data-arrow-right-classes="fa fa-arrow-right u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right mr-lg-2 mr-xl-4"
          data-numbered-pagination="#slickPaging">
-      <!-- Slide #1 -->
+        
+    <!-- Sliders -->        
+    <?php foreach($homesliders as $slider) { ?>
+    
       <div class="js-slide">
-        <div class="d-md-flex align-items-md-center height-20vh--lg gradient-overlay-half-dark-v2 bg-img-hero" style="background-image: url(<?php echo base_url('assets/assets_user/img/stud/astorian.jpg') ?>);">
+        <div class="d-md-flex align-items-md-center height-20vh--lg gradient-overlay-half-dark-v2 bg-img-hero" style="background-image: url(<?php echo base_url('assets/common/sliders_picture/').$slider['slider_image'] ?>);">
           <div class="container text-center space-2 space-3--md">
             <!-- Description -->
-            <div class="w-lg-80 mx-lg-auto mb-3">
-              <h1 class="display-3 font-size-48--md-down text-white"
-                  data-scs-animation-in="fadeInUp">Astorian</h1>
-            </div>
+            <?php if($slider['slider_title']) { ?>
+                <div class="w-lg-80 mx-lg-auto mb-3">
+                  <h1 class="display-3 font-size-48--md-down text-white"
+                      data-scs-animation-in="fadeInUp"><?php echo $slider['slider_title'] ?></h1>
+                </div>
+            <?php } else if($slider['slider_title']==NULL) { ?>
+                <div style="height:136px; width:100%; background: transparent;"></div>
+            <?php } ?>
+            
             <div class="w-lg-50 mx-lg-auto mb-7">
               <p class="lead text-white"
                  data-scs-animation-in="fadeInUp"
-                 data-scs-animation-delay="200">Promo</p>
+                 data-scs-animation-delay="200"><?php echo $slider['slider_subtitle'] ?></p>
             </div>
             <div data-scs-animation-in="fadeInUp"
                  data-scs-animation-delay="400">
@@ -31,75 +39,11 @@
           </div>
         </div>
       </div>
-      <!-- End Slide #1 -->
       
-      <!-- Slide #2 -->
-      <div class="js-slide">
-        <div class="d-md-flex align-items-md-center height-20vh--lg gradient-overlay-half-dark-v2 bg-img-hero" style="background-image: url(<?php echo base_url('assets/assets_user/img/stud/stubborngoat.jpg');   ?>);">
-          <div class="container text-center space-2 space-3--md">
-            <!-- Description -->
-            <div class="w-lg-80 mx-lg-auto mb-3">
-              <h1 class="display-3 font-size-48--md-down text-white"
-                  data-scs-animation-in="fadeInUp">Stubborn Goat</h1>
-            </div>
-            <div class="w-lg-50 mx-lg-auto mb-7">
-              <p class="lead text-white"
-                 data-scs-animation-in="fadeInUp"
-                 data-scs-animation-delay="200">Promo</p>
-            </div>
-            <div data-scs-animation-in="fadeInUp"
-                 data-scs-animation-delay="400">
-            </div>
-            <!-- End Description -->
-          </div>
-        </div>
-      </div>
-      <!-- End Slide #2 -->
-
-      <!-- Slide #3 -->
-      <div class="js-slide">
-        <div class="d-md-flex align-items-md-center height-20vh--lg gradient-overlay-half-dark-v2 bg-img-hero" style="background-image: url(<?php echo base_url('assets/assets_user/img/stud/madchef.jpg');   ?>);">
-          <div class="container text-center space-2 space-3--md">
-            <!-- Description -->
-            <div class="w-lg-80 mx-lg-auto mb-3">
-              <h1 class="display-3 font-size-48--md-down text-white"
-                  data-scs-animation-in="fadeInUp">Madchef</h1>
-            </div>
-            <div class="w-lg-50 mx-lg-auto mb-7">
-              <p class="lead text-white"
-                 data-scs-animation-in="fadeInUp"
-                 data-scs-animation-delay="200"> Promo</p>
-            </div>
-            <div data-scs-animation-in="fadeInUp"
-                 data-scs-animation-delay="400">
-            </div>
-            <!-- End Description -->
-          </div>
-        </div>
-      </div>
-      <!-- End Slide #3 -->
+    <? } ?>  
+    <!-- End Sliders  -->
       
-      <!-- Slide #4 -->
-      <div class="js-slide">
-        <div class="d-md-flex align-items-md-center height-20vh--lg gradient-overlay-half-dark-v2 bg-img-hero" style="background-image: url(<?php echo base_url('assets/assets_user/img/stud/musclemania.jpg');   ?>);">
-          <div class="container text-center space-2 space-3--md">
-            <!-- Description -->
-            <div class="w-lg-80 mx-lg-auto mb-3">
-              <h1 class="display-3 font-size-48--md-down text-white"
-                  data-scs-animation-in="fadeInUp">MuscleMania</h1>
-            </div>
-            <div class="w-lg-50 mx-lg-auto mb-7">
-              <p class="lead text-white"
-                 data-scs-animation-in="fadeInUp"
-                 data-scs-animation-delay="200"> Promo</p>
-            </div>
-            <div data-scs-animation-in="fadeInUp"
-                 data-scs-animation-delay="400">
-            </div>
-            <!-- End Description -->
-          </div>
-        </div>
-      </div>
+      
     </div>
     <!-- End Hero Section -->
 
@@ -214,7 +158,6 @@
       <div class="container space-2 space-3--lg">
         <!-- Title -->
         <div class="w-md-80 w-lg-60 text-center mx-md-auto mb-9">
-          <span class="u-label u-label--sm u-label--purple mb-3">News</span>
           <h2 class="h3">Read our news &amp; blogs</h2>
           <p>Our duty towards you is to share our experience we're reaching in our work path with you.</p>
         </div>
@@ -245,6 +188,12 @@
        <?php } ?>
 
         </div>
+
+        <center>
+          <a href="<?php echo base_url('blogs'); ?>">
+            <span class="u-label u-label--sm u-label--purple mb-3">More Blogs</span>
+            </a>  
+        </center>
 
         
 

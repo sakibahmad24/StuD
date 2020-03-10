@@ -7,6 +7,7 @@ class M_home extends CI_Model {
         $this->db->select('*');
         $this->db->from('review');
         $this->db->join('sale', 'sale.sale_id = review.review_sale_id');
+        $this->db->order_by("review_id", "DESC");
         $this->db->limit(4);
 
         $query_result=$this->db->get();
@@ -30,20 +31,19 @@ class M_home extends CI_Model {
         return $blogDetails;
     }
     
-    
-    // public function review_details($review_id){
+    public function homesliders() {
+        $this->db->select('*');
+        $this->db->from('slider');
+        $this->db->where('slider_isActive',1);
+        $this->db->order_by("slider_id", "DESC");
+        $this->db->limit(4);
 
-    //     $this->db->select('*');
-    //     $this->db->from('review');
-    //     $this->db->where('review_id',$review_id);
-
-    //     $query_result=$this->db->get();
+        $query_result=$this->db->get();
       
-    //     $review_details = $query_result->row_array();
+        $homeblog = $query_result->result_array();
 
-    //     return $review_details;
-     
-    // }
+        return $homeblog;
+    }
 
         
 

@@ -26,8 +26,8 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/assets_admin/plugins/summernote/summernote-bs4.css') ?>">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <style>
-  </style>
+  <!-- Datatables -->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/assets_admin/plugins/customDataTable/data-table.css') ?>">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -191,6 +191,29 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
+                Sliders
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php  echo base_url('admin/SlidersController/add') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php  echo base_url('admin/SlidersController/viewAll') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
                 Brands
                 <i class="right fas fa-angle-left"></i>
               </p>
@@ -203,7 +226,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="<?php  echo base_url('admin/BrandsController/viewAll') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage</p>
                 </a>
@@ -308,6 +331,8 @@
 <script src="<?php echo base_url('assets/assets_admin/plugins/summernote/summernote-bs4.min.js') ?>"></script>
 <!-- overlayScrollbars -->
 <script src="<?php echo base_url('assets/assets_admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') ?>"></script>
+<!-- Datatables -->
+<script src="<?php echo base_url('assets/assets_admin/plugins/customDataTable/data-table.js') ?>"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url('assets/assets_admin/dist/js/adminlte.js') ?>"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -315,12 +340,18 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url('assets/assets_admin/dist/js/demo.js') ?>"></script>
 
+
 <script>
   $(function() {
     setTimeout(function() {
         $(".hide-success-alert").hide('blind', {}, 500)
     }, 3000);
 });
+
+$(document).ready( function () {
+    $('#my_table').DataTable();
+} );
+
 </script>
 
 </body>

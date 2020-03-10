@@ -26,7 +26,7 @@
       <!-- Description -->
       <div class="w-md-75 w-lg-60 mx-md-auto mb-9">
         <p style="margin: 50px 0;">
-            <?php echo $blogDetails['review_title']; ?>
+            <?php echo $blogDetails['review_body']; ?>
         </p>
 
       <!-- Social Networks -->

@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class BrandsController extends CI_Controller {
+class SlidersController extends CI_Controller {
     
     function __construct() {
         parent::__construct();
@@ -12,25 +12,26 @@ class BrandsController extends CI_Controller {
         }
     }
 
-
 	public function add() {
-        $data['body']=$this->load->view('admin/BrandsCreate','',true);
+        $data['body']=$this->load->view('admin/SlidersCreate','',true);
         $this->load->view('admin/layout',$data);
     }
-
+    
+    
     public function store() {
+        // echo "<pre>"; print_r($_POST); exit();
 
         $this->load->library('upload');
         $data = array();
         
-            $_FILES['file']['name']       = $_FILES['brand_image']['name'];
-            $_FILES['file']['type']       = $_FILES['brand_image']['type'];
-            $_FILES['file']['tmp_name']   = $_FILES['brand_image']['tmp_name'];
-            $_FILES['file']['error']      = $_FILES['brand_image']['error'];
-            $_FILES['file']['size']       = $_FILES['brand_image']['size'];
+            $_FILES['file']['name']       = $_FILES['slider_image']['name'];
+            $_FILES['file']['type']       = $_FILES['slider_image']['type'];
+            $_FILES['file']['tmp_name']   = $_FILES['slider_image']['tmp_name'];
+            $_FILES['file']['error']      = $_FILES['slider_image']['error'];
+            $_FILES['file']['size']       = $_FILES['slider_image']['size'];
 
             // File upload configuration
-            $config['upload_path'] = './assets/common/brands_picture';
+            $config['upload_path'] = './assets/common/sliders_picture';
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size']      = '60000';
             $config['overwrite']     = FALSE;
@@ -43,49 +44,43 @@ class BrandsController extends CI_Controller {
             if($this->upload->do_upload('file')){
                 // Uploaded file data
                 $imageData = $this->upload->data();
-                $uploadImgData['brand_image'] = $imageData['file_name'];
+                $uploadImgData['slider_image'] = $imageData['file_name'];
                  // echo "<pre>"; print_r($imageData['file_name']."<br>"); 
                  if(!empty($uploadImgData)){
                     // echo "<pre>"; print_r($_FILES); exit();
-                    $this->M_Brands->brands_entry($imageData['file_name']);              
+                    $this->M_Sliders->sliders_entry($imageData['file_name']);              
                 }
             }
-            $this->session->set_flashdata('notification', 'Brand added successfully');
-            redirect('admin/BrandsController/viewAll', 'refresh');
+            $this->session->set_flashdata('notification', 'Slider added successfully');
+            redirect('admin/SlidersController/viewAll', 'refresh');
     }
-
+    
     public function viewAll() {
-        $data['allBrands']=$this->M_Brands->allBrands();
-        $data['body']=$this->load->view('admin/BrandsAll',$data,true);
+        $data['allSlider']=$this->M_Sliders->allSlider();
+        $data['body']=$this->load->view('admin/SlidersAll',$data,true);
+        $this->load->view('admin/layout',$data);
+    }
+    
+    public function editSlider($id) {
+        $data['editSlider']=$this->M_Sliders->editSlider($id);
+        $data['body']=$this->load->view('admin/SlidersEdit',$data,true);
         $this->load->view('admin/layout',$data);
     }
 
-    public function deleteBrand($id) {
-        $this->M_Brands->deleteBrand($id);
-        $this->session->set_flashdata('notification', 'Brand deleted successfully');
-        redirect('admin/BrandsController/viewAll', 'refresh');
-    }
-
-    public function editBrand($id) {
-        $data['editBrand']=$this->M_Brands->editBrand($id);
-        $data['body']=$this->load->view('admin/BrandsEdit',$data,true);
-        $this->load->view('admin/layout',$data);
-    }
-
-    public function updateBrand() {
+    public function updateSlider() {
         // echo "<pre>"; print_r($_POST); exit();
 
-        if (!empty($_FILES['brand_image']['name'])) {
+        if (!empty($_FILES['slider_image']['name'])) {
             $this->load->library('upload');
             $data = array();
-            $_FILES['file']['name']       = $_FILES['brand_image']['name'];
-            $_FILES['file']['type']       = $_FILES['brand_image']['type'];
-            $_FILES['file']['tmp_name']   = $_FILES['brand_image']['tmp_name'];
-            $_FILES['file']['error']      = $_FILES['brand_image']['error'];
-            $_FILES['file']['size']       = $_FILES['brand_image']['size'];
+            $_FILES['file']['name']       = $_FILES['slider_image']['name'];
+            $_FILES['file']['type']       = $_FILES['slider_image']['type'];
+            $_FILES['file']['tmp_name']   = $_FILES['slider_image']['tmp_name'];
+            $_FILES['file']['error']      = $_FILES['slider_image']['error'];
+            $_FILES['file']['size']       = $_FILES['slider_image']['size'];
 
             // File upload configuration
-            $config['upload_path'] = './assets/common/brands_picture';
+            $config['upload_path'] = './assets/common/sliders_picture';
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size']      = '60000';
             $config['overwrite']     = FALSE;
@@ -98,21 +93,27 @@ class BrandsController extends CI_Controller {
             if($this->upload->do_upload('file')){
                 // Uploaded file data
                 $imageData = $this->upload->data();
-                $uploadImgData['brand_image'] = $imageData['file_name'];
+                $uploadImgData['slider_image'] = $imageData['file_name'];
                  // echo "<pre>"; print_r($imageData['file_name']."<br>"); 
                  if(!empty($uploadImgData)){
                     // echo "<pre>"; print_r($_FILES); exit();
-                    $this->M_Brands->brands_update($imageData['file_name']);             
+                    $this->M_Sliders->sliders_update($imageData['file_name']);             
                 }
             }
 
         }
 
         else {
-            $this->M_Brands->brands_update_only_text();
+            $this->M_Sliders->sliders_update_only_text();
         }
-            $this->session->set_flashdata('notification', 'Brands updated successfully');
-            redirect('admin/BrandsController/viewAll', 'refresh');
+            $this->session->set_flashdata('notification', 'Slider updated successfully');
+            redirect('admin/SlidersController/viewAll', 'refresh');
+    }
+    
+    public function deleteSlider($id) {
+        $this->M_Sliders->deleteSlider($id);
+        $this->session->set_flashdata('notification', 'Slider deleted successfully');
+        redirect('admin/SlidersController/viewAll', 'refresh');
     }
 
     public function sell() {

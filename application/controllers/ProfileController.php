@@ -5,9 +5,17 @@ class ProfileController extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        //   if($this->session->userdata('user_id')){
-        //      redirect('/');
-        //   }
+        $loggedin = $this->session->userdata('user_id');
+        if (!isset($loggedin) or $loggedin == '') {
+            redirect('/');
+        }
+    }
+    
+        public function home(){
+
+            $data['class']='profile';
+            $data['body']= $this->load->view('users/inc/profile','',true);
+            $this->load->view('users/layout',$data);
        }
 
        public function promocode(){

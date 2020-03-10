@@ -1,5 +1,5 @@
 
-<a href="<?php echo base_url('LoginController/login') ?>">
+<a href="<?php echo base_url('user/profile/home') ?>">
     <div class="profile-left-navbar-header">
         <h3>Dashboard</h3>
     </div>

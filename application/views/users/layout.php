@@ -69,7 +69,7 @@
             <ul class="navbar-nav u-header__navbar-nav">
               <!-- Health and Fitness -->
               <li class="nav-item hs-has-sub-menu u-header__nav-item" data-event="hover" data-animation-in="fadeInUp" data-animation-out="fadeOut">
-                <a id="homeMegaMenu" class="nav-link u-header__nav-link" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="homeSubMenu">
+                <a id="homeMegaMenu" class="nav-link u-header__nav-link" href="<?= base_url('shops') ?>" aria-haspopup="true" aria-expanded="false" aria-labelledby="homeSubMenu">
                   Health and Fitness
                   <!--<span class="fa fa-angle-down u-header__nav-link-icon"></span>-->
                 </a>
@@ -82,7 +82,7 @@
 
               <!-- Food and Drinks -->
               <li class="nav-item hs-has-mega-menu u-header__nav-item" data-event="hover" data-animation-in="fadeInUp" data-animation-out="fadeOut" data-position="right">
-                <a id="PagesMegaMenu" class="nav-link u-header__nav-link" href="<?= base_url('restaurant') ?>">
+                <a id="PagesMegaMenu" class="nav-link u-header__nav-link" href="<?= base_url('shops') ?>">
                   Food and Drinks
                   <!--<span class="fa fa-angle-down u-header__nav-link-icon"></span>-->
                 </a>
@@ -95,7 +95,7 @@
 
               <!-- Fashion -->
               <li class="nav-item hs-has-sub-menu u-header__nav-item" data-event="hover" data-animation-in="fadeInUp" data-animation-out="fadeOut">
-                <a id="worksMegaMenu" class="nav-link u-header__nav-link" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="worksSubMenu">
+                <a id="worksMegaMenu" class="nav-link u-header__nav-link" href="<?= base_url('shops') ?>" aria-haspopup="true" aria-expanded="false" aria-labelledby="worksSubMenu">
                   Fashion
                   <!--<span class="fa fa-angle-down u-header__nav-link-icon"></span>-->
                 </a>
@@ -492,7 +492,7 @@
             <p>Signin to manage your account.</p>
           </header>
           <!-- End Title -->
-          <?php echo form_open_multipart('LoginController/login', 'class="js-validate"'); ?>
+          <?php echo form_open_multipart('user/profile', 'class="js-validate"'); ?>
           <!-- Input -->
           <div class="js-form-message mb-3">
             <div class="js-focus-state input-group form">

@@ -27,10 +27,16 @@ class AdminController extends CI_Controller {
 
 			$data['body']= $this->load->view('admin/home','',true);
 			$this->load->view('admin/layout',$data);
+			redirect('admin/home');
 		}
 		else {
 			redirect(base_url('admin/login/xyz'));
 		}
+	}
+	
+	public function home() {
+	    $data['body']= $this->load->view('admin/home','',true);
+		$this->load->view('admin/layout',$data);
 	}
     
 }

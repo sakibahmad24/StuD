@@ -31,6 +31,21 @@
 </head>
 
 <body>
+    
+    <!-- Notification -->
+    
+    <?php if($this->session->flashdata('notification')) { ?>
+        <div class="alert alert-primary notification" role="alert">
+          <?php echo $this->session->flashdata('notification'); ?>
+        </div>
+    <?php } else if($this->session->flashdata('notification_error')) { ?>
+        <div class="alert alert-danger notification" role="alert">
+          <?php echo $this->session->flashdata('notification_error'); ?>
+        </div>
+    <?php } ?>
+    
+    
+    
   <!-- Skippy -->
   <a id="skippy" class="sr-only sr-only-focusable u-skippy" href="#content">
     <div class="container">
@@ -110,14 +125,31 @@
                   <!--<span class="fa fa-angle-down u-header__nav-link-icon"></span>-->
                 </a> </li>
               <!-- End Button -->
-              <?php if($class=='home' || $class=='signup') { ?>
+
+              <?php if($this->session->userdata('isLoggedin')) { ?>
+
+              <!-- Profile -->
+              <li class="nav-item hs-has-mega-menu u-header__nav-item" data-event="hover" data-animation-in="fadeInUp" data-animation-out="fadeOut" data-position="right">
+                <a id="PagesMegaMenu" class="nav-link u-header__nav-link" href="<?= base_url('profile') ?>">
+                    Profile
+                  <!--<span class="fa fa-angle-down u-header__nav-link-icon"></span>-->
+                </a>
+
+                <!-- Pages - Mega Menu -->
+
+                <!-- End Pages - Mega Menu -->
+              </li>
+
+              <?php } ?>
+
+              <?php if(!$this->session->userdata('isLoggedin')) { ?>
               <li class="nav-item u-header__nav-item-btn">
                 <a class="btn btn-sm btn-primary" href="#signupModal" role="button" data-modal-target="#signupModal" data-overlay-color="#151b26">
                   <span class="fa fa-user-circle mr-1"></span>
                   Signin
                 </a>
               </li>
-              <?php } else if($class =='profile') { ?>
+              <?php } else if($this->session->userdata('isLoggedin')) { ?>
               <li class="nav-item u-header__nav-item-btn">
                 <a class="btn btn-sm btn-primary" href="<?php echo base_url('LoginController/logout') ?>" role="button">
                   <span class="fa fa-user-circle mr-1"></span>
@@ -948,6 +980,27 @@
     }
     });
 </script>
+
+<!-- Notification -->
+
+<script>
+    $(document).ready(function() {
+      $(".notification").fadeTo(2000, 500).slideUp(1000, function(){
+            $(".notification").slideUp(1000);
+        });
+    });
+</script>
+
+
+<style>
+    .notification {
+        z-index: 999999;
+        min-width: 200px;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+    }
+</style>
 
 
 

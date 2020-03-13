@@ -60,11 +60,27 @@
         <!-- End Title -->
 
         <div class="row">
+        <?php foreach($homeoffers as $offer) { ?>
           <div class="col-md-3">
               <a class="card card-frame mb-3" href="<?php echo base_url('pages/about-agency.html');   ?>">
                 <div class="card-body p-3">
                   <div class="media">
-                    <img class="max-width-6 mr-3" src="<?php  echo base_url('assets/assets_user/svg/components/plan-brown-icon.svg" alt="Image Description"') ?>">
+                    <img class="max-width-6 mr-3" src="<?php  echo base_url('assets/common/offers_picture/').$offer['offer_image'] ?>">
+                      <div class="media-body">
+                      <h4 class="h6 text-dark mb-0"><?php echo $offer['offer_name'] ?></h4>
+                      <!-- <p class="small mb-0"></p> -->
+                    </div>
+                  </div>
+                  <p class="small mb-0" style="text-align:justify;"><?php echo $offer['offer_details'] ?></p>
+                </div>
+              </a>
+          </div>
+        <?php } ?>
+          <!-- <div class="col-md-3">
+              <a class="card card-frame mb-3" href="">
+                <div class="card-body p-3">
+                  <div class="media">
+                    <img class="max-width-6 mr-3" src="">
                       <div class="media-body">
                       <h4 class="h6 text-dark mb-0">About</h4>
                       <p class="small mb-0">Find out more about us</p>
@@ -73,12 +89,12 @@
                   <p class="small mb-0" style="text-align:justify;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
                 </div>
               </a>
-          </div>
-          <div class="col-md-3">
-              <a class="card card-frame mb-3" href="<?php echo base_url('pages/about-agency.html');   ?>">
+          </div> -->
+          <!-- <div class="col-md-3">
+              <a class="card card-frame mb-3" href="">
                 <div class="card-body p-3">
                   <div class="media">
-                    <img class="max-width-6 mr-3" src="<?php  echo base_url('assets/assets_user/svg/components/plan-brown-icon.svg" alt="Image Description"') ?>">
+                    <img class="max-width-6 mr-3" src="">
                       <div class="media-body">
                       <h4 class="h6 text-dark mb-0">About</h4>
                       <p class="small mb-0">Find out more about us</p>
@@ -87,26 +103,12 @@
                   <p class="small mb-0" style="text-align:justify;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
                 </div>
               </a>
-          </div>
-          <div class="col-md-3">
-              <a class="card card-frame mb-3" href="<?php echo base_url('pages/about-agency.html');   ?>">
+          </div> -->
+          <!-- <div class="col-md-3">
+              <a class="card card-frame mb-3" href="">
                 <div class="card-body p-3">
                   <div class="media">
-                    <img class="max-width-6 mr-3" src="<?php  echo base_url('assets/assets_user/svg/components/plan-brown-icon.svg" alt="Image Description"') ?>">
-                      <div class="media-body">
-                      <h4 class="h6 text-dark mb-0">About</h4>
-                      <p class="small mb-0">Find out more about us</p>
-                    </div>
-                  </div>
-                  <p class="small mb-0" style="text-align:justify;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                </div>
-              </a>
-          </div>
-          <div class="col-md-3">
-              <a class="card card-frame mb-3" href="<?php echo base_url('pages/about-agency.html');   ?>">
-                <div class="card-body p-3">
-                  <div class="media">
-                    <img class="max-width-6 mr-3" src="<?php  echo base_url('assets/assets_user/svg/components/plan-brown-icon.svg" alt="Image Description"') ?>">
+                    <img class="max-width-6 mr-3" src="">
                       <div class="media-body">
                       <h4 class="h6 text-dark mb-0">About</h4>
                       <p class="small mb-0">Find out more about us</p>
@@ -118,7 +120,7 @@
           </div>
 
         
-      </div>
+      </div> -->
 
       
 

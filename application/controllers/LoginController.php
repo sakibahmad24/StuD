@@ -18,27 +18,37 @@ class LoginController extends CI_Controller {
                 'fullname'   => $result['user_fullname'],
 				'email'  => $result['user_email'],
 				'promocode' => $result['promocode'],
-				'phone_number' => $result['user_phone']
+				'phone_number' => $result['user_phone'],
+				'user_type' => $result['user_isApproved'],
+				'isLoggedin' => TRUE
             ];
-            $this->session->set_userdata($user_info);
-            $data['class']='profile';
-			$data['body']= $this->load->view('users/inc/profile','',true);
-            $this->load->view('users/layout',$data);
+            if($user_info['user_type']== 1 || $user_info['user_type']== 10) {
+                $this->session->set_userdata($user_info);
+                $data['class']='profile';
+    			$data['body']= $this->load->view('users/inc/profile','',true);
+    			$this->load->view('users/layout',$data);
+    			redirect('/user/profile/home');
+            }
+            else {
+                $this->session->set_flashdata('notification_error', 'Your Account is not Activated Yet!');
+			    redirect(base_url());
+            }
 		}
 		else {
-			$Data['message']= 'Wrong Credentials!!';
+			$this->session->set_flashdata('notification_error', 'Please enter correct Username and Password!');
 			redirect(base_url());
 		}
 
 	}
 
-
     public function logout() {
 		$this->session->unset_userdata('user_id');
-		$this->session->unset_userdata('user_fullname');
-		$this->session->unset_userdata('user_email');
-		$Data['message']= 'Logout Successfully!!';
-		$this->session->set_userdata($Data);
+		$this->session->unset_userdata('fullname');
+		$this->session->unset_userdata('email');
+		$this->session->unset_userdata('promocode');
+		$this->session->unset_userdata('phone_number');
+		$this->session->unset_userdata('isLoggedin');
+		$this->session->sess_destroy();
 		redirect(base_url());
 	}
     

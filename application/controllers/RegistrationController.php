@@ -133,11 +133,11 @@ class RegistrationController extends CI_Controller {
         $this->M_Registration->register_user($user_reg_info,$promocode);
         $this->uploadProfilePic($phone_user);
         $this->uploadSidPic($phone_user);
-        $this->session->set_flashdata('success_msg', 'Registered successfully.Now login to your account.');
+        $this->session->set_flashdata('notification', 'Registered successfully.Now login to your account.');
         redirect('/');
       }
       else{
-        $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
+        $this->session->set_flashdata('notification_error', 'Error occured,Try again.');
         redirect('/');
        
       }

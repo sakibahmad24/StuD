@@ -45,6 +45,20 @@ class M_home extends CI_Model {
         return $homeblog;
     }
 
+    public function homeoffers() {
+        $this->db->select('*');
+        $this->db->from('offer');
+        $this->db->where('offer_isFeatured',1);
+        $this->db->order_by("offer_id", "DESC");
+        $this->db->limit(4);
+
+        $query_result=$this->db->get();
+      
+        $homeoffer = $query_result->result_array();
+
+        return $homeoffer;
+    }
+
         
 
 }

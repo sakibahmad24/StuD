@@ -23,9 +23,10 @@ class M_Registration extends CI_Model {
                   'user_fullname'=>$_POST['name'],
                   'user_email'=>$_POST['email'],
                   'user_phone'=>$_POST['phone'],
+                  'user_isApproved'=> 0,
                   'promocode'=>$promocode,
                   'user_password'=>$_POST['password'],
-                  'user_created_at' => $data['user_created_at']
+                  'user_created_at' => current_time(),
                   );
 
           return $this->db->insert('user', $data);

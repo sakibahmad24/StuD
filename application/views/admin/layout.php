@@ -33,9 +33,13 @@
 <div class="wrapper">
 
 <?php if ($this->session->flashdata('notification')) { ?>  
-<div class="alert alert-success hide-success-alert" role="alert" style="position:fixed;right:10px;top:10px;z-index:9999;background:#20D420;border:none">
-  <?php echo $this->session->flashdata('notification'); ?>
-</div>
+    <div class="alert alert-success hide-success-alert" role="alert" style="position:fixed;right:10px;top:10px;z-index:9999;background:#20D420;border:none">
+      <?php echo $this->session->flashdata('notification'); ?>
+    </div>
+<?php } else if ($this->session->flashdata('notification_error')) { ?>
+    <div class="alert alert-danger hide-success-alert" role="alert" style="position:fixed;right:10px;top:10px;z-index:9999;background:#F62021;border:none">
+      <?php echo $this->session->flashdata('notification_error'); ?>
+    </div>
 <?php } ?>
 
   <!-- Navbar -->
@@ -164,7 +168,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="<?php echo base_url('admin/login/xyz') ?>" class="brand-link">
+    <a href="<?php echo base_url('admin/home') ?>" class="brand-link">
       <img src="<?php echo base_url('assets/assets_admin/dist/img/AdminLTELogo.png') ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">STUD Admin Panel</span>
@@ -206,6 +210,64 @@
                 <a href="<?php  echo base_url('admin/SlidersController/viewAll') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Feature Offers
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php  echo base_url('admin/OfferController/add') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Offer</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php  echo base_url('admin/OfferController/viewAll') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Users
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php  echo base_url('admin/ManageUserController/addAdmin') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Admin</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php  echo base_url('admin/ManageUserController/viewAllAdmins') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Admins</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php  echo base_url('admin/ManageUserController/pendingUsersList') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pending Users</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php  echo base_url('admin/ManageUserController/approvedUsersList') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Active Users</p>
                 </a>
               </li>
             </ul>
@@ -288,10 +350,10 @@
  </div>
   
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2020 <a href="http://stud.mirabid.com/">STUD</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.3-pre
+      <!--<b>Version</b> 3.0.3-pre-->
     </div>
   </footer>
 

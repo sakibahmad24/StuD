@@ -139,4 +139,57 @@ class ManageUserController extends CI_Controller {
         redirect('admin/BrandsController/sell', 'refresh');
     }
     
+    public function deleteUser($id) {
+        $this->M_AdminRegistration->deleteUser($id);
+		$this->session->set_flashdata('notification', 'Admin deleted successfully');
+        redirect('admin/ManageUserController/viewAllAdmins', 'refresh');
+        
+    }
+    
+    public function deletePendingUser($id) {
+        $this->M_AdminRegistration->deleteUser($id);
+		$this->session->set_flashdata('notification', 'Pending user requested deleted successfully');
+        redirect('admin/ManageUserController/pendingUsersList', 'refresh');
+        
+    }
+    
+    public function deleteApprovedUser($id) {
+        $this->M_AdminRegistration->deleteUser($id);
+		$this->session->set_flashdata('notification', 'Approved User deleted successfully');
+        redirect('admin/ManageUserController/approvedUsersList', 'refresh');
+        
+    }
+
+    public function editUser($id) {
+        $data['editUser']=$this->M_ManageUser->editUser($id);
+        $data['body']=$this->load->view('admin/UsersAdminEdit',$data,true);
+        $this->load->view('admin/layout',$data);
+    }
+    
+    public function editPendingUser($id) {
+        $data['editUser']=$this->M_ManageUser->editUser($id);
+        $data['body']=$this->load->view('admin/UsersEdit',$data,true);
+        $this->load->view('admin/layout',$data);
+    }
+    
+    public function editApprovedUser($id) {
+        $data['editUser']=$this->M_ManageUser->editUser($id);
+        $data['body']=$this->load->view('admin/UsersEdit',$data,true);
+        $this->load->view('admin/layout',$data);
+    }
+    
+    public function updateUser() {
+        $id= $this->input->post('id');
+        $status= $this->input->post('status');
+        if($status==1) {
+            $this->M_ManageUser->updateUser($id);
+            $this->session->set_flashdata('notification', 'User has been approved successfully');
+            redirect('admin/ManageUserController/pendingUsersList', 'refresh');
+        } else if($status==0) {
+            $this->M_ManageUser->updateUser($id);
+            $this->session->set_flashdata('notification', 'User has been disapproved successfully');
+            redirect('admin/ManageUserController/approvedUsersList', 'refresh');
+        }    
+    }
+    
 }

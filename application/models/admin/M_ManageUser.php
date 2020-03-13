@@ -65,16 +65,16 @@ class M_ManageUser extends CI_Model {
         return $allapprovedUser;
     }
 
-    public function editBrand($id) {
+    public function editUser($id) {
         $this->db->select('*');
-        $this->db->from('brand');
-        $this->db->where("brand_id", $id);
+        $this->db->from('user');
+        $this->db->where("user_id", $id);
 
         $query_result=$this->db->get();
       
-        $editBrand = $query_result->row_array();
+        $editUser = $query_result->row_array();
 
-        return $editBrand;
+        return $editUser;
     }
 
     function brands_update($data) {
@@ -114,5 +114,19 @@ class M_ManageUser extends CI_Model {
         $this->db->where('brand_id',$id);
         $this->db->delete('brand');
     }
+    
+    public function updateUser($id) {
+        $data = array(
+            'user_isApproved'=> $_POST['status'],
+            'user_status'=>$_POST['status'],
+            'user_modified_at' => current_time(),
+        );
+        // echo "<pre>"; print_r($_POST); exit();
+        $this->db->where('user_id',$id);
+        $this->db->update('user', $data);
+        return $this->db->insert_id();
+    }
+    
+    
 
 }

@@ -60,63 +60,16 @@ class RegistrationController extends CI_Controller {
          // echo "<pre>"; print_r($imageData['file_name']."<br>"); 
          if(!empty($uploadImgData)){
             // echo "<pre>"; print_r($_FILES); exit();
-            $result = $this->M_Registration->entry_profile_pic($imageData['file_name'], $phone_user_check);              
+            $result = $this->M_AdminRegistration->entry_profile_pic($imageData['file_name'], $phone_user_check);              
         }
     }
     
-      // Verify the data using print_r($data); die;
-      // $result = $this->M_Registration->entry_profile_pic($data, $phone_user_check);
-      // if ($result) {
-      //   $this->load->view('success_view');
-      // } else {
-      //   $this->load->view('failure_view');
-      // }
   }
 
-  public function uploadSidPic($phone_user){
-    $phone_user_check = $phone_user;
-
-    $this->load->library('upload');
-
-    $data = array();
-
-    $_FILES['file']['name']       = $_FILES['sid_pic']['name'];
-    $_FILES['file']['type']       = $_FILES['sid_pic']['type'];
-    $_FILES['file']['tmp_name']   = $_FILES['sid_pic']['tmp_name'];
-    $_FILES['file']['error']      = $_FILES['sid_pic']['error'];
-    $_FILES['file']['size']       = $_FILES['sid_pic']['size']; 
-  
-    //file upload config
-
-    $config['upload_path'] = './assets/assets_user/sid_pic';
-    $config['allowed_types'] = 'gif|jpg|png';
-    $config['max_size']      = '60000';
-    $config['overwrite']     = FALSE;
-    
-    
-    $this->load->library('upload', $config);
-    $this->upload->initialize($config);
-
-    if($this->upload->do_upload('file')){
-      // Uploaded file data
-      $imageData = $this->upload->data();
-      $uploadImgData['sid_pic'] = $imageData['file_name'];
-       // echo "<pre>"; print_r($imageData['file_name']."<br>"); 
-       if(!empty($uploadImgData)){
-          // echo "<pre>"; print_r($_FILES); exit();
-          $result = $this->M_Registration->entry_sid_pic($imageData['file_name'], $phone_user_check);              
-      }
-  }
-      
-  }
     
     public function registration() {
 
-      // echo "<pre>"; print_r($_POST); exit;
-
-    //   date_default_timezone_set("Asia/Dhaka");
-    //   $dateTime = date("Y-m-d h:i:sa");
-      $promocode = 'stud_'.substr(md5(microtime()), 0, 5);
+    //   echo "<pre>"; print_r($_POST); exit;
         
       $user_reg_info = array(
           'user_fullname'=>$this->input->post('name'),
@@ -125,26 +78,70 @@ class RegistrationController extends CI_Controller {
           'user_password'=>md5($this->input->post('password')),
           'user_created_at'=> current_time()
         );
-        // UploadSidPic();
+        
       $phone_user = $user_reg_info['user_phone'];
-      $phone_check=$this->M_Registration->phone_check($user_reg_info['user_phone']);  
+      $phone_check=$this->M_AdminRegistration->phone_check($user_reg_info['user_phone']);  
 
       if($phone_check){
-        $this->M_Registration->register_user($user_reg_info,$promocode);
+        $this->M_AdminRegistration->register_user($user_reg_info,$promocode);
         $this->uploadProfilePic($phone_user);
-        $this->uploadSidPic($phone_user);
-        $this->session->set_flashdata('notification', 'Registered successfully.Now login to your account.');
-        redirect('/');
+        $this->session->set_flashdata('notification', 'Registered successfully.');
+        redirect('/admin/ManageUserController/viewAllAdmins');
       }
       else{
-        $this->session->set_flashdata('notification_error', 'Your phone number is already in use.');
-        redirect('/');
+        $this->session->set_flashdata('notification_error', 'This phone number is already in use.');
+        redirect('/admin/ManageUserController/viewAllAdmins');
        
       }
         $this->session->set_flashdata('notification_error', 'Error occured,Try again.');
-        redirect('/');
+        redirect('/admin/ManageUserController/viewAllAdmins');
         
-    }      
+    }    
+    
+    
+    public function updateAdmin() {
+        // echo "<pre>"; print_r($_POST); exit();
+
+        if (!empty($_FILES['profile_pic']['name'])) {
+            $this->load->library('upload');
+            $data = array();
+            $_FILES['file']['name']       = $_FILES['profile_pic']['name'];
+            $_FILES['file']['type']       = $_FILES['profile_pic']['type'];
+            $_FILES['file']['tmp_name']   = $_FILES['profile_pic']['tmp_name'];
+            $_FILES['file']['error']      = $_FILES['profile_pic']['error'];
+            $_FILES['file']['size']       = $_FILES['profile_pic']['size'];
+
+            // File upload configuration
+            $config['upload_path'] = './assets/assets_user/profile_pic';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['max_size']      = '60000';
+            $config['overwrite']     = FALSE;
+
+            // Load and initialize upload library
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+            // Upload file to server
+            if($this->upload->do_upload('file')){
+                // Uploaded file data
+                $imageData = $this->upload->data();
+                $uploadImgData['profile_pic'] = $imageData['file_name'];
+                 // echo "<pre>"; print_r($imageData['file_name']."<br>"); 
+                 if(!empty($uploadImgData)){
+                    // echo "<pre>"; print_r($_FILES); exit();
+                    $this->M_AdminRegistration->admins_update($imageData['file_name']);             
+                }
+            }
+
+        }
+
+        else {
+            $this->M_AdminRegistration->admins_update_only_text();
+        }
+            $this->session->set_flashdata('notification', 'Admin information updated successfully');
+            redirect('admin/ManageUserController/viewAllAdmins', 'refresh');
+    }
+    
     
     
 }

@@ -25,10 +25,10 @@
               <td><img style="height: 40px;width:80px;" src="<?php echo base_url('assets/assets_user/profile_pic/').$pendingUser['user_profile_pic']; ?>"></td>
               <td><img style="height: 40px;width:80px;" src="<?php echo base_url('assets/assets_user/sid_pic/').$pendingUser['user_sid_pic']; ?>"></td>
               <td>
-                <a href="<?php echo base_url('admin/ManageUserController/editUser/').$pendingUser['user_id']; ?>">
+                <a href="<?php echo base_url('admin/ManageUserController/editPendingUser/').$pendingUser['user_id']; ?>">
                   <button type="button" class="btn btn-primary">Edit</button>
                 </a>
-                <a href="<?php echo base_url('admin/ManageUserController/deleteUser/').$pendingUser['user_id']; ?>" onclick="return confirm('Are you sure you want to Delete this User?')">
+                <a href="<?php echo base_url('admin/ManageUserController/deletePendingUser/').$pendingUser['user_id']; ?>" onclick="return confirm('Are you sure you want to Delete this User?')">
                   <button type="button" class="btn btn-danger">Delete</button>
                 </a>
               </td>

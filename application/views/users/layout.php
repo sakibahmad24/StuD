@@ -16,6 +16,7 @@
 
   <!-- CSS Implementing Plugins -->
   <link rel="stylesheet" href="<?php echo base_url('assets/assets_user/vendor/font-awesome/css/all.min.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url('assets/assets_user/vendor/bootstrap/bootstrap.css'); ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/assets_user/vendor/hs-megamenu/src/hs.megamenu.css'); ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/assets_user/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'); ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/assets_user/vendor/custombox/dist/custombox.min.css'); ?>">

@@ -9,6 +9,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['blogs'] = 'BlogController/blogs';
 $route['blog-details/(:num)'] = 'HomeController/blogDetails/$1';
 $route['shops'] = 'ShopController/shops';
+$route['hot'] = 'ShopController/hot';
 
 
 //route for common pages

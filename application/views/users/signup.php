@@ -1,6 +1,7 @@
-<div class="container" style="width:50%; margin-top: 100px;">
-    
-<!DOCTYPE html>
+<div class="container">
+    <div class="row spaceTop">
+        <div class="col-md-8 col-xs-12 offset-md-2">
+          
 <html lang="en">
 <head>
   <!-- Title -->
@@ -50,6 +51,14 @@
       left: 0;
       top: 0;
       opacity: 0;
+    }
+    .spaceTop {
+        margin-top:50px;
+    }
+    @media(max-width:480px) {
+     .spaceTop {
+            margin-top:0px;
+        }   
     }
   </style>
 </head>
@@ -166,23 +175,23 @@
     <!-- End Input -->
 
         <!-- Input -->
-        <div class="js-form-message mb-3">
+        <div class="">
       <div class="row">
         <!-- <div class="input-group-prepend form__prepend">
           <span class="input-group-text form__text">
             <span class="fa fa-key form__text-inner"></span>
           </span>
         </div> -->
-        <div  class="col-md-6">
+        <div  class="col-md-6 js-form-message mb-3">
           <div class="upload-btn-wrapper-custom">
             <button class="btn-custom">Upload your picture</button>
-            <input type="file" name="profile_pic" />
+            <input type="file" name="profile_pic" required />
           </div>
         </div>
-        <div  class="col-md-6">
+        <div  class="col-md-6 js-form-message mb-3">
         <div class="upload-btn-wrapper-custom">
           <button class="btn-custom">Upload your student ID</button>
-          <input type="file" name="sid_pic" />
+          <input type="file" name="sid_pic" required />
         </div>
         </div>
       </div>
@@ -250,5 +259,7 @@
     });
   </script>
 </body>
-</html>
+</html>  
+        </div>
+    </div>
 </div>

@@ -1,7 +1,37 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_home extends CI_Model {
+class M_Shop extends CI_Model {
+
+    public function catSlider($cat) {
+        $this->db->select('*');
+        $this->db->from('slider');
+        $this->db->where('slider_isActive',1);
+        $this->db->where('slider_brand_category',$cat);
+        $this->db->order_by("slider_id", "DESC");
+        $this->db->limit(4);
+
+        $query_result=$this->db->get();
+      
+        $catSlider = $query_result->result_array();
+
+        return $catSlider;
+    }
+
+    public function catOffer($cat) {
+        $this->db->select('*');
+        $this->db->from('offer');
+        $this->db->where('offer_isFeatured',1);
+        $this->db->where('offer_category',$cat);
+        $this->db->order_by("offer_id", "DESC");
+        $this->db->limit(4);
+
+        $query_result=$this->db->get();
+      
+        $homeoffer = $query_result->result_array();
+
+        return $homeoffer;
+    }
 
     public function homeblog() {
         $this->db->select('*');
@@ -31,33 +61,9 @@ class M_home extends CI_Model {
         return $blogDetails;
     }
     
-    public function homesliders() {
-        $this->db->select('*');
-        $this->db->from('slider');
-        $this->db->where('slider_isActive',1);
-        $this->db->order_by("slider_id", "DESC");
-        $this->db->limit(4);
+    
 
-        $query_result=$this->db->get();
-      
-        $homeblog = $query_result->result_array();
-
-        return $homeblog;
-    }
-
-    public function homeoffers() {
-        $this->db->select('*');
-        $this->db->from('offer');
-        $this->db->where('offer_isFeatured',1);
-        $this->db->order_by("offer_id", "DESC");
-        $this->db->limit(4);
-
-        $query_result=$this->db->get();
-      
-        $homeoffer = $query_result->result_array();
-
-        return $homeoffer;
-    }
+    
     
     public function blogs($limit,$start) {
         $this->db->select('*');
@@ -75,7 +81,6 @@ class M_home extends CI_Model {
     
     public function blogs_total_number_of_rows() {
         $total_rows = $this->db->query('SELECT * FROM review');
-        // echo $total_rows; exit;
         return $total_rows->num_rows();
     }
 

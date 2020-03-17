@@ -13,7 +13,8 @@ class OfferController extends CI_Controller {
     }
 
 	public function add() {
-        $data['body']=$this->load->view('admin/offerCreate','',true);
+        $data['allbrands'] = $this->M_Offers->getAllBrands();
+        $data['body']=$this->load->view('admin/offerCreate', $data, true);
         $this->load->view('admin/layout',$data);
     }
     
@@ -48,7 +49,8 @@ class OfferController extends CI_Controller {
                  // echo "<pre>"; print_r($imageData['file_name']."<br>"); 
                  if(!empty($uploadImgData)){
                     // echo "<pre>"; print_r($_FILES); exit();
-                    $this->M_Offers->offer_entry($imageData['file_name']);              
+                    $this->M_Offers->offer_entry($imageData['file_name']);
+                    // print_r($data['brand_category']); exit;       
                 }
             }
             
@@ -63,6 +65,8 @@ class OfferController extends CI_Controller {
     }
     
     public function editOffer($id) {
+        $data['allbrands'] = $this->M_Offers->getAllBrands();
+        // $data['body']=$this->load->view('admin/offerCreate', $data, true);
         $data['editOffer']=$this->M_Offers->editOffer($id);
         $data['body']=$this->load->view('admin/OffersEdit',$data,true);
         $this->load->view('admin/layout',$data);
@@ -117,16 +121,16 @@ class OfferController extends CI_Controller {
         redirect('admin/OfferController/viewAll', 'refresh');
     }
 
-    public function sell() {
-        $data['body']=$this->load->view('admin/BrandsSell','',true);
-        $this->load->view('admin/layout',$data);
-    }
-    
-    public function sell_entry() {
-        // echo "<pre>"; print_r($_POST); exit;
-        $this->M_Brands->sell_entry();
-        $this->session->set_flashdata('notification', 'Sold successfully');
-        redirect('admin/BrandsController/sell', 'refresh');
-    }
+//    public function sell() {
+//        $data['body']=$this->load->view('admin/BrandsSell','',true);
+//        $this->load->view('admin/layout',$data);
+//    }
+//
+//    public function sell_entry() {
+//        // echo "<pre>"; print_r($_POST); exit;
+//        $this->M_Brands->sell_entry();
+//        $this->session->set_flashdata('notification', 'Sold successfully');
+//        redirect('admin/BrandsController/sell', 'refresh');
+//    }
     
 }

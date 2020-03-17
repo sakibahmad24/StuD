@@ -24,6 +24,7 @@ class HomeController extends CI_Controller {
 	public function blogDetails($review_id)
 	{
 		$data['class']='home';
+		$data['url']='blog-details';
 		$data['blogDetails']= $this->M_home->blogDetails($review_id);
 		// echo "<pre>"; print_r($data['blogDetails']); exit();
 		$data['body']= $this->load->view('users/blog-details',$data,true);

@@ -28,46 +28,14 @@
         <p style="margin: 50px 0;">
             <?php echo $blogDetails['review_body']; ?>
         </p>
-
-      <!-- Social Networks -->
-      <ul class="list-inline w-md-75 w-lg-60 text-center mx-md-auto mb-0">
-        <li class="list-inline-item">
-          <a class="u-icon u-icon--secondary u-icon--sm" href="#">
-            <span class="fab fa-facebook-f u-icon__inner"></span>
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a class="u-icon u-icon--secondary u-icon--sm" href="#">
-            <span class="fab fa-google u-icon__inner"></span>
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a class="u-icon u-icon--secondary u-icon--sm" href="#">
-            <span class="fab fa-twitter u-icon__inner"></span>
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a class="u-icon u-icon--secondary u-icon--sm" href="#">
-            <span class="fab fa-pinterest u-icon__inner"></span>
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a class="u-icon u-icon--secondary u-icon--sm" href="#">
-            <span class="fab fa-get-pocket u-icon__inner"></span>
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a class="u-icon u-icon--secondary u-icon--sm" href="#">
-            <span class="fab fa-telegram-plane u-icon__inner"></span>
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a class="u-icon u-icon--secondary u-icon--sm" href="#">
-            <span class="fab fa-slack-hash u-icon__inner"></span>
-          </a>
-        </li>
-      </ul>
-      <!-- End Social Networks -->
+        
+        
+        
+        <!-- Share This -->
+        <div class="sharethis-inline-share-buttons" data-url='<?php echo current_url(); ?>'></div>
+        <!-- Share This -->
+        <style>.popup_content{display: none !important;}</style>
+        
     </div>
     <!-- End Article Content -->
   </main>

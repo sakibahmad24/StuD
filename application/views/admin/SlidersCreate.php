@@ -9,9 +9,14 @@
               <!-- form start -->
               <?php echo form_open_multipart('admin/SlidersController/store', 'role="form"'); ?>
                 <div class="card-body">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Brand Name</label>
-                    <input required type="text" name="slider_name" class="form-control" id="exampleInputEmail1" placeholder="Enter Slider Brand Name">
+                <div class="form-group">
+                    <label>Select Brand Name</label>
+                    <select required class="form-control select2 select2-hidden-accessible" name="offer_brand" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                      <?php foreach($allbrands as $brand){ ?>
+                      <option value="<?php echo $brand['brand_name'] ?>"><? echo $brand['brand_name'] ?></option>
+                      <?php } ?>
+
+                    </select>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Title</label>

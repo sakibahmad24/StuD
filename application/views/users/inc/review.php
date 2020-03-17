@@ -43,7 +43,7 @@
                       <?php //echo $review_details['review_rating']?>
                   </strong>
                   <?php for($i=0;$i<$review_details['review_rating'];$i++) { ?>
-                    <i class="fa fa-star" style="color: golden!important;" aria-hidden="true"></i>
+                    <i class="fa fa-star rating" style="color: golden!important;" aria-hidden="true"></i>
                   <?php } ?>
                   </small>
                 </div>

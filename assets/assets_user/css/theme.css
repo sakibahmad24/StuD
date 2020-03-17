@@ -4008,6 +4008,41 @@ input[type="button"].btn-block {
     border-bottom-left-radius: 0;
 }
 
+
+
+/* customSearchBox */
+.customSearchBox {
+    height:43px;
+    width:150px;
+    border:1px solid #1ca766;
+    border-radius:5px;
+    margin:0px 15px;
+}
+.customSearchBoxInput {
+    height:40px;
+    width:66%;
+    border:none;
+    margin-left:5px;
+}
+.customSearchBoxButton {
+    border:none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #fff;
+    background-color: #1ca766;
+    height: 42px;
+    width: 41px;
+}
+
+@media(max-width:480px) {
+    .customSearchBox {
+        margin:0px;
+    }
+}
+
+/* customSearchBox */
+
+
 .custom-control {
     position: relative;
     display: block;
@@ -12307,6 +12342,10 @@ object {
 .fa,
 .fas {
     font-weight: 900;
+}
+
+.rating {
+    color:gold;    
 }
 
 

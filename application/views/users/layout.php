@@ -26,9 +26,13 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/assets_user/vendor/cubeportfolio/css/cubeportfolio.min.css')?>">
 
   <!-- CSS Space Template -->
-  
-  
   <link rel="stylesheet" href="<?php echo base_url('/assets/assets_user/css/theme.css'); ?>">
+  
+  <!-- Share This -->
+  <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5dd4f38b9c8d45001285897f&product=inline-share-buttons&cms=website' async='async'></script>
+  
+  
+  
 </head>
 
 <body>
@@ -84,8 +88,8 @@
           <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse py-0">
             <ul class="navbar-nav u-header__navbar-nav">
               <!-- Health and Fitness -->
-              <li class="nav-item hs-has-sub-menu u-header__nav-item" data-event="hover" data-animation-in="fadeInUp" data-animation-out="fadeOut">
-                <a id="homeMegaMenu" class="nav-link u-header__nav-link" href="<?= base_url('shops') ?>" aria-haspopup="true" aria-expanded="false" aria-labelledby="homeSubMenu">
+              <li>
+                <a id="homeMegaMenu" class="nav-link u-header__nav-link" href="<?php echo base_url('shops/Health') ?>" aria-haspopup="true" aria-expanded="false" aria-labelledby="homeSubMenu">
                   Health and Fitness
                   <!--<span class="fa fa-angle-down u-header__nav-link-icon"></span>-->
                 </a>
@@ -97,8 +101,8 @@
               <!-- End Home -->
 
               <!-- Food and Drinks -->
-              <li class="nav-item hs-has-mega-menu u-header__nav-item" data-event="hover" data-animation-in="fadeInUp" data-animation-out="fadeOut" data-position="right">
-                <a id="PagesMegaMenu" class="nav-link u-header__nav-link" href="<?= base_url('shops') ?>">
+              <li>
+                <a id="PagesMegaMenu" class="nav-link u-header__nav-link" href="<?php echo base_url('shops/Food') ?>">
                   Food and Drinks
                   <!--<span class="fa fa-angle-down u-header__nav-link-icon"></span>-->
                 </a>
@@ -110,8 +114,8 @@
               <!-- End Pages -->
 
               <!-- Fashion -->
-              <li class="nav-item hs-has-sub-menu u-header__nav-item" data-event="hover" data-animation-in="fadeInUp" data-animation-out="fadeOut">
-                <a id="worksMegaMenu" class="nav-link u-header__nav-link" href="<?= base_url('shops') ?>" aria-haspopup="true" aria-expanded="false" aria-labelledby="worksSubMenu">
+              <li>
+                <a id="worksMegaMenu" class="nav-link u-header__nav-link" href="<?php echo base_url('shops/Fashion') ?>" aria-haspopup="true" aria-expanded="false" aria-labelledby="worksSubMenu">
                   Fashion
                   <!--<span class="fa fa-angle-down u-header__nav-link-icon"></span>-->
                 </a>
@@ -120,8 +124,8 @@
               <!-- End Works -->
 
               <!-- Blog -->
-              <li class="nav-item hs-has-sub-menu u-header__nav-item" data-event="hover" data-animation-in="fadeInUp" data-animation-out="fadeOut">
-                <a id="blogMegaMenu" class="nav-link u-header__nav-link" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="blogSubMenu">
+              <li>
+              <a id="PagesMegaMenu" class="nav-link u-header__nav-link" href="<?php echo base_url('shops/Beauty') ?>">
                   Beauty
                   <!--<span class="fa fa-angle-down u-header__nav-link-icon"></span>-->
                 </a> </li>
@@ -130,7 +134,7 @@
               <?php if($this->session->userdata('isLoggedin')) { ?>
 
               <!-- Profile -->
-              <li class="nav-item hs-has-mega-menu u-header__nav-item" data-event="hover" data-animation-in="fadeInUp" data-animation-out="fadeOut" data-position="right">
+              <li>
                 <a id="PagesMegaMenu" class="nav-link u-header__nav-link" href="<?= base_url('profile') ?>">
                     Profile
                   <!--<span class="fa fa-angle-down u-header__nav-link-icon"></span>-->
@@ -158,6 +162,19 @@
                 </a>
               </li>
               <?php } ?>
+
+                <!-- Search -->
+              <li>
+                <div class="customSearchBox">
+                <?php echo form_open_multipart('search', 'method="GET"'); ?>
+                    <input type="text" name="search" class="customSearchBoxInput">
+                    <button type="submit" class="customSearchBoxButton">
+                      <span class="fa fa-search"></span>
+                    </button>
+                  </form>
+                </div>
+              </li>
+
             </ul>
           </div>
           <!-- End Navigation -->

@@ -8,8 +8,9 @@ $route['translate_uri_dashes'] = FALSE;
 //route for home pages
 $route['blogs'] = 'BlogController/blogs';
 $route['blog-details/(:num)'] = 'HomeController/blogDetails/$1';
-$route['shops'] = 'ShopController/shops';
+$route['shops/(:any)'] = 'ShopController/shops/$1';
 $route['hot'] = 'ShopController/hot';
+$route['search'] = 'SearchController/search';
 
 
 //route for common pages

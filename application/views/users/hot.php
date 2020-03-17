@@ -44,7 +44,7 @@
       
       
       <!-- Pagination -->
-      <nav aria-label="Page navigation" style="margin-bottom:70px;">
+      <nav aria-label="Page navigation">
             <?php echo $pagination; ?>
       </nav>
       

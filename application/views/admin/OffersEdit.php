@@ -19,6 +19,15 @@
                     <input type="text" name="offer_details" class="form-control" id="exampleInputEmail1" placeholder="Enter offer details" value="<?php echo $editOffer['offer_details']; ?>">
                   </div>
                   <div class="form-group">
+                    <label>Select Brand</label>
+                    <select required class="form-control select2 select2-hidden-accessible" name="offer_brand" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                      <?php foreach($allbrands as $brand){ ?>
+                      <option value="<?php echo $brand['brand_name']; ?>"><? echo $brand['brand_name']?></option>
+                      <?php } ?>
+
+                    </select>
+                  </div>
+                  <div class="form-group">
                   <label>Feature Status</label>
                   <select class="form-control select2 select2-hidden-accessible" name="offer_isFeatured" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                     

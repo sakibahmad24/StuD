@@ -131,22 +131,32 @@
     <div class="container" style="margin-bottom: 30px;">
     <div class="row" style="margin:30px 0 0 0;">
       <div class="col-md-6">
-        <div class="large-box">
-          <img src="<?php echo base_url('assets/assets_user/img/win.PNG') ?>" style="height: 100%; width: 100%">
-        </div>
+        <a href="<?php  echo base_url('hot') ?>">
+            <div class="large-box">
+                <img src="<?php echo base_url('assets/assets_user/img/win.PNG') ?>" style="height: 100%; width: 100%">
+            </div>
+        </a>
       </div>
       <div class="col-md-6">
-        <div class="large-box">
-        <img src="<?php echo base_url('assets/assets_user/img/instore.PNG') ?>" style="height: 100%; width: 100%">
-        </div>
+          <a href="<?php  echo base_url('hot') ?>">
+            <div class="large-box">
+                <img src="<?php echo base_url('assets/assets_user/img/instore.PNG') ?>" style="height: 100%; width: 100%">
+            </div>
+        </a>
       </div>
       <div class="col-md-6">
-        <div class="large-box">
-        <img src="<?php echo base_url('assets/assets_user/img/new.PNG') ?>" style="height: 100%; width: 100%"></div>
+          <a href="<?php  echo base_url('hot') ?>">
+            <div class="large-box">
+                <img src="<?php echo base_url('assets/assets_user/img/new.PNG') ?>" style="height: 100%; width: 100%">
+            </div>
+        </a>
       </div>
       <div class="col-md-6">
-        <div class="large-box">
-        <img src="<?php echo base_url('assets/assets_user/img/last_chance.PNG') ?>" style="height: 100%; width: 100%"></div>
+          <a href="<?php  echo base_url('hot') ?>">
+            <div class="large-box">
+                <img src="<?php echo base_url('assets/assets_user/img/last_chance.PNG') ?>" style="height: 100%; width: 100%">
+            </div>
+        </a>
       </div>
     </div>
   </div>

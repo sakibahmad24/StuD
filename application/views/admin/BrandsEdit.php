@@ -14,22 +14,15 @@
                     <input type="text" value="<?php  echo $editBrand['brand_name']; ?>" name="brand_name" class="form-control" id="exampleInputEmail1" placeholder="Enter Brand Name">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Promotion Percentage</label>
-                    <input type="text" value="<?php  echo $editBrand['brand_promo_pct']; ?>" name="brand_promo_pct" class="form-control" id="exampleInputEmail1" placeholder="Enter Promotion Percentage">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Sub Heading</label>
-                    <input type="text" value="<?php  echo $editBrand['brand_sub_heading']; ?>" name="brand_sub_heading" class="form-control" id="exampleInputEmail1" placeholder="Enter Sub Heading" name="brand_sub_heading">
-                  </div>
-                  <div class="form-group">
-                  <label>Valid Till:</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                    </div>
-                    <input type="date" value="<?php  echo $editBrand['brand_valid_till']; ?>" name="brand_valid_till" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false">
-                  </div>
-                  <!-- /.input group -->
+                  <label>Brand Category</label>
+                  <select required class="form-control select2 select2-hidden-accessible" name="brand_category" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                    
+                    <option value="food" <?php if ($editBrand['brand_category']=='food') { echo ' selected="selected"'; } ?>>Food</option>
+                    <option value="fashion" <?php if ($editBrand['brand_category']=='fashion') { echo ' selected="selected"'; } ?>>Fashion</option>
+                    <option value="health" <?php if ($editBrand['brand_category']=='health') { echo ' selected="selected"'; } ?>>Health</option>
+                    <option value="beauty" <?php if ($editBrand['brand_category']=='beauty') { echo ' selected="selected"'; } ?>>Beauty</option>
+                    
+                  </select>
                 </div>
                   <div class="form-group">
                   <label>Status</label>

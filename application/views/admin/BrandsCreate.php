@@ -14,14 +14,26 @@
                     <input required type="text" name="brand_name" class="form-control" id="exampleInputEmail1" placeholder="Enter Brand Name">
                   </div>
                   <div class="form-group">
+                  <label>Brand Category</label>
+                  <select required class="form-control select2 select2-hidden-accessible" name="brand_category" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                    
+                    <option value="food">Food</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="health">Health</option>
+                    <option value="beauty">Beauty</option>
+                    
+                  </select>
+                </div>
+                  <!-- <div 
+                  <div class="form-group">
                     <label for="exampleInputEmail1">Promotion Percentage</label>
                     <input required type="text" name="brand_promo_pct" class="form-control" id="exampleInputEmail1" placeholder="Enter Promotion Percentage">
-                  </div>
-                  <div class="form-group">
+                  </div> -->
+                  <!-- <div class="form-group">
                     <label for="exampleInputEmail1">Sub Heading</label>
                     <input required type="text" name="brand_sub_heading" class="form-control" id="exampleInputEmail1" placeholder="Enter Sub Heading" name="brand_sub_heading">
-                  </div>
-                  <div class="form-group">
+                  </div> -->
+                  <!-- <div class="form-group">
                   <label>Valid Till:</label>
                   <div class="input-group">
                     <div class="input-group-prepend">
@@ -29,8 +41,8 @@
                     </div>
                     <input required type="date" name="brand_valid_till" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false">
                   </div>
-                  <!-- /.input group -->
-                </div>
+                  
+                </div> -->
                   <div class="form-group">
                   <label>Status</label>
                   <select required class="form-control select2 select2-hidden-accessible" name="brand_active" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
@@ -40,7 +52,7 @@
                   </select>
                 </div>
                   <div class="form-group">
-                    <label for="exampleInputFile">Uplod Feaured Image</label>
+                    <label for="exampleInputFile">Uplod Brand Logo</label>
                     <div class="input-group">
                       <div class="custom-file">
                         <input required type="file" name="brand_image" class="custom-file-input" id="exampleInputFile">

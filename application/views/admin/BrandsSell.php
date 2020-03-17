@@ -16,11 +16,12 @@
             <div class="row">
               <div class="col-md-12" data-select2-id="45">
                 <div class="form-group">
-                  <label>Brand</label>
-                  <select name="brand_name" class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;" aria-hidden="true">
-                    <option selected="selected" value="Madchef">Madchef</option>
-                    <option value="Stubborn Goat">Stubborn Goat</option>
-                  </select>
+                <select required class="form-control select2 select2-hidden-accessible" name="brand_name" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                      <?php foreach($allbrands as $brand){ ?>
+                      <option value="<?php echo $brand['brand_name'] ?>"><? echo $brand['brand_name'] ?></option>
+                      <?php } ?>
+
+                    </select>
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">

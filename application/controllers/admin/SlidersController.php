@@ -13,7 +13,8 @@ class SlidersController extends CI_Controller {
     }
 
 	public function add() {
-        $data['body']=$this->load->view('admin/SlidersCreate','',true);
+        $data['allbrands'] = $this->M_Offers->getAllBrands();
+        $data['body']=$this->load->view('admin/SlidersCreate',$data,true);
         $this->load->view('admin/layout',$data);
     }
     
@@ -62,6 +63,7 @@ class SlidersController extends CI_Controller {
     }
     
     public function editSlider($id) {
+        $data['allbrands'] = $this->M_Offers->getAllBrands();
         $data['editSlider']=$this->M_Sliders->editSlider($id);
         $data['body']=$this->load->view('admin/SlidersEdit',$data,true);
         $this->load->view('admin/layout',$data);

@@ -49,7 +49,8 @@ class OfferController extends CI_Controller {
                  // echo "<pre>"; print_r($imageData['file_name']."<br>"); 
                  if(!empty($uploadImgData)){
                     // echo "<pre>"; print_r($_FILES); exit();
-                    $this->M_Offers->offer_entry($imageData['file_name']);              
+                    $this->M_Offers->offer_entry($imageData['file_name']);
+                    // print_r($data['brand_category']); exit;       
                 }
             }
             

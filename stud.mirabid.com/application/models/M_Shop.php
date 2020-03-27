@@ -22,7 +22,7 @@ class M_Shop extends CI_Model {
         $this->db->select('*');
         $this->db->from('offer');
         $this->db->where('offer_isFeatured',1);
-        $this->db->where('offer_isFeatured',1);
+        $this->db->where('offer_category',$cat);
         $this->db->order_by("offer_id", "DESC");
         $this->db->limit(4);
 

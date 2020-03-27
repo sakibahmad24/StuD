@@ -7,6 +7,9 @@
   <!-- Required Meta Tags Always Come First -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <!-- OG Content -->
+  <meta name="og:title" content="<?php //echo $meta_title; ?>">
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="<?php echo base_url('assets/assets_user/favicon.ico'); ?>">
@@ -88,7 +91,7 @@
           <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse py-0">
             <ul class="navbar-nav u-header__navbar-nav">
               <!-- Health and Fitness -->
-              <li class="nav-item hs-has-sub-menu u-header__nav-item" data-event="hover" data-animation-in="fadeInUp" data-animation-out="fadeOut">
+              <li>
                 <a id="homeMegaMenu" class="nav-link u-header__nav-link" href="<?php echo base_url('shops/Health') ?>" aria-haspopup="true" aria-expanded="false" aria-labelledby="homeSubMenu">
                   Health and Fitness
                   <!--<span class="fa fa-angle-down u-header__nav-link-icon"></span>-->
@@ -101,7 +104,7 @@
               <!-- End Home -->
 
               <!-- Food and Drinks -->
-              <li class="nav-item hs-has-mega-menu u-header__nav-item" data-event="hover" data-animation-in="fadeInUp" data-animation-out="fadeOut" data-position="right">
+              <li>
                 <a id="PagesMegaMenu" class="nav-link u-header__nav-link" href="<?php echo base_url('shops/Food') ?>">
                   Food and Drinks
                   <!--<span class="fa fa-angle-down u-header__nav-link-icon"></span>-->
@@ -114,7 +117,7 @@
               <!-- End Pages -->
 
               <!-- Fashion -->
-              <li class="nav-item hs-has-sub-menu u-header__nav-item" data-event="hover" data-animation-in="fadeInUp" data-animation-out="fadeOut">
+              <li>
                 <a id="worksMegaMenu" class="nav-link u-header__nav-link" href="<?php echo base_url('shops/Fashion') ?>" aria-haspopup="true" aria-expanded="false" aria-labelledby="worksSubMenu">
                   Fashion
                   <!--<span class="fa fa-angle-down u-header__nav-link-icon"></span>-->
@@ -124,7 +127,7 @@
               <!-- End Works -->
 
               <!-- Blog -->
-              <li class="nav-item hs-has-sub-menu u-header__nav-item" data-event="hover" data-animation-in="fadeInUp" data-animation-out="fadeOut">
+              <li>
               <a id="PagesMegaMenu" class="nav-link u-header__nav-link" href="<?php echo base_url('shops/Beauty') ?>">
                   Beauty
                   <!--<span class="fa fa-angle-down u-header__nav-link-icon"></span>-->
@@ -134,7 +137,7 @@
               <?php if($this->session->userdata('isLoggedin')) { ?>
 
               <!-- Profile -->
-              <li class="nav-item hs-has-mega-menu u-header__nav-item" data-event="hover" data-animation-in="fadeInUp" data-animation-out="fadeOut" data-position="right">
+              <li>
                 <a id="PagesMegaMenu" class="nav-link u-header__nav-link" href="<?= base_url('profile') ?>">
                     Profile
                   <!--<span class="fa fa-angle-down u-header__nav-link-icon"></span>-->
@@ -162,6 +165,19 @@
                 </a>
               </li>
               <?php } ?>
+
+                <!-- Search -->
+              <li>
+                <div class="customSearchBox">
+                <?php echo form_open_multipart('search', 'method="GET"'); ?>
+                    <input type="text" name="search" class="customSearchBoxInput">
+                    <button type="submit" class="customSearchBoxButton">
+                      <span class="fa fa-search"></span>
+                    </button>
+                  </form>
+                </div>
+              </li>
+
             </ul>
           </div>
           <!-- End Navigation -->

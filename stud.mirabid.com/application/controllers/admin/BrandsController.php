@@ -116,7 +116,8 @@ class BrandsController extends CI_Controller {
     }
 
     public function sell() {
-        $data['body']=$this->load->view('admin/BrandsSell','',true);
+        $data['allbrands'] = $this->M_Offers->getAllBrands();
+        $data['body']=$this->load->view('admin/BrandsSell',$data,true);
         $this->load->view('admin/layout',$data);
     }
     

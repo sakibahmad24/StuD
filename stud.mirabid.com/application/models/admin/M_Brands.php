@@ -3,6 +3,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_Brands extends CI_Model {
 
+    function getAllBrands(){
+        
+        $this->db->select('*');
+		$this->db->from('brand');
+
+		$query_result=$this->db->get();
+
+		$allbrands = $query_result->result_array();
+
+		return $allbrands;
+	}
+
+
     function brands_entry($data) {
         $data = array(
             'brand_name' => $_POST['brand_name'],
@@ -17,11 +30,22 @@ class M_Brands extends CI_Model {
     }
 
     public function sell_entry() {
+
+        $this->db->select('brand_category');
+        $this->db->from('brand');
+        $this->db->where("brand_name", $_POST['sale_brand_name']);
+
+        $query_result=$this->db->get();
+      
+        $brand_category = $query_result->row_array();
+
         $data= array();
         $data['sale_brand_name']= $this->input->post('brand_name',true);
+        $data['sale_brand_category']= $brand_category['brand_category'];
         $data['sale_phone_number']= $this->input->post('phone',true);
         $data['sale_promocode']= $this->input->post('promocode',true);
         $this->db->insert('sale',$data);
+        return $this->db->insert_id();
     }
 
     public function allBrands() {

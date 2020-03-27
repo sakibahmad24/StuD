@@ -8,7 +8,7 @@ public function blogs() {
     
     $config['base_url']= base_url()."BlogController/blogs";
     $config['uri_segment']= 3;
-    $config['per_page']= 2;
+    $config['per_page']= 12;
     $config['total_rows']= $this->M_home->blogs_total_number_of_rows();
     
     $config['full_tag_open']= '<ul class="pagination">';

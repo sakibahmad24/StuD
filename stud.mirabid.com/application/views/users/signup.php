@@ -203,9 +203,7 @@
       <button type="submit" class="btn btn-block btn-primary">Signup</button>
     </div>
 
-    <div class="text-center mb-3">
-      <p class="text-muted">Have an account? <a href="signin-simple.html">Signin</a></p>
-    </div>
+    
 
     <!-- Divider -->
     <div class="text-center u-divider-wrapper my-3">
@@ -230,7 +228,6 @@
     </div>
     <!-- End Signup Social Buttons -->
 
-    <p class="small text-center text-muted mb-0">All rights reserved. &copy; Space. 2019 Htmlstream.</p>
   </form>
   <!-- ========== END MAIN CONTENT ========== -->
 

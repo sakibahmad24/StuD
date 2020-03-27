@@ -75,6 +75,7 @@ class M_home extends CI_Model {
     
     public function blogs_total_number_of_rows() {
         $total_rows = $this->db->query('SELECT * FROM review');
+        // echo $total_rows; exit;
         return $total_rows->num_rows();
     }
 

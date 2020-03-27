@@ -32,8 +32,9 @@
         
         
         <!-- Share This -->
-        <div class="sharethis-inline-share-buttons" data-url='<?php echo current_url(); ?>'></div>
+        <div class="sharethis-inline-share-buttons" data-title='<?php echo $blogDetails['review_title']; ?>'></div>
         <!-- Share This -->
+        <style>.popup_content{display: none !important;}</style>
         
     </div>
     <!-- End Article Content -->

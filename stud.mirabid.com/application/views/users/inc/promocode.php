@@ -1,10 +1,7 @@
 <div class="container-fluid" style="margin-top:100px;">
 <div class="clearfix"></div>
     <div class="row">
-        <div class="col-md-2 no-padding">
-            <?php $this->load->view('users/inc/user_panel') ?>
-        </div>
-        <div class="col-md-10 no-padding">
+        <div class="col-md-12">
             <div class="container">
                 <div class="row">
                     <div class="jumbotron jumbotron_profile" style="background-color: #ffffff;">

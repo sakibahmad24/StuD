@@ -138,17 +138,45 @@
 
               <!-- Profile -->
               <li>
-                <a id="PagesMegaMenu" class="nav-link u-header__nav-link" href="<?= base_url('profile') ?>">
-                    Profile
-                  <!--<span class="fa fa-angle-down u-header__nav-link-icon"></span>-->
+                <a id="PagesMegaMenu" class="nav-link u-header__nav-link loggedinDropdownShow" style="cursor:pointer;">
+                    My Account
+                  <span id="changeIcon" class="fa fa-angle-down u-header__nav-link-icon"></span>
                 </a>
 
                 <!-- Pages - Mega Menu -->
 
                 <!-- End Pages - Mega Menu -->
               </li>
+              
+              <ul class="loggedinDropdown" style="display:none">
+                  <li>
+                      <a href="<?php echo base_url('user/profile/home') ?>">
+                        Profile    
+                      </a>    
+                 </li>
+                  <li>
+                      <a href="<?php echo base_url('user/profile/promo') ?>">
+                        Promo Code    
+                      </a>    
+                 </li>
+                  <li>
+                      <a href="<?php echo base_url('user/profile/history') ?>">
+                        History    
+                      </a>    
+                 </li>
+                  <li>
+                      <a href="<?php echo base_url('user/profile/review_history') ?>">
+                        My Reviews    
+                      </a>    
+                 </li>
+              </ul>
+              
+              <style>
+                  
+              </style>
 
               <?php } ?>
+              
 
               <?php if(!$this->session->userdata('isLoggedin')) { ?>
               <li class="nav-item u-header__nav-item-btn">
@@ -1000,6 +1028,20 @@
         $(this).next().text(dflt);
     }
     });
+</script>
+
+<script>
+$(document).ready(function(){
+    $(".loggedinDropdownShow").click(function(){
+        // alert('loggedinDropdownShow');
+        // $("#PagesMegaMenu").find('span').toggleClass('fa fa-angle-up u-header__nav-link-icon');
+        $("#changeIcon").toggleClass("fa fa-angle-up u-header__nav-link-icon");
+        $("#changeIcon").toggleClass("fa fa-angle-down u-header__nav-link-icon");
+    });
+    $(".loggedinDropdownShow").click(function(){
+        $(".loggedinDropdown").slideToggle(500);
+    });
+});
 </script>
 
 <!-- Notification -->

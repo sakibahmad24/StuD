@@ -3682,6 +3682,67 @@ input[type="button"].btn-block {
     color: #212529;
 }
 
+
+
+/* CUSTOM DROPDOWN STARTS */
+.loggedinDropdown {
+  position: absolute;
+  top: 60px;
+  right: 330px;
+}
+.loggedinDropdown li {
+  list-style:none;
+  text-align:center;
+  cursor: pointer;
+  transition: 1s;
+  border-bottom: 1px solid #1ca766;
+  margin-bottom: 2px;
+  background: aliceblue;
+}
+.loggedinDropdown li a {
+  color: #000;
+}
+.loggedinDropdown li a:hover {
+  color: #1ca766;
+}
+/*MOBILE*/
+@media(max-width:480px) {
+  .loggedinDropdown {
+      top: 280px;
+      right: 62%;
+  }
+  .loggedinDropdown li {
+      width: 150px;
+  }
+}
+/*IPAD*/
+@media(max-width:768px) {
+  .loggedinDropdown {
+      top: 276px;
+      right: 79%;
+  }
+  .loggedinDropdown li {
+      width: 150px;
+  }
+}
+/*IPAD PRO*/
+@media only screen 
+and (min-device-width: 1024px) 
+and (max-device-width: 1366px) 
+and (-webkit-min-device-pixel-ratio: 2) {
+  .loggedinDropdown {
+      top: 150px;
+      right: 30%;
+  }
+  .loggedinDropdown li {
+      width: 150px;
+  }
+}
+/* CUSTOM DROPDOWN END */
+
+
+
+
 .btn-group,
 .btn-group-vertical {
     position: relative;

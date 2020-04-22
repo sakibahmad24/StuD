@@ -3,9 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class AdminController extends CI_Controller {
 
+	function __construct() {
+		parent::__construct();
+		// $this->_required_user(array('except'=>array('login')));
+        // $loggedin = $this->session->userdata('user_id');
+        // if (!isset($loggedin) or $loggedin == '') {
+        //     redirect('/');
+		// }
+    }
+
 	public function login()
 	{
-		$this->load->view('admin/login');
+        $this->load->view('admin/login');	
     }
 
 	public function dashboard()

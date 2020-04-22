@@ -22,7 +22,7 @@
                     <label>Select Brand</label>
                     <select required class="form-control select2 select2-hidden-accessible" name="offer_brand" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                       <?php foreach($allbrands as $brand){ ?>
-                      <option value="<?php echo $brand['brand_name']; ?>"><? echo $brand['brand_name']?></option>
+                        <option value="<?php echo $brand['brand_name']; ?>" <?php if($editOffer['offer_brand'] == $brand['brand_name']){echo ' selected';} ?>><?php echo $brand['brand_name']; ?></option>
                       <?php } ?>
 
                     </select>

@@ -1,4 +1,4 @@
-<div class="container-fluid" style="margin-top:100px;">
+<div class="container-fluid" style="margin-top:35px;">
 <div class="clearfix"></div>
     <div class="row">
         <div class="col-md-12 no-padding">

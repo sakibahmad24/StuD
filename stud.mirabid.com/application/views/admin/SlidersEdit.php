@@ -5,6 +5,7 @@
               <div class="card-header">
                 <h3 class="card-title">Edit Slider</h3>
               </div>
+
               <!-- /.card-header -->
               <!-- form start -->
               <?php echo form_open_multipart('admin/SlidersController/updateSlider', 'role="form"'); ?>
@@ -13,7 +14,7 @@
                     <label>Select Brand Name</label>
                     <select required class="form-control select2 select2-hidden-accessible" name="slider_name" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                       <?php foreach($allbrands as $brand){ ?>
-                      <option value="<?php echo $brand['brand_name'] ?>"><? echo $brand['brand_name'] ?></option>
+                        <option value="<?php echo $brand['brand_name']; ?>" <?php if($editSlider['slider_name'] == $brand['brand_name']){echo ' selected';} ?>><?php echo $brand['brand_name']; ?></option>
                       <?php } ?>
                     </select>
                   </div>

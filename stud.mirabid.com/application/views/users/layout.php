@@ -136,44 +136,19 @@
 
               <?php if($this->session->userdata('isLoggedin')) { ?>
 
-              <!-- Profile -->
-              <li>
-                <a id="PagesMegaMenu" class="nav-link u-header__nav-link loggedinDropdownShow" style="cursor:pointer;">
-                    My Account
-                  <span id="changeIcon" class="fa fa-angle-down u-header__nav-link-icon"></span>
-                </a>
-
-                <!-- Pages - Mega Menu -->
-
-                <!-- End Pages - Mega Menu -->
-              </li>
+              <!-- My Account -->
               
-              <ul class="loggedinDropdown" style="display:none">
-                  <li>
-                      <a href="<?php echo base_url('user/profile/home') ?>">
-                        Profile    
-                      </a>    
-                 </li>
-                  <li>
-                      <a href="<?php echo base_url('user/profile/promo') ?>">
-                        Promo Code    
-                      </a>    
-                 </li>
-                  <li>
-                      <a href="<?php echo base_url('user/profile/history') ?>">
-                        History    
-                      </a>    
-                 </li>
-                  <li>
-                      <a href="<?php echo base_url('user/profile/review_history') ?>">
-                        My Reviews    
-                      </a>    
-                 </li>
-              </ul>
-              
-              <style>
-                  
-              </style>
+              <div class="dropdown">
+                <button class="dropdown-toggle customMenu" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  My Account
+                </button>
+                <div class="dropdown-menu customMenu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="<?php echo base_url('user/profile/home') ?>">Profile</a>
+                  <a class="dropdown-item" href="<?php echo base_url('user/profile/promo') ?>">Promo Code</a>
+                  <a class="dropdown-item" href="<?php echo base_url('user/profile/history') ?>">History</a>
+                  <a class="dropdown-item" href="<?php echo base_url('user/profile/review_history') ?>">My Reviews</a>
+                </div>
+            </div>
 
               <?php } ?>
               
@@ -244,7 +219,10 @@
   <!-- ========== END HEADER ========== -->
 
   <!-- ========== MAIN CONTENT ========== -->
-  <?php echo $body; ?>
+  <div style="min-height:500px;width:100%;">
+    <?php echo $body; ?>
+  </div>
+
   <!-- ========== END MAIN CONTENT ========== -->
 
   <!-- ========== FOOTER ========== -->

@@ -33,7 +33,7 @@ class M_Brands extends CI_Model {
 
         $this->db->select('brand_category');
         $this->db->from('brand');
-        $this->db->where("brand_name", $_POST['sale_brand_name']);
+        $this->db->where('brand_name', $_POST['brand_name']);
 
         $query_result=$this->db->get();
       

@@ -55,7 +55,7 @@
         <!-- Title -->
         <div class="w-md-80 w-lg-60 text-center mx-md-auto mb-9">
           <span class="u-label u-label--sm u-label--purple mb-3">What is Stud?</span>
-          <h2 class="h3">Build for Students and provides enjoyable usage</h2>
+          <h2 class="h3">Built for Students and provides enjoyable usage</h2>
         </div>
         <!-- End Title -->
 
@@ -81,6 +81,56 @@
 
     </div>
     <!-- End Features Section -->
+
+        <!-- News Section -->
+    <div class="bg-gray-100">
+      <div class="container space-2 space-3--lg">
+        <!-- Title -->
+        <div class="w-md-80 w-lg-60 text-center mx-md-auto mb-9">
+          <h2 class="h3">Read our news &amp; blogs</h2>
+          <p>Our duty towards you is to share our experience we're reaching in our work path with you.</p>
+        </div>
+        <!-- End Title -->
+
+        <div class="row">
+
+       <?php foreach($catblog as $value) { ?> 
+
+        <div class="card-deck d-block d-lg-flex col-md-6">
+          <article class="card border-0 mb-5">
+            <div class="card-body row align-items-stretch no-gutters p-0">
+              <!-- News Blog Card -->
+              <div class="col-7 border border-right-0 rounded-left">
+                <div class="p-5">
+                  <h2 class="h5 mb-3">
+                    <a href="<?php echo base_url('blog-details/').$value['review_id'] ?>"><?php echo $value['review_title'] ?></a>
+                  </h2>
+                  <p class="mb-0"><?php echo $value['sale_brand_name'] ?></p>
+                </div>
+              </div>
+              <div class="col-5 card-img-right border border-left-0 bg-img-hero" data-bg-img-src="<?php echo base_url('assets/assets_user/review_image/').$value['review_image'] ?>"></div>
+            </div>
+            <!-- End News Blog Card -->
+          </article>
+        </div>
+
+       <?php } ?>
+
+        </div>
+
+        <center>
+          <a href="<?php echo base_url('blogs'); ?>">
+            <span class="u-label u-label--sm u-label--purple mb-3">More Blogs</span>
+            </a>  
+        </center>
+
+        
+
+        
+      </div>
+    </div>
+
+    <!-- End of blogs Section -->
 
 
 

@@ -52,4 +52,20 @@ class M_Registration extends CI_Model {
           return $this->db->insert_id();
       }
 
+      public function update_user($data)
+      {
+          $user_id= $this->input->post('user_id');
+          $data=array(
+                  'user_fullname'=>$_POST['name'],
+                  'user_email'=>$_POST['email'],
+                  'user_phone'=>$_POST['phone'],
+                  'user_isApproved'=> 1,
+                    'user_status'=> 1,
+                  'user_password'=>$_POST['password'],
+                  'user_created_at' => current_time(),
+                  );
+
+          return $this->db->where('user_id', $user_id)->update('user', $data);
+      }
+
 }

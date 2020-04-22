@@ -21,8 +21,17 @@ class M_Profile extends CI_Model {
       function review_entry($image_data, $phone_number) {
         
         $sale_id = $_POST['sale_id'];
+
+        $this->db->select('sale_brand_category');
+        $this->db->from('sale');
+        $this->db->where('sale_id',$sale_id);
+
+        $res = $this->db->get();
+        $sale_category = $res->row_array();
+
         $data = array(
             'review_sale_id' => $_POST['sale_id'],
+            'review_sale_cat' => $sale_category['sale_brand_category'],
             'review_rating' => $_POST['rating'],
             'review_title' => $_POST['title'],
             'review_subtitle' => $_POST['subheading'],

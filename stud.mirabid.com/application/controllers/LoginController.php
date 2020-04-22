@@ -20,6 +20,7 @@ class LoginController extends CI_Controller {
 				'promocode' => $result['promocode'],
 				'phone_number' => $result['user_phone'],
 				'user_type' => $result['user_isApproved'],
+				'user_profile_pic' => $result['user_profile_pic'],
 				'isLoggedin' => TRUE
             ];
             if($user_info['user_type']== 1 || $user_info['user_type']== 10) {
@@ -38,7 +39,11 @@ class LoginController extends CI_Controller {
 			$this->session->set_flashdata('notification_error', 'Please enter correct Username and Password!');
 			redirect(base_url());
 		}
+	}
 
+	public function update() {
+		$data['body']= $this->load->view('users/updateUser','',true);
+	    $this->load->view('users/layout',$data);
 	}
 
     public function logout() {

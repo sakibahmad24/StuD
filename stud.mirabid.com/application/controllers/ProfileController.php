@@ -53,7 +53,7 @@ class ProfileController extends CI_Controller {
 
     public function save_review(){
                
-          $data['class']='profile';
+           $data['class']='profile';
 
            $phone_number = $this->session->userdata('phone_number');
            

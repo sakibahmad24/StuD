@@ -122,8 +122,9 @@ class BrandsController extends CI_Controller {
     }
     
     public function sell_entry() {
-        // echo "<pre>"; print_r($_POST); exit;
-        $this->M_Brands->sell_entry();
+        
+        $res = $this->M_Brands->sell_entry();
+        // echo "<pre>"; print_r($res); exit;
         $this->session->set_flashdata('notification', 'Sold successfully');
         redirect('admin/BrandsController/sell', 'refresh');
     }

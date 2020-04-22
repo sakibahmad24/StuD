@@ -586,6 +586,8 @@ pre code {
     margin-left: auto;
 }
 
+
+
 @media (min-width: 576px) {
     .container {
         max-width: 540px;
@@ -19745,4 +19747,11 @@ button:focus {
 .profile-left-navbar-header h3:hover,
 .profile-left-navbar-item h3:hover {
     color: #21c87a;
+}
+
+/* CUSTOM CSS */
+.profilePic {
+    height: 250px; 
+    width: 250px; 
+    margin: 0 auto;
 }

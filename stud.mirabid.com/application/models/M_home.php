@@ -78,6 +78,19 @@ class M_home extends CI_Model {
         // echo $total_rows; exit;
         return $total_rows->num_rows();
     }
+    
+    public function apiBlogs() {
+        $this->db->select('*');
+        $this->db->from('review');
+        $this->db->join('sale', 'sale.sale_id = review.review_sale_id');
+        $this->db->order_by("review_id", "DESC");
+
+        $query_result=$this->db->get();
+      
+        $apiBlogs = $query_result->result_array();
+
+        return $apiBlogs;
+    }
 
         
 

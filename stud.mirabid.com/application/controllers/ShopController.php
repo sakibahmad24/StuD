@@ -14,6 +14,7 @@ class ShopController extends CI_Controller {
 
     public function shops($cat) {
         $data['class']='home';
+        $data['catblog']= $this->M_Shop->catblog($cat);
         $data['catSlider']=$this->M_Shop->catSlider($cat);
         $data['catOffer']=$this->M_Shop->catOffer($cat);
         $data['body']= $this->load->view('users/shop',$data,true);
@@ -47,6 +48,16 @@ class ShopController extends CI_Controller {
     $data['body']= $this->load->view('users/hot',$data,true);
 	$this->load->view('users/layout',$data);
 }
+
+public function blogDetails($review_id)
+	{
+		$data['class']='home';
+		$data['url']='blog-details';
+		$data['blogDetails']= $this->M_home->blogDetails($review_id);
+		// echo "<pre>"; print_r($data['blogDetails']); exit();
+		$data['body']= $this->load->view('users/blog-details',$data,true);
+		$this->load->view('users/layout',$data);
+	}
 	
     
 }

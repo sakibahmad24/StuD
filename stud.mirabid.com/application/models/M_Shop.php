@@ -33,18 +33,19 @@ class M_Shop extends CI_Model {
         return $homeoffer;
     }
 
-    public function homeblog() {
+    public function catblog($cat) {
         $this->db->select('*');
         $this->db->from('review');
         $this->db->join('sale', 'sale.sale_id = review.review_sale_id');
+        $this->db->where('review_sale_cat',$cat);
         $this->db->order_by("review_id", "DESC");
         $this->db->limit(4);
 
         $query_result=$this->db->get();
       
-        $homeblog = $query_result->result_array();
+        $catblog = $query_result->result_array();
 
-        return $homeblog;
+        return $catblog;
     }
     
     

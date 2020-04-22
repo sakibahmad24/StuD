@@ -144,7 +144,21 @@ class RegistrationController extends CI_Controller {
         $this->session->set_flashdata('notification_error', 'Error occured,Try again.');
         redirect('/');
         
-    }      
+    }     
+    
+    
+    public function updateUserInfo() {
+      $user_reg_info = array(
+        'user_fullname'=>$this->input->post('name'),
+        'user_email'=>$this->input->post('email'),
+        'user_phone'=>$this->input->post('phone'),
+        'user_password'=>md5($this->input->post('password')),
+        'user_created_at'=> current_time()
+      );
+      $this->M_Registration->update_user($user_reg_info);
+      $this->session->set_flashdata('notification', 'Your information has been updated!');
+        redirect('/user/profile/home');
+    }
     
     
 }

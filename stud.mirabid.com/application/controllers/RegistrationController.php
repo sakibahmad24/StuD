@@ -133,7 +133,7 @@ class RegistrationController extends CI_Controller {
         $this->M_Registration->register_user($user_reg_info,$promocode);
         $this->uploadProfilePic($phone_user);
         $this->uploadSidPic($phone_user);
-        $this->session->set_flashdata('notification', 'Registered successfully.Now login to your account.');
+        $this->session->set_flashdata('notification', 'Registered successfully. Now wait for admin approval to login.');
         redirect('/');
       }
       else{
@@ -153,7 +153,7 @@ class RegistrationController extends CI_Controller {
         'user_email'=>$this->input->post('email'),
         'user_phone'=>$this->input->post('phone'),
         'user_password'=>md5($this->input->post('password')),
-        'user_created_at'=> current_time()
+        'user_modified_at'=> current_time()
       );
       $this->M_Registration->update_user($user_reg_info);
       $this->session->set_flashdata('notification', 'Your information has been updated!');

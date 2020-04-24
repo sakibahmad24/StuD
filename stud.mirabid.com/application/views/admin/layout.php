@@ -297,10 +297,33 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Sale Manager
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php  echo base_url('admin/BrandsController/sell') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>New Sell</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php  echo base_url('admin/BrandsController/allSale') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-item">
-            <a href="<?php echo base_url('admin/BrandsController/sell') ?>" class="nav-link">
+            <a href="<?php echo base_url('admin/BlogsController/viewAll') ?>" class="nav-link">
               <i class="nav-icon far fa-circle text-info"></i>
-              <p class="text">Sell</p>
+              <p class="text">Blogs</p>
             </a>
           </li>
           <li class="nav-item">

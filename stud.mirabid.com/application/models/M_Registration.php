@@ -25,7 +25,7 @@ class M_Registration extends CI_Model {
                   'user_phone'=>$_POST['phone'],
                   'user_isApproved'=> 0,
                   'promocode'=>$promocode,
-                  'user_password'=>$_POST['password'],
+                  'user_password'=>md5( $_POST['password']),
                   'user_created_at' => current_time(),
                   );
 
@@ -60,9 +60,9 @@ class M_Registration extends CI_Model {
                   'user_email'=>$_POST['email'],
                   'user_phone'=>$_POST['phone'],
                   'user_isApproved'=> 1,
-                    'user_status'=> 1,
-                  'user_password'=>$_POST['password'],
-                  'user_created_at' => current_time(),
+                  'user_status'=> 1,
+                  'user_password'=>md5($_POST['password']),
+                  'user_modified_at' => current_time(),
                   );
 
           return $this->db->where('user_id', $user_id)->update('user', $data);

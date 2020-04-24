@@ -7,7 +7,7 @@ class LoginController extends CI_Controller {
     public function login()
 	{
 		$email= $this->input->post('email',true);
-        $password= $this->input->post('password',true);
+        $password= md5($this->input->post('password',true));
         // echo "<pre>"; print_r($email); exit;
 		$result= $this->M_Login->login($email,$password);
 		$user_info= array();

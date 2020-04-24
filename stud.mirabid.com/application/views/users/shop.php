@@ -62,7 +62,7 @@
         <div class="row">
         <?php foreach($catOffer as $offer) { ?>
           <div class="col-md-3">
-              <a class="card card-frame mb-3" href="<?php echo base_url('pages/about-agency.html');   ?>">
+              <a class="card card-frame mb-3" href="#">
                 <div class="card-body p-3">
                   <div class="media">
                     <img class="max-width-6 mr-3" src="<?php  echo base_url('assets/common/offers_picture/').$offer['offer_image'] ?>">

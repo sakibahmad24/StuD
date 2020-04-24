@@ -20,7 +20,7 @@ class AdminController extends CI_Controller {
 	public function dashboard()
 	{
 		$email= $this->input->post('email',true);
-        $password= $this->input->post('password',true);
+        $password= md5($_POST['password']);
         // echo "<pre>"; print_r($email); exit;
 		$result= $this->M_Login->login($email,$password);
 		$user_info= array();

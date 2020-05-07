@@ -11827,6 +11827,17 @@ button.bg-blue:focus {
     color: #fff !important;
 }
 
+.text-custom {
+    color: #1CA766 !important;
+}
+
+.lead-text-custom {
+    color: #000 !important;
+    background: yellow;
+    padding: 3px;
+    border-radius: 15px;
+}
+
 .text-primary {
     color: #21c87a !important;
 }

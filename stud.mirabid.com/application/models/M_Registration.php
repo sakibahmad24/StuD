@@ -67,5 +67,20 @@ class M_Registration extends CI_Model {
 
           return $this->db->where('user_id', $user_id)->update('user', $data);
       }
+      
+
+      //   Reset admin/seller password
+      public function updatePassword($password)
+      {
+          $user_id= $this->input->post('user_id');
+
+          $password=array(
+            'user_password'=>md5($_POST['password']),
+            'user_modified_at' => current_time(),
+            );
+
+          return $this->db->where('user_id', $user_id)->update('user', $password);
+          echo $this->db->last_query(); exit;
+      }
 
 }

@@ -75,6 +75,7 @@ class RegistrationController extends CI_Controller {
           'user_fullname'=>$this->input->post('name'),
           'user_email'=>$this->input->post('email'),
           'user_phone'=>$this->input->post('phone'),
+          'user_isApproved'=>$this->input->post('user_isApproved'),
           'user_password'=>md5($this->input->post('password')),
           'user_created_at'=> current_time()
         );
@@ -141,7 +142,32 @@ class RegistrationController extends CI_Controller {
             $this->session->set_flashdata('notification', 'Admin information updated successfully');
             redirect('admin/ManageUserController/viewAllAdmins', 'refresh');
     }
+
+
+    public function resetPassword() {
+      $data['body']= $this->load->view('admin/resetPassword','',true);
+      $this->load->view('admin/layout',$data);
+    }
     
+    public function updatePassword() {
+      $password= $_POST['password'];
+      $confirm_password= $_POST['confirm_password'];
+
+      if($password == $confirm_password) {
+          $this->M_Registration->updatePassword($password);
+          $this->session->set_flashdata('notification', 'Password has been updated');
+          redirect('admin/RegistrationController/resetPassword/', 'refresh');
+          // $data['body']= $this->load->view('admin/resetPassword','',true);
+          // $this->load->view('admin/layout',$data);
+      } 
+      else {
+        $this->session->set_flashdata('notification_error', 'Password does not match!');
+        redirect('admin/RegistrationController/resetPassword/', 'refresh');
+        // $data['body']= $this->load->view('admin/resetPassword','',true);
+        // $this->load->view('admin/layout',$data);
+      }
+
+    }
     
     
 }

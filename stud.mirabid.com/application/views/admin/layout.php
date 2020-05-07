@@ -184,7 +184,7 @@
           <img src="<?php echo base_url('assets/assets_admin/dist/img/user2-160x160.jpg') ?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?php echo $this->session->userdata('fullname') ?></a>
+          <a href="#" class="d-block"><?php echo $this->session->userdata('fullname'); ?></a>
         </div>
       </div>
 
@@ -193,6 +193,9 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+
+          <?php if($this->session->userdata('usertype')== 10) { ?>
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
@@ -251,13 +254,13 @@
               <li class="nav-item">
                 <a href="<?php  echo base_url('admin/ManageUserController/addAdmin') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Add Admin</p>
+                  <p>Add Admin/Seller</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="<?php  echo base_url('admin/ManageUserController/viewAllAdmins') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>All Admins</p>
+                  <p>All Admins/Seller</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -325,13 +328,53 @@
               <i class="nav-icon far fa-circle text-info"></i>
               <p class="text">Blogs</p>
             </a>
+          </li>  
+          <?php } elseif($this->session->userdata('usertype')== 12) { ?>  
+
+          <!-- Seller nav starts-->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Sale Manager
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php  echo base_url('admin/BrandsController/sell') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>New Sell</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php  echo base_url('admin/BrandsController/allSale') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage</p>
+                </a>
+              </li>
+            </ul>
           </li>
+          <!-- Seller nav end-->
+
+          <?php } ?>
+
+
+
+          <li class="nav-item">
+            <a href="<?php echo base_url('admin/RegistrationController/resetPassword/') ?>" class="nav-link">
+              <i class="nav-icon far fa-circle text-warning"></i>
+              <p class="text">Reset Password</p>
+            </a>
+          </li>
+          
           <li class="nav-item">
             <a href="<?php echo base_url('LoginController/logout') ?>" class="nav-link">
               <i class="nav-icon far fa-circle text-danger"></i>
               <p class="text">Signout</p>
             </a>
           </li>
+
       </nav>
       <!-- /.sidebar-menu -->
     </div>

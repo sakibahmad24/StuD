@@ -23,7 +23,7 @@ class M_AdminRegistration extends CI_Model {
                   'user_fullname'=>$_POST['name'],
                   'user_email'=>$_POST['email'],
                   'user_phone'=>$_POST['phone'],
-                  'user_isApproved'=> 10,
+                  'user_isApproved'=> $_POST['user_isApproved'],
                   'user_status'=> 1,
                   'user_password'=>md5($_POST['password']),
                   'user_created_at' => current_time(),

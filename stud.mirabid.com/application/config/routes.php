@@ -37,8 +37,8 @@ $route['user/dashboard'] = 'UserController/profile';
 
 
 // Routes for admin panel
-$route['admin/login/xyz'] = 'admin/AdminController/login';
-$route['admin/dashboard'] = 'admin/AdminController/dashboard';
+$route['admin/login/xyz'] = 'admin/LoginController/login';
+$route['admin/dashboard'] = 'admin/LoginController/dashboard';
 $route['admin/home'] = 'admin/AdminController/home';
 
 //routes for user login

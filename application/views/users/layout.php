@@ -7,6 +7,9 @@
   <!-- Required Meta Tags Always Come First -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <!-- OG Content -->
+  <meta name="og:title" content="<?php //echo $meta_title; ?>">
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="<?php echo base_url('assets/assets_user/favicon.ico'); ?>">
@@ -133,19 +136,22 @@
 
               <?php if($this->session->userdata('isLoggedin')) { ?>
 
-              <!-- Profile -->
-              <li>
-                <a id="PagesMegaMenu" class="nav-link u-header__nav-link" href="<?= base_url('profile') ?>">
-                    Profile
-                  <!--<span class="fa fa-angle-down u-header__nav-link-icon"></span>-->
-                </a>
-
-                <!-- Pages - Mega Menu -->
-
-                <!-- End Pages - Mega Menu -->
-              </li>
+              <!-- My Account -->
+              
+              <div class="dropdown">
+                <button class="dropdown-toggle customMenu" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  My Account
+                </button>
+                <div class="dropdown-menu customMenu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="<?php echo base_url('user/profile/home') ?>">Profile</a>
+                  <a class="dropdown-item" href="<?php echo base_url('user/profile/promo') ?>">Promo Code</a>
+                  <a class="dropdown-item" href="<?php echo base_url('user/profile/history') ?>">History</a>
+                  <a class="dropdown-item" href="<?php echo base_url('user/profile/review_history') ?>">My Reviews</a>
+                </div>
+            </div>
 
               <?php } ?>
+              
 
               <?php if(!$this->session->userdata('isLoggedin')) { ?>
               <li class="nav-item u-header__nav-item-btn">
@@ -213,7 +219,10 @@
   <!-- ========== END HEADER ========== -->
 
   <!-- ========== MAIN CONTENT ========== -->
-  <?php echo $body; ?>
+  <div style="min-height:500px;width:100%;">
+    <?php echo $body; ?>
+  </div>
+
   <!-- ========== END MAIN CONTENT ========== -->
 
   <!-- ========== FOOTER ========== -->
@@ -997,6 +1006,20 @@
         $(this).next().text(dflt);
     }
     });
+</script>
+
+<script>
+$(document).ready(function(){
+    $(".loggedinDropdownShow").click(function(){
+        // alert('loggedinDropdownShow');
+        // $("#PagesMegaMenu").find('span').toggleClass('fa fa-angle-up u-header__nav-link-icon');
+        $("#changeIcon").toggleClass("fa fa-angle-up u-header__nav-link-icon");
+        $("#changeIcon").toggleClass("fa fa-angle-down u-header__nav-link-icon");
+    });
+    $(".loggedinDropdownShow").click(function(){
+        $(".loggedinDropdown").slideToggle(500);
+    });
+});
 </script>
 
 <!-- Notification -->

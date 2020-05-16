@@ -1,13 +1,10 @@
-<div class="container-fluid" style="margin-top:100px;">
+<div class="container-fluid" style="margin-top:35px;">
 <div class="clearfix"></div>
     <div class="row">
-        <div class="col-md-2 no-padding">
-            <?php $this->load->view('users/inc/user_panel') ?>
-        </div>
-        <div class="col-md-10 no-padding">
+        <div class="col-md-12">
             <div class="container">
                 <div class="row">
-                    <div class="jumbotron jumbotron_profile" style="background-color: #ffffff;">
+                    <div class="jumbotron jumbotron_profile" style="background-color: #ffffff; padding-bottom:0px;">
                         <h3 class="display-3">Review History</h3>
                         <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p> -->
                     </div>

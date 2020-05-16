@@ -30,6 +30,12 @@ public function blogs() {
     $data['body']= $this->load->view('users/blog',$data,true);
 	$this->load->view('users/layout',$data);
 }
+
+public function apiBlogs() {
+    header('Content-type: application/json; charset=UTF-8');
+    $apiBlogs = $this->M_home->apiBlogs();
+    echo json_encode($apiBlogs);
+}
 	
     
 }

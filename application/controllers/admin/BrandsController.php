@@ -122,10 +122,34 @@ class BrandsController extends CI_Controller {
     }
     
     public function sell_entry() {
-        // echo "<pre>"; print_r($_POST); exit;
-        $this->M_Brands->sell_entry();
-        $this->session->set_flashdata('notification', 'Sold successfully');
-        redirect('admin/BrandsController/sell', 'refresh');
+
+        // $phone_user = $this->input->post('phone',true);
+        // $phone_user = $this->input->post('phone',true);
+        // $phone_check=$this->M_Registration->phone_check($user_reg_info['user_phone']);
+        $res= $this->M_Brands->sell_entry();
+
+        if($res == '1') {
+            // echo "<pre>"; print_r($res); exit;
+            $this->session->set_flashdata('notification', 'Sold successfully');
+            redirect('admin/BrandsController/sell', 'refresh');
+        } 
+        else if($res == '2'){
+            $this->session->set_flashdata('notification', 'Next purchase can be made after 24 hours');
+            redirect('admin/BrandsController/sell', 'refresh');
+        }
+        else {
+            // echo "<pre>"; print_r($res); exit;
+            $this->session->set_flashdata('notification', 'Please try with correct phone & promo combination');
+            redirect('admin/BrandsController/sell', 'refresh');
+        }
+    }
+
+    public function allSale(){
+
+        $data['allSales']=$this->M_Brands->allSales();
+        $data['body']=$this->load->view('admin/SalesAll',$data,true);
+        $this->load->view('admin/layout',$data);
+
     }
     
 }

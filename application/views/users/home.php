@@ -20,7 +20,7 @@
             <!-- Description -->
             <?php if($slider['slider_title']) { ?>
                 <div class="w-lg-80 mx-lg-auto mb-3">
-                  <h1 class="display-3 font-size-48--md-down text-white"
+                  <h1 class="display-3 font-size-48--md-down text-white text-custom"
                       data-scs-animation-in="fadeInUp"><?php echo $slider['slider_title'] ?></h1>
                 </div>
             <?php } else if($slider['slider_title']==NULL) { ?>
@@ -28,7 +28,7 @@
             <?php } ?>
             
             <div class="w-lg-50 mx-lg-auto mb-7">
-              <p class="lead text-white"
+              <p class="lead text-white lead-text-custom"
                  data-scs-animation-in="fadeInUp"
                  data-scs-animation-delay="200"><?php echo $slider['slider_subtitle'] ?></p>
             </div>
@@ -62,7 +62,7 @@
         <div class="row">
         <?php foreach($homeoffers as $offer) { ?>
           <div class="col-md-3">
-              <a class="card card-frame mb-3" href="<?php echo base_url('pages/about-agency.html');   ?>">
+              <a class="card card-frame mb-3" href="#">
                 <div class="card-body p-3">
                   <div class="media">
                     <img class="max-width-6 mr-3" src="<?php  echo base_url('assets/common/offers_picture/').$offer['offer_image'] ?>">
@@ -131,28 +131,28 @@
     <div class="container" style="margin-bottom: 30px;">
     <div class="row" style="margin:30px 0 0 0;">
       <div class="col-md-6">
-        <a href="<?php  echo base_url('hot') ?>">
+        <a href="#">
             <div class="large-box">
                 <img src="<?php echo base_url('assets/assets_user/img/win.PNG') ?>" style="height: 100%; width: 100%">
             </div>
         </a>
       </div>
       <div class="col-md-6">
-          <a href="<?php  echo base_url('hot') ?>">
+          <a href="#">
             <div class="large-box">
                 <img src="<?php echo base_url('assets/assets_user/img/instore.PNG') ?>" style="height: 100%; width: 100%">
             </div>
         </a>
       </div>
       <div class="col-md-6">
-          <a href="<?php  echo base_url('hot') ?>">
+          <a href="#">
             <div class="large-box">
                 <img src="<?php echo base_url('assets/assets_user/img/new.PNG') ?>" style="height: 100%; width: 100%">
             </div>
         </a>
       </div>
       <div class="col-md-6">
-          <a href="<?php  echo base_url('hot') ?>">
+          <a href="#">
             <div class="large-box">
                 <img src="<?php echo base_url('assets/assets_user/img/last_chance.PNG') ?>" style="height: 100%; width: 100%">
             </div>

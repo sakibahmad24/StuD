@@ -586,6 +586,8 @@ pre code {
     margin-left: auto;
 }
 
+
+
 @media (min-width: 576px) {
     .container {
         max-width: 540px;
@@ -3682,6 +3684,36 @@ input[type="button"].btn-block {
     color: #212529;
 }
 
+
+
+/* Custom Menu Dropdown */
+
+.customMenu {
+    border: navajowhite;
+    background: transparent;
+    color: #5A5757;
+    transition: 0.5s;
+}
+
+.customMenu:hover {
+    color: #21C87A;
+}
+
+.customMenu .dropdown-item {
+    border: navajowhite;
+    background: transparent;
+    color: #5A5757;
+    transition: 0.5s;
+}
+
+.customMenu .dropdown-item:hover {
+    color: #21C87A;
+}
+
+
+
+
+
 .btn-group,
 .btn-group-vertical {
     position: relative;
@@ -4796,6 +4828,7 @@ input[type="button"].btn-block {
     }
     .navbar-expand-lg .navbar-nav .dropdown-menu {
         position: absolute;
+        background: #fff;
     }
     .navbar-expand-lg .navbar-nav .nav-link {
         padding-right: 0.5rem;
@@ -11792,6 +11825,17 @@ button.bg-blue:focus {
 
 .text-white {
     color: #fff !important;
+}
+
+.text-custom {
+    color: #1CA766 !important;
+}
+
+.lead-text-custom {
+    color: #000 !important;
+    background: yellow;
+    padding: 3px;
+    border-radius: 15px;
 }
 
 .text-primary {
@@ -19714,4 +19758,11 @@ button:focus {
 .profile-left-navbar-header h3:hover,
 .profile-left-navbar-item h3:hover {
     color: #21c87a;
+}
+
+/* CUSTOM CSS */
+.profilePic {
+    height: 250px; 
+    width: 250px; 
+    margin: 0 auto;
 }

@@ -3,7 +3,7 @@
         <div class="col-md-12">
         <div class="card card-secondary">
               <div class="card-header">
-                <h3 class="card-title">Add New Admin</h3>
+                <h3 class="card-title">Add New Admin/Seller</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -20,6 +20,13 @@
                   <div class="form-group">
                     <label for="exampleInputEmail1">Phone</label>
                     <input required type="phone" name="phone" class="form-control" id="exampleInputEmail1" placeholder="Enter Phone">
+                  </div>
+                  <div class="form-group">
+                  <label for="exampleFormControlSelect1">Select Usertype</label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="user_isApproved">
+                      <option value="10">Admin</option>
+                      <option value="12">Seller</option>
+                    </select>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Password</label>

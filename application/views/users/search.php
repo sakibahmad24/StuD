@@ -5,25 +5,21 @@
       
       <!-- Rating -->
       <?php 
-      
-    //   echo $lastRate='<i class="fa fa-star rating"></i>'; exit;
-      
-      if(is_int($avgReview)) {
-            // $lastRate='<i class="fa fa-star rating"></i>';
-            $lastRate='FULL';
-        } else if(is_float($avgReview)) {
-            // $lastRate='<i class="fa fa-star-half rating"></i>';
-            $lastRate='HALF';
-        }
-        else {
-            $lastRate='';
-        }
+    //   echo round($avgReview,2); exit;
+      if(is_int(round($avgReview,0))) {
+        $lastRate='<i class="fa fa-star rating"></i>';
+    } else if(is_float(round($avgReview,1))) {
+        $lastRate='<i class="fa fa-star-half rating"></i>';
+    }
+    else {
+        $lastRate='';
+    }
       ?>
       
       <p class="lead">Average Rating: <strong>
           <?php for($i=1;$i<$avgReview;$i++) { ?>
-            <i class="fa fa-star" aria-hidden="true"></i>
-          <?php } echo $lastRate; echo "(".round($avgReview,2).")"; ?>
+            <i class="fa fa-star rating" aria-hidden="true"></i>
+          <?php } echo $lastRate; echo " (".round($avgReview,1).")"; ?>
         </strong> 
       </p>
       <!-- Rating -->

@@ -5,6 +5,9 @@ $route['default_controller'] = 'HomeController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+// api test
+$route['api/blogs'] = 'BlogController/apiBlogs';
+
 //route for home pages
 $route['blogs'] = 'BlogController/blogs';
 $route['blog-details/(:num)'] = 'HomeController/blogDetails/$1';
@@ -19,6 +22,7 @@ $route['restaurant'] = 'RestaurantController';
 //route for user panel
 $route['user/signup'] = 'RegistrationController/signup';
 $route['user/profile'] = 'LoginController/login';
+$route['user/profile/update'] = 'LoginController/update';
 $route['user/profile/home'] = 'ProfileController/home';
 $route['user/profile/promo'] = 'ProfileController/promocode';
 $route['user/profile/review/(:num)'] = 'ProfileController/review/$1';
@@ -33,8 +37,8 @@ $route['user/dashboard'] = 'UserController/profile';
 
 
 // Routes for admin panel
-$route['admin/login/xyz'] = 'admin/AdminController/login';
-$route['admin/dashboard'] = 'admin/AdminController/dashboard';
+$route['admin/login/xyz'] = 'admin/LoginController/login';
+$route['admin/dashboard'] = 'admin/LoginController/dashboard';
 $route['admin/home'] = 'admin/AdminController/home';
 
 //routes for user login

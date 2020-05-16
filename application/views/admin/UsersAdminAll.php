@@ -8,6 +8,7 @@
               <th scope="col">Username</th>
               <th scope="col">Email</th>
               <th scope="col">Requested On</th>
+              <th scope="col">Usertype</th>
               <th scope="col">Status</th>
               <th scope="col">Profile Picture</th>
               <th scope="col">Action</th>
@@ -22,6 +23,11 @@
               <td><?php echo $admin['user_fullname']; ?></td>
               <td><?php echo $admin['user_email']; ?></td>
               <td><?php echo $admin['user_created_at']; ?></td>
+              <?php if($admin['user_isApproved']==10) { ?>
+                <td>Admin</td>
+              <?php } else if($admin['user_isApproved']==12) { ?>
+                <td>Seller</td>
+              <?php } ?>
               <?php if($admin['user_status']==1) { ?>
                 <td>Active</td>
               <?php } else if($admin['user_status']==0) { ?>

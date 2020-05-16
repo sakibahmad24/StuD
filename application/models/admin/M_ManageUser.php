@@ -26,9 +26,12 @@ class M_ManageUser extends CI_Model {
     }
 
     public function allAdmins() {
+
+        $getUserType = array(10, 12);
+
         $this->db->select('*');
         $this->db->from('user');
-        $this->db->where('user_isApproved', 10);
+        $this->db->where_in('user_isApproved', $getUserType);
         $this->db->order_by("user_id", "DESC");
 
         $query_result=$this->db->get();

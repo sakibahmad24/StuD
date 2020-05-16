@@ -21,14 +21,24 @@ class M_Profile extends CI_Model {
       function review_entry($image_data, $phone_number) {
         
         $sale_id = $_POST['sale_id'];
+
+        $this->db->select('sale_brand_category');
+        $this->db->from('sale');
+        $this->db->where('sale_id',$sale_id);
+
+        $res = $this->db->get();
+        $sale_category = $res->row_array();
+
         $data = array(
             'review_sale_id' => $_POST['sale_id'],
+            'review_sale_cat' => $sale_category['sale_brand_category'],
             'review_rating' => $_POST['rating'],
             'review_title' => $_POST['title'],
-            'review_subtitle' => $_POST['subheading'],
+            'review_subtitle' => 'NULL',
             'review_body' => $_POST['description'],
             'review_user_phone' => $phone_number,
-            'review_image' => $image_data
+            'review_image' => $image_data,
+            'review_created_at'=> current_time()
         );
 
         // echo "<pre>"; print_r($_POST); exit();
@@ -66,13 +76,30 @@ class M_Profile extends CI_Model {
 
         $this->db->select('*');
         $this->db->from('review');
+        $this->db->join('sale', 'sale.sale_id = review.review_sale_id');
+        $this->db->join('user', 'user.user_phone = review.review_user_phone');
         $this->db->where('review_id',$review_id);
-
         $query_result=$this->db->get();
       
         $review_details = $query_result->row_array();
 
         return $review_details;
+     
+    }
+
+    public function last_promo_details($phone_number){
+
+        $this->db->select('*');
+        $this->db->from('review');
+        $this->db->join('sale', 'sale.sale_id = review.review_sale_id');
+        $this->db->join('user', 'user.user_phone = review.review_user_phone');
+        $this->db->where('review_user_phone',$phone_number);
+        $this->db->order_by("review_id", "desc");
+        $query_result=$this->db->get();
+      
+        $last_promo_details = $query_result->row_array();
+
+        return $last_promo_details;
      
     }
 

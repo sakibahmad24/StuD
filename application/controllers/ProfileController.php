@@ -19,9 +19,11 @@ class ProfileController extends CI_Controller {
        }
 
        public function promocode(){
-
+            $phone_number = $this->session->userdata('phone_number');
             $data['class']='profile';
-            $data['body']= $this->load->view('users/inc/promocode','',true);
+            $data['last_promo_details']=$this->M_Profile->last_promo_details($phone_number);
+            // echo "<pre>"; print_r($data['last_promo_details']); exit;
+            $data['body']= $this->load->view('users/inc/promocode',$data,true);
             $this->load->view('users/layout',$data);
        }
 
@@ -53,7 +55,7 @@ class ProfileController extends CI_Controller {
 
     public function save_review(){
                
-          $data['class']='profile';
+           $data['class']='profile';
 
            $phone_number = $this->session->userdata('phone_number');
            

@@ -31,5 +31,13 @@ class HomeController extends CI_Controller {
 		$this->load->view('users/layout',$data);
 	}
 	
+	
+	public function notFound()
+	{
+		$data['class']='home';
+		$data['body']= $this->load->view('users/errorNotFound','',true);
+		$this->load->view('users/layout',$data);
+	}
+	
     
 }

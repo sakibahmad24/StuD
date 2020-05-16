@@ -148,6 +148,18 @@ class RegistrationController extends CI_Controller {
     
     
     public function updateUserInfo() {
+
+      $getProfilePic= $_FILES['profile_pic']['name'];
+      $getSidPic= $_FILES['sid_pic']['name'];
+
+      if($getProfilePic) {
+        $this->updateProfilePic();
+      }
+      
+      if ($getSidPic) {
+        $this->updateSidPic();
+      }
+
       $user_reg_info = array(
         'user_fullname'=>$this->input->post('name'),
         'user_email'=>$this->input->post('email'),
@@ -157,8 +169,92 @@ class RegistrationController extends CI_Controller {
       );
       $this->M_Registration->update_user($user_reg_info);
       $this->session->set_flashdata('notification', 'Your information has been updated!');
-        redirect('/user/profile/home');
+      redirect('/user/profile/home');
+      
     }
+
+    public function updateProfilePic() {
+
+      $this->load->library('upload');
+
+      $data = array();
+
+      $_FILES['file']['name']       = $_FILES['profile_pic']['name'];
+      $_FILES['file']['type']       = $_FILES['profile_pic']['type'];
+      $_FILES['file']['tmp_name']   = $_FILES['profile_pic']['tmp_name'];
+      $_FILES['file']['error']      = $_FILES['profile_pic']['error'];
+      $_FILES['file']['size']       = $_FILES['profile_pic']['size']; 
+    
+      //file upload config
+
+      $config['upload_path'] = './assets/assets_user/profile_pic';
+      $config['allowed_types'] = 'gif|jpg|png';
+      $config['max_size']      = '60000';
+      $config['overwrite']     = FALSE;
+      
+      
+      $this->load->library('upload', $config);
+      $this->upload->initialize($config);
+
+      if($this->upload->do_upload('file')){
+        // Uploaded file data
+        $imageData = $this->upload->data();
+        $uploadImgData['profile_pic'] = $imageData['file_name'];
+         // echo "<pre>"; print_r($imageData['file_name']."<br>"); 
+         if(!empty($uploadImgData)){
+            // echo "<pre>"; print_r($_FILES); exit();
+            $result = $this->M_Registration->update_profile_pic($imageData['file_name']);              
+        }
+    }
+  }
+    public function updateSidPic() {
+  
+      $this->load->library('upload');
+  
+      $data = array();
+  
+      $_FILES['file']['name']       = $_FILES['sid_pic']['name'];
+      $_FILES['file']['type']       = $_FILES['sid_pic']['type'];
+      $_FILES['file']['tmp_name']   = $_FILES['sid_pic']['tmp_name'];
+      $_FILES['file']['error']      = $_FILES['sid_pic']['error'];
+      $_FILES['file']['size']       = $_FILES['sid_pic']['size']; 
+    
+      //file upload config
+  
+      $config['upload_path'] = './assets/assets_user/sid_pic';
+      $config['allowed_types'] = 'gif|jpg|png';
+      $config['max_size']      = '60000';
+      $config['overwrite']     = FALSE;
+      
+      
+      $this->load->library('upload', $config);
+      $this->upload->initialize($config);
+  
+      if($this->upload->do_upload('file')){
+        // Uploaded file data
+        $imageData = $this->upload->data();
+        $uploadImgData['sid_pic'] = $imageData['file_name'];
+         // echo "<pre>"; print_r($imageData['file_name']."<br>"); 
+         if(!empty($uploadImgData)){
+            // echo "<pre>"; print_r($_FILES); exit();
+            $result = $this->M_Registration->update_sid_pic($imageData['file_name']);          
+        }
+      }
+    }  
+    
+    
+    // public function updateUserInfo() {
+    //   $user_reg_info = array(
+    //     'user_fullname'=>$this->input->post('name'),
+    //     'user_email'=>$this->input->post('email'),
+    //     'user_phone'=>$this->input->post('phone'),
+    //     'user_password'=>md5($this->input->post('password')),
+    //     'user_modified_at'=> current_time()
+    //   );
+    //   $this->M_Registration->update_user($user_reg_info);
+    //   $this->session->set_flashdata('notification', 'Your information has been updated!');
+    //     redirect('/user/profile/home');
+    // }
     
     
 }

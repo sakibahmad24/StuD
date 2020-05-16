@@ -1029,7 +1029,37 @@ $(document).ready(function(){
       $(".notification").fadeTo(2000, 500).slideUp(1000, function(){
             $(".notification").slideUp(1000);
         });
+
     });
+
+
+    functon loadReport() {
+      $.ajax({
+        type: "get",
+        url: "<?php echo base_url('getReport'); ?>",
+        data: {review_id:review_id},
+        cache: false,
+        success: function(val) {
+          console.log(val);
+        }
+      });
+    }
+
+    function report(review_id) {
+      console.log("<?php echo base_url('report'); ?>"+ '/' + review_id);
+      console.log(review_id);
+      $.ajax({
+        type: "post",
+        url: "<?php echo base_url('report'); ?>"+ '/' + review_id,
+        data: {review_id:review_id},
+        cache: false,
+        success: function(val) {
+          console.log(val);
+        }
+      });
+    }
+
+
 </script>
 
 

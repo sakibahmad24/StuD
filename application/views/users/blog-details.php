@@ -12,6 +12,12 @@
             <?php  $actual = strtotime($blogDetails['review_created_at']);?>
             <small class="d-block text-muted"><?php echo $datemod = date("F d, Y", $actual); ?></small>
           </div>
+          <p>
+              <?php for($i=0;$i<$blogDetails['review_rating'];$i++) { ?>
+                <i class="fa fa-star rating" aria-hidden="true"></i>
+              <?php } ?> 
+              <?php echo "(".$blogDetails['review_rating'].")"; ?>
+          </p>
         </div>
         <!-- End Author -->
       </header>
@@ -33,6 +39,33 @@
         
         <!-- Share This -->
         <div class="sharethis-inline-share-buttons" data-title='<?php echo $blogDetails['review_title']; ?>'></div>
+
+        <br>
+        <?php if($this->session->userdata('isLoggedin')) { 
+              if($blogDetails['is_reported']==0 || $blogDetails['reported_by']==NULL) { ?>
+                <center>
+                  <a onclick="report(<?php echo $blogDetails['review_id']; ?>)"
+                    style="cursor:pointer;color:red;margin:5px;padding:5px;border:1px solid red;border-radius:5px;">
+                    Report
+                  </a>
+                </center>
+              <?php } elseif ($blogDetails['is_reported']==1 && $blogDetails['reported_by']==$this->session->userdata('fullname')) { ?>
+                <center>
+                <a href="<?php echo base_url('report/'.$blogDetails['review_id']); ?>" 
+                  style="color:red;margin:5px;padding:5px;border:1px solid red;border-radius:5px;">
+                  Undo Report
+                </a>
+              </center>
+              <?php } else { ?>
+                <center>
+                <a href="<?php echo base_url('report/'.$blogDetails['review_id']); ?>" 
+                  style="color:red;margin:5px;padding:5px;border:1px solid red;border-radius:5px;">
+                  Report
+                </a>
+              </center>
+             <?php }?>  
+        <?php } ?>
+
         <!-- Share This -->
         <style>.popup_content{display: none !important;}</style>
         

@@ -64,7 +64,6 @@ class M_AdminRegistration extends CI_Model {
             'user_fullname'=>$_POST['name'],
             'user_email'=>$_POST['email'],
             'user_phone'=>$_POST['phone'],
-            'user_isApproved'=> 10,
             'user_status'=>$_POST['status'],
             'user_profile_pic' => $data,
             'user_modified_at' => current_time(),
@@ -81,7 +80,6 @@ class M_AdminRegistration extends CI_Model {
             'user_fullname'=>$_POST['name'],
             'user_email'=>$_POST['email'],
             'user_phone'=>$_POST['phone'],
-            'user_isApproved'=> 10,
             'user_status'=>$_POST['status'],
             'user_modified_at' => current_time(),
         );

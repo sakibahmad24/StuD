@@ -78,6 +78,21 @@ class M_home extends CI_Model {
         // echo $total_rows; exit;
         return $total_rows->num_rows();
     }
+
+
+    public function report($username,$blog_id) {
+
+        $data=array(
+            'is_reported'=> 1,
+            'reported_by'=> $username,
+            'review_updated_at' => current_time()
+            );
+
+        $this->db->where('review_id',$blog_id);
+        $this->db->update('review', $data);
+        return $this->db->insert_id();
+        
+    }
     
     public function apiBlogs() {
         $this->db->select('*');

@@ -115,9 +115,10 @@
             <span class="fas fa-at form__text-inner"></span>
           </span>
         </div>
-        <input type="email" class="form-control" name="email" 
+        <input type="email" class="form-control" name="email" style="background: seashell;"
                placeholder="Email"
                aria-label="Email"
+               readonly
                value="<?php echo $this->session->userdata('email') ?>">
       </div>
     </div>
@@ -131,9 +132,11 @@
             <span class="fas fa-mobile form__text-inner"></span>
           </span>
         </div>
-        <input type="phone" class="form-control" name="phone" 
+        <input type="phone" class="form-control" name="phone" style="background: seashell;"
                placeholder="phone"
                aria-label="phone"
+               readonly
+               name="phone_number"
                value="<?php echo $this->session->userdata('phone_number') ?>">
       </div>
     </div>

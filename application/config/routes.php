@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['default_controller'] = 'HomeController';
-$route['404_override'] = '';
+$route['404_override'] = 'HomeController/notFound';
 $route['translate_uri_dashes'] = FALSE;
 
 // api test
@@ -14,6 +14,7 @@ $route['blog-details/(:num)'] = 'HomeController/blogDetails/$1';
 $route['shops/(:any)'] = 'ShopController/shops/$1';
 $route['hot'] = 'ShopController/hot';
 $route['search'] = 'SearchController/search';
+$route['report/(:num)'] = 'BlogController/report/$1';
 
 
 //route for common pages

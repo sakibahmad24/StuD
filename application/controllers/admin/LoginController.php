@@ -32,12 +32,17 @@ class LoginController extends CI_Controller {
                 'fullname'   => $result['user_fullname'],
                 'email'  => $result['user_email'],
                 'usertype'  => $result['user_isApproved'],
-            ];
-            $this->session->set_userdata($user_info);
-
-			$data['body']= $this->load->view('admin/home','',true);
-			$this->load->view('admin/layout',$data);
-			redirect('admin/home');
+                'userstatus'  => $result['user_status'],
+			];
+			
+			if($user_info['userstatus']== 1) {
+				$this->session->set_userdata($user_info);
+				$data['body']= $this->load->view('admin/home','',true);
+				$this->load->view('admin/layout',$data);
+				redirect('admin/home');
+			} else {
+				redirect(base_url('admin/login/xyz'));
+			}
 		}
 		else {
 			redirect(base_url('admin/login/xyz'));

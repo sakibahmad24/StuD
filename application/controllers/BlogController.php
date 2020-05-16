@@ -31,6 +31,21 @@ public function blogs() {
 	$this->load->view('users/layout',$data);
 }
 
+// public function report($id) {
+//     $username=  $this->session->userdata('fullname');
+//     $blog_id= $id;
+//     $this->M_home->report($blog_id,$username);
+//     redirect('users/blog-details', 'refresh');
+//     // $data['body']= $this->load->view('users/blog-details','',true);
+// 	// $this->load->view('users/layout',$data);
+// }
+
+public function report($id) {
+    $username=  $this->session->userdata('fullname');
+    $blog_id= $id;
+    $this->M_home->report($username,$blog_id);
+}
+
 public function apiBlogs() {
     header('Content-type: application/json; charset=UTF-8');
     $apiBlogs = $this->M_home->apiBlogs();

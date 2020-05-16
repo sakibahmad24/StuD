@@ -19,6 +19,7 @@ class LoginController extends CI_Controller {
 				'email'  => $result['user_email'],
 				'promocode' => $result['promocode'],
 				'phone_number' => $result['user_phone'],
+				'password' => $result['user_password'],
 				'user_type' => $result['user_isApproved'],
 				'user_profile_pic' => $result['user_profile_pic'],
 				'isLoggedin' => TRUE
@@ -52,6 +53,9 @@ class LoginController extends CI_Controller {
 		$this->session->unset_userdata('email');
 		$this->session->unset_userdata('promocode');
 		$this->session->unset_userdata('phone_number');
+		$this->session->unset_userdata('password');
+		$this->session->unset_userdata('user_type');
+		$this->session->unset_userdata('user_profile_pic');
 		$this->session->unset_userdata('isLoggedin');
 		$this->session->sess_destroy();
 		redirect(base_url());

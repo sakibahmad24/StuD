@@ -45,39 +45,48 @@ class M_Brands extends CI_Model {
         $this->db->from('sale');
         $this->db->where('sale_promocode', $_POST['promocode']);
         $this->db->order_by("sale_id", "DESC");
-        $this->db->limit(1);
+
 
         $promo_res = $this->db->get();
-        $check_promo = $promo_res->row_array();
+        $check_promo = $promo_res->result_array();
 
 
-        //time difference count
+        $same_brand_last_sale_time = '';
+
+        //getter for last sale time of the same brand
+        foreach ($check_promo as $get_same_sale_time){
+            if ($get_same_sale_time['sale_brand_name'] == $_POST['brand_name']){
+
+                $same_brand_last_sale_time = $get_same_sale_time['sale_time'];
+            }
+        }
+
+
+
+
+//        time difference count
         $dt = new DateTime('now', new DateTimezone('Asia/Dhaka'));
         $current_time = $dt->format('F j, Y, g:i a');
-                
-        $saletime = $check_promo['sale_time'];
-        $saletime = strtotime($saletime);
-                
+
+        $same_brand_last_sale_time = strtotime($same_brand_last_sale_time);
+
         $current_time = strtotime($current_time);
-        $time_diff = abs($current_time - $saletime)/3600;
+        $time_diff = abs($current_time - $same_brand_last_sale_time)/3600;
 
-        if(($check_phone != NULL) && ($check_phone['promocode'] == $_POST['promocode'])){
-            
-                
 
-                if(($check_promo != NULL) && ($check_promo['sale_brand_name'] != $_POST['brand_name'])){
-                    
-                    goto sale_code;
-                    
-                } else if(($check_promo != NULL) && ($check_promo['sale_brand_name'] == $_POST['brand_name']) && $time_diff > 24){
-                    goto sale_code;
-                }
-                else{
-                    return '2';
-                }
 
-        } else{
+        if(($check_phone != NULL) && ($check_phone['promocode'] == $_POST['promocode']) && $time_diff > 24){
+
+            goto sale_code;
+
+            //successful block
+
+        } elseif (($check_phone != NULL) && ($check_phone['promocode'] == $_POST['promocode']) && $time_diff < 24){
+              return  "2";
+//            return "time difference error block";
+        }else{
             return '3';
+            // wrong information block
         }
 
         //actual code for sale starts
@@ -88,7 +97,7 @@ class M_Brands extends CI_Model {
         $this->db->where('brand_name', $_POST['brand_name']);
 
         $query_result=$this->db->get();
-    
+
         $brand_category = $query_result->row_array();
 
         $data= array();
@@ -96,42 +105,15 @@ class M_Brands extends CI_Model {
         $data['sale_brand_category']= $brand_category['brand_category'];
         $data['sale_phone_number']= $this->input->post('phone',true);
         $data['sale_promocode']= $this->input->post('promocode',true);
+        $data['sale_time']= current_time();
+
         $this->db->insert('sale',$data);
 
         return '1';
 
+
         // actual code for sale ends
-
-
-
-        // if(($check_promo != NULL) && ($check_promo['sale_brand_name'] == $_POST['brand_name'])){
-
-
-        //     $dt = new DateTime('now', new DateTimezone('Asia/Dhaka'));
-        //     $current_time = $dt->format('F j, Y, g:i a');
-		
-		//     $saletime = $check_promo['sale_time'];
-		//     $saletime = strtotime($saletime);
-		
-        //     $current_time = strtotime($current_time);
-        //     $time_diff = abs($current_time - $saletime)/3600;
-
-        //         if($time_diff > 24 && ($check_phone !=NULL && $check_phone['promocode'] == $_POST['promocode'])) {
-                    
-        //             // return $this->db->insert_id();
-        //             return '1';
-        //         }
-        //         else{
-        //             return '2';
-        //         }
-            
-
-        // }
-        // else{
-        //     return '3';
-        // }
-
-    
+        
 }
 
     public function allBrands() {

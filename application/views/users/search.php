@@ -11,9 +11,6 @@
     } else if(is_float(round($avgReview,1))) {
         $lastRate='<i class="fa fa-star-half rating"></i>';
     }
-    else {
-        $lastRate='';
-    }
       ?>
       
       <p class="lead">Average Rating: <strong>

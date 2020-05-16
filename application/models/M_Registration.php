@@ -67,6 +67,28 @@ class M_Registration extends CI_Model {
 
           return $this->db->where('user_id', $user_id)->update('user', $data);
       }
+
+      public function update_profile_pic($data)
+      {     
+          $user_id= $this->input->post('user_id');
+        //   echo $user_id; exit;
+          $data = array(
+              'user_profile_pic' => $data,
+              'user_modified_at'=> current_time()
+          );
+          $this->db->where('user_id', $user_id)->update('user', $data);
+        //   echo $this->db->last_query(); exit;
+      }
+
+      public function update_sid_pic($data)
+      {
+          $user_id= $this->input->post('user_id');
+          $data = array(
+              'user_sid_pic' => $data,
+              'user_modified_at'=> current_time()
+          );
+          $this->db->where('user_id', $user_id)->update('user', $data);
+      }
       
 
       //   Reset admin/seller password

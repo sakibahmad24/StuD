@@ -103,6 +103,18 @@ class M_Profile extends CI_Model {
      
     }
 
+    public function get_last_sale($phone_number){
+        $this->db->select('*');
+        $this->db->from('sale');
+        $this->db->where('sale_phone_number',$phone_number);
+        $this->db->order_by("sale_id", "desc");
+        $this->db->limit(1);
+
+        $query_result=$this->db->get();
+
+        return $last_sale_details = $query_result->row_array();
+    }
+
         
 
 }

@@ -74,6 +74,11 @@ body {
     text-align: left;
     background-color: #fff;
 }
+/* custom font */
+@font-face {
+	font-family: komikaTitle;
+	src: url('../fonts/KomikaTitle.ttf');
+}
 
 [tabindex="-1"]:focus {
     outline: 0 !important;
@@ -11827,17 +11832,6 @@ button.bg-blue:focus {
     color: #fff !important;
 }
 
-.text-custom {
-    color: #1CA766 !important;
-}
-
-.lead-text-custom {
-    color: #000 !important;
-    background: yellow;
-    padding: 3px;
-    border-radius: 15px;
-}
-
 .text-primary {
     color: #21c87a !important;
 }
@@ -19766,3 +19760,45 @@ button:focus {
     width: 250px; 
     margin: 0 auto;
 }
+
+.text-custom {
+    font-family: KomikaTitle;
+    text-align: left;
+    width: 300px;
+    font-size: 60px;
+ }
+ 
+ .lead-text-custom {
+     color: #000 !important;
+     background: yellow;
+     padding: 3px 5px;
+     border-radius: 15px;
+     font-family: KomikaTitle;
+     float: left;
+     width: 200px;
+ }
+
+ @media (min-width: 992px) {
+    .space-3-top--lg {
+        padding-top: 0;
+    }
+}   
+
+ @media(max-width:480px) {
+     main {
+        top: 0px;
+     }
+     .space-2 {
+         padding-top: 2rem;
+         min-height: 250px;
+     }
+    .text-custom {
+        width: 100%!important;
+        text-align: center;
+        font-size: 35px;
+    }
+    .lead-text-custom {
+        width: 100%!important;
+        font-size: 15px;
+    }
+ }

@@ -7,9 +7,7 @@ class M_Search extends CI_Model {
         
         $this->db->select('*');
         $this->db->from('review');
-        $this->db->like('review_title', $searchData);
-        $this->db->or_like('review_subtitle', $searchData);
-        $this->db->or_like('review_body', $searchData);
+        $this->db->like('sale.sale_brand_name', $searchData);
         $this->db->join('sale', 'sale.sale_id = review.review_sale_id');
         $this->db->order_by("review_id", "DESC");
         $this->db->limit($limit,$start);
@@ -29,9 +27,9 @@ class M_Search extends CI_Model {
     public function avgReview($searchData) {
         $this->db->select('AVG(review_rating) as avgReview');
         $this->db->from('review');
-        $this->db->like('review_title', $searchData);
-        $this->db->or_like('review_subtitle', $searchData);
-        $this->db->or_like('review_body', $searchData);
+        $this->db->like('sale.sale_brand_name', $searchData);
+        $this->db->join('sale', 'sale.sale_id = review.review_sale_id');
+        $this->db->order_by("review_id", "DESC");
         $ratingquery = $this->db->get();
     
         $ratingResult = $ratingquery->result_array();

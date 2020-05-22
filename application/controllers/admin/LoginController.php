@@ -45,6 +45,7 @@ class LoginController extends CI_Controller {
 			}
 		}
 		else {
+			$this->session->set_flashdata('notification_error', 'Please try with correct email and password.');
 			redirect(base_url('admin/login/xyz'));
 		}
 	}

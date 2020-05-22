@@ -46,6 +46,15 @@ public function report($id) {
     $this->M_home->report($username,$blog_id);
 }
 
+public function getReport($id) {
+    // $username=  $this->session->userdata('fullname');
+    $blog_id= $id;
+    $getReport= $this->M_home->getReport($blog_id);
+    echo json_encode($getReport); 
+    // echo "<pre>"; print_r($getReport); exit;
+
+}
+
 public function apiBlogs() {
     header('Content-type: application/json; charset=UTF-8');
     $apiBlogs = $this->M_home->apiBlogs();

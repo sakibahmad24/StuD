@@ -141,7 +141,7 @@ class BrandsController extends CI_Controller {
         }
         elseif($res == '3'){
             // echo "<pre>"; print_r($res); exit;
-            $this->session->set_flashdata('notification', 'Please try with correct phone and promo combination');
+            $this->session->set_flashdata('notification_error', 'Please try with correct phone and promo combination');
             redirect('admin/BrandsController/sell', 'refresh');
         }
     }

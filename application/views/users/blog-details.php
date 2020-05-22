@@ -66,6 +66,8 @@
              <?php }?>  
         <?php } ?>
 
+        <div id="reportData"></div>
+
         <!-- Share This -->
         <style>.popup_content{display: none !important;}</style>
         

@@ -1029,21 +1029,24 @@ $(document).ready(function(){
       $(".notification").fadeTo(2000, 500).slideUp(1000, function(){
             $(".notification").slideUp(1000);
         });
-
+        // loadReport();
     });
 
-
-    functon loadReport() {
+    function loadReport(review_id) {
       $.ajax({
         type: "get",
-        url: "<?php echo base_url('getReport'); ?>",
+        url: "<?php echo base_url('getReport'); ?>"+ '/' + review_id,
         data: {review_id:review_id},
+        dataType : 'json',
         cache: false,
-        success: function(val) {
-          console.log(val);
+        success: function(data) {
+          console.log(data.is_reported);
+          var html= '<p style="text-align:center;">Reported Successfully</p>';
+          $('#reportData').html(html);
         }
       });
     }
+
 
     function report(review_id) {
       console.log("<?php echo base_url('report'); ?>"+ '/' + review_id);
@@ -1054,7 +1057,7 @@ $(document).ready(function(){
         data: {review_id:review_id},
         cache: false,
         success: function(val) {
-          console.log(val);
+          loadReport(review_id);
         }
       });
     }

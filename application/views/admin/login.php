@@ -20,6 +20,17 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition login-page">
+
+<?php if ($this->session->flashdata('notification')) { ?>  
+    <div class="alert alert-success hide-success-alert" role="alert" style="position:fixed;right:10px;top:10px;z-index:9999;background:#20D420;border:none">
+      <?php echo $this->session->flashdata('notification'); ?>
+    </div>
+<?php } else if ($this->session->flashdata('notification_error')) { ?>
+    <div class="alert alert-danger hide-success-alert" role="alert" style="position:fixed;right:10px;top:10px;z-index:9999;background:#F62021;border:none">
+      <?php echo $this->session->flashdata('notification_error'); ?>
+    </div>
+<?php } ?>
+
 <div class="login-box">
   <div class="login-logo">
     <a href="<?php echo base_url('/') ?>"><b>STUD</b></a>
@@ -92,6 +103,15 @@
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
+
+<script>
+  $(function() {
+    setTimeout(function() {
+        $(".hide-success-alert").hide('blind', {}, 500)
+    }, 3000);
+});
+
+</script>
 
 </body>
 </html>

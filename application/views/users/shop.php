@@ -20,15 +20,15 @@
             <!-- Description -->
             <?php if($slider['slider_title']) { ?>
                 <div class="w-lg-80 mx-lg-auto mb-3">
-                  <h1 class="display-3 font-size-48--md-down text-white"
+                <h1 class="display-3 font-size-48--md-down text-white text-custom"
                       data-scs-animation-in="fadeInUp"><?php echo $slider['slider_title'] ?></h1>
                 </div>
             <?php } else if($slider['slider_title']==NULL) { ?>
                 <div style="height:136px; width:100%; background: transparent;"></div>
             <?php } ?>
             
-            <div class="w-lg-50 mx-lg-auto mb-7">
-              <p class="lead text-white"
+            <div class="w-lg-80 mx-lg-auto mb-3">
+            <p class="lead text-white lead-text-custom"
                  data-scs-animation-in="fadeInUp"
                  data-scs-animation-delay="200"><?php echo $slider['slider_subtitle'] ?></p>
             </div>

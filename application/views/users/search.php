@@ -1,24 +1,33 @@
 <main id="content" role="main">
     <!-- Hero Section -->
     <div class="container space-2 space-3-top--lg">
-      <h1>All Reviews</h1>
+      <?php if($allResults) { ?>
+        <h3>All Reviews (<?php echo $allResults[0]['sale_brand_name']; ?>)</h3>
+      <?php } else { ?>
+        <h3>Search result (0)</h3>
+      <?php } ?>
       
       <!-- Rating -->
       <?php 
+      $avgReview= (float)$avgReview;
+      // echo gettype($avgReview); exit;
     //   echo round($avgReview,2); exit;
-      if(is_int(round($avgReview,0))) {
-        $lastRate='<i class="fa fa-star rating"></i>';
-    } else if(is_float(round($avgReview,1))) {
-        $lastRate='<i class="fa fa-star-half rating"></i>';
+
+    if(strpos($avgReview,".") !== false) {     
+      $lastRate='<i class="fa fa-star-half rating"></i>';
+    } else {
+      $lastRate='<i class="fa fa-star rating"></i>';
     }
+    // exit;
       ?>
-      
+      <?php if($allResults) { ?>
       <p class="lead">Average Rating: <strong>
           <?php for($i=1;$i<$avgReview;$i++) { ?>
             <i class="fa fa-star rating" aria-hidden="true"></i>
           <?php } echo $lastRate; echo " (".round($avgReview,1).")"; ?>
         </strong> 
       </p>
+      <?php } ?>
       <!-- Rating -->
     </div>
     <!-- End Hero Section -->

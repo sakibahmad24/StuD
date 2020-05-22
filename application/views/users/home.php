@@ -16,7 +16,7 @@
     
       <div class="js-slide">
         <div class="d-md-flex align-items-md-center height-20vh--lg gradient-overlay-half-dark-v2 bg-img-hero" style="background-image: url(<?php echo base_url('assets/common/sliders_picture/').$slider['slider_image'] ?>);">
-          <div class="container text-center space-2 space-3--md">
+          <div class="container-fluid text-center space-2 space-3--md">
             <!-- Description -->
             <?php if($slider['slider_title']) { ?>
                 <div class="w-lg-80 mx-lg-auto mb-3">
@@ -27,7 +27,7 @@
                 <div style="height:136px; width:100%; background: transparent;"></div>
             <?php } ?>
             
-            <div class="w-lg-50 mx-lg-auto mb-7">
+            <div class="w-lg-80 mx-lg-auto mb-3">
               <p class="lead text-white lead-text-custom"
                  data-scs-animation-in="fadeInUp"
                  data-scs-animation-delay="200"><?php echo $slider['slider_subtitle'] ?></p>

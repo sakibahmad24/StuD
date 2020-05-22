@@ -12,6 +12,12 @@
             <?php  $actual = strtotime($review_details['review_created_at']);?>
             <small class="d-block text-muted"><?php echo $datemod = date("F d, Y", $actual); ?></small>
           </div>
+            <p>
+                <?php for($i=0;$i<$review_details['review_rating'];$i++) { ?>
+                    <i class="fa fa-star rating" aria-hidden="true"></i>
+                <?php } ?>
+                <?php echo "(".$review_details['review_rating'].")"; ?>
+            </p>
         </div>
         <!-- End Author -->
       </header>

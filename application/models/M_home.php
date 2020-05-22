@@ -94,6 +94,20 @@ class M_home extends CI_Model {
         
     }
     
+    public function getReport($blog_id) {
+
+        $this->db->select('*');
+        $this->db->from('review');
+        $this->db->where('is_reported', 1);
+        $this->db->where('review_id',$blog_id);
+        $query_result=$this->db->get();
+      
+        $blogDetails = $query_result->row_array();
+
+        return $blogDetails;
+        
+    }
+    
     public function apiBlogs() {
         $this->db->select('*');
         $this->db->from('review');

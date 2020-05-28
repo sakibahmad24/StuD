@@ -42,8 +42,18 @@ public function blogs() {
 
 public function report($id) {
     $username=  $this->session->userdata('fullname');
+    $userphone= $this->session->userdata('phone_number');
     $blog_id= $id;
-    $this->M_home->report($username,$blog_id);
+    $data=$this->M_home->report($username,$userphone,$blog_id);
+    // echo "<pre>"; print_r($data); exit;
+    
+}
+
+public function undoReport($id) {
+    $username=  $this->session->userdata('fullname');
+    $userphone= $this->session->userdata('phone_number');
+    $report_id= $id;
+    $this->M_home->undoReport($username,$userphone,$report_id);
 }
 
 public function getReport($id) {

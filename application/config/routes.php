@@ -15,6 +15,7 @@ $route['shops/(:any)'] = 'ShopController/shops/$1';
 $route['hot'] = 'ShopController/hot';
 $route['search'] = 'SearchController/search';
 $route['report/(:num)'] = 'BlogController/report/$1';
+$route['undo_report/(:num)'] = 'BlogController/undoReport/$1';
 
 // route for onclick Report
 $route['getReport/(:num)'] = 'BlogController/getReport/$1';

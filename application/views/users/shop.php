@@ -10,38 +10,41 @@
          data-arrow-left-classes="fa fa-arrow-left u-slick__arrow-classic-inner u-slick__arrow-classic-inner--left ml-lg-2 ml-xl-4"
          data-arrow-right-classes="fa fa-arrow-right u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right mr-lg-2 mr-xl-4"
          data-numbered-pagination="#slickPaging">
-        
+
+
     <!-- Sliders -->        
     <?php foreach($catSlider as $slider) { ?>
     
-      <div class="js-slide">
-        <div class="d-md-flex align-items-md-center height-20vh--lg gradient-overlay-half-dark-v2 bg-img-hero" style="background-image: url(<?php echo base_url('assets/common/sliders_picture/').$slider['slider_image'] ?>);">
-          <div class="container text-center space-2 space-3--md">
-            <!-- Description -->
-            <?php if($slider['slider_title']) { ?>
-                <div class="w-lg-80 mx-lg-auto mb-3">
+    <div class="js-slide">
+      <div class="d-md-flex align-items-md-center height-20vh--lg gradient-overlay-half-dark-v2 bg-img-hero" style="background-image: url(<?php echo base_url('assets/common/sliders_picture/').$slider['slider_image'] ?>);">
+        <div class="container-fluid text-center space-2 space-3--md">
+          <!-- Description -->
+          <?php if($slider['slider_title']) { ?>
+              <div class="w-lg-80 mx-lg-auto mb-3">
                 <h1 class="display-3 font-size-48--md-down text-white text-custom"
-                      data-scs-animation-in="fadeInUp"><?php echo $slider['slider_title'] ?></h1>
-                </div>
-            <?php } else if($slider['slider_title']==NULL) { ?>
-                <div style="height:136px; width:100%; background: transparent;"></div>
-            <?php } ?>
-            
-            <div class="w-lg-80 mx-lg-auto mb-3">
+                    data-scs-animation-in="fadeInUp"><?php echo $slider['slider_title'] ?></h1>
+              </div>
+          <?php } else if($slider['slider_title']==NULL) { ?>
+              <div style="height:136px; width:100%; background: transparent;"></div>
+          <?php } ?>
+          
+          <div class="w-lg-80 mx-lg-auto mb-3">
             <p class="lead text-white lead-text-custom"
-                 data-scs-animation-in="fadeInUp"
-                 data-scs-animation-delay="200"><?php echo $slider['slider_subtitle'] ?></p>
-            </div>
-            <div data-scs-animation-in="fadeInUp"
-                 data-scs-animation-delay="400">
-            </div>
-            <!-- End Description -->
+               data-scs-animation-in="fadeInUp"
+               data-scs-animation-delay="200"><?php echo $slider['slider_subtitle'] ?></p>
           </div>
+          <div data-scs-animation-in="fadeInUp"
+               data-scs-animation-delay="400">
+          </div>
+          <!-- End Description -->
         </div>
       </div>
-      
-    <? } ?>  
-    <!-- End Sliders  -->
+    </div>
+    
+  <? } ?>  
+  <!-- End Sliders  -->     
+        
+
       
       
     </div>

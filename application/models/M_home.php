@@ -23,12 +23,28 @@ class M_home extends CI_Model {
         $this->db->from('review');
         $this->db->join('sale', 'sale.sale_id = review.review_sale_id');
         $this->db->join('user', 'user.user_phone = review.review_user_phone');
+        // $this->db->join('report', 'report.report_userphone = review.review_user_phone');
         $this->db->where('review_id',$review_id);
         $query_result=$this->db->get();
       
         $blogDetails = $query_result->row_array();
 
         return $blogDetails;
+    }
+
+    public function blogIsReportedByUser($review_id) {
+        $getUserphone= $this->session->userdata('phone_number');
+        $this->db->select('*');
+        $this->db->from('report');
+        $this->db->where('report_review_id', $review_id);
+        $this->db->where('report_userphone', $getUserphone);
+        $this->db->where('is_reported', '1');
+
+        $query_result=$this->db->get();
+      
+        $isReported = $query_result->row_array();
+
+        return $isReported;
     }
     
     public function homesliders() {
@@ -80,26 +96,55 @@ class M_home extends CI_Model {
     }
 
 
-    public function report($username,$blog_id) {
-
+    public function report($username,$userphone,$blog_id) {
         $data=array(
             'is_reported'=> 1,
-            'reported_by'=> $username,
-            'review_updated_at' => current_time()
+            'report_userphone'=> $userphone,
+            'report_username'=> $username,
+            'report_review_id' => $blog_id,
+            'updated_at' => current_time()
             );
 
-        $this->db->where('review_id',$blog_id);
-        $this->db->update('review', $data);
-        return $this->db->insert_id();
+        // $countRow= "SELECT COUNT(*) AS cnt FROM `report` WHERE report_review_id='$blog_id' AND report_userphone='$userphone'";
         
+        $this->db->select('count(*)');
+        $this->db->from('report');
+        $this->db->where('report_review_id', $blog_id);
+        $this->db->where('report_userphone', $userphone);
+
+        $query_result=$this->db->get();
+      
+        $result = $query_result->row_array();
+
+        if($result['count(*)'] > 0)  {
+            $this->db->where('report_review_id', $blog_id);
+            $this->db->where('report_userphone', $userphone);
+            $this->db->update('report', $data);  
+            return $this->db->insert_id();
+        } else {
+            $this->db->insert('report', $data);
+            return $this->db->insert_id();
+        }
+    }
+
+    public function undoReport($username,$userphone,$report_id) {
+        $data=array(
+            'is_reported'=> 0,
+            'report_userphone'=> $userphone,
+            'report_username'=> $username,
+            'updated_at' => current_time()
+            );
+        $this->db->where('report_id', $report_id);    
+        $this->db->update('report', $data);
+        return $this->db->insert_id();
     }
     
     public function getReport($blog_id) {
 
         $this->db->select('*');
-        $this->db->from('review');
-        $this->db->where('is_reported', 1);
-        $this->db->where('review_id',$blog_id);
+        $this->db->from('report');
+        // $this->db->where('is_reported', 1);
+        $this->db->where('report_review_id',$blog_id);
         $query_result=$this->db->get();
       
         $blogDetails = $query_result->row_array();

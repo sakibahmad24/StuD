@@ -1030,7 +1030,9 @@ $(document).ready(function(){
             $(".notification").slideUp(1000);
         });
         // loadReport();
-    });
+      });    
+    
+    var review_id=  document.getElementById("review_id").innerText;
 
     function loadReport(review_id) {
       $.ajax({
@@ -1040,13 +1042,12 @@ $(document).ready(function(){
         dataType : 'json',
         cache: false,
         success: function(data) {
-          console.log(data.is_reported);
+          console.log(data);
           var html= '<p style="text-align:center;">Reported Successfully</p>';
           $('#reportData').html(html);
         }
       });
     }
-
 
     function report(review_id) {
       console.log("<?php echo base_url('report'); ?>"+ '/' + review_id);
@@ -1054,6 +1055,20 @@ $(document).ready(function(){
       $.ajax({
         type: "post",
         url: "<?php echo base_url('report'); ?>"+ '/' + review_id,
+        data: {review_id:review_id},
+        cache: false,
+        success: function(val) {
+          loadReport(review_id);
+        }
+      });
+    }
+
+    function undoReport(review_id) {
+      console.log("<?php echo base_url('undo_report'); ?>"+ '/' + review_id);
+      console.log(review_id);
+      $.ajax({
+        type: "post",
+        url: "<?php echo base_url('undo_report'); ?>"+ '/' + review_id,
         data: {review_id:review_id},
         cache: false,
         success: function(val) {

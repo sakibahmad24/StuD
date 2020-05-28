@@ -35,38 +35,36 @@
             <?php echo $blogDetails['review_body']; ?>
         </p>
         
+
+        <span id="review_id"><?php echo $blogDetails['review_id']; ?></span>
         
         
         <!-- Share This -->
         <div class="sharethis-inline-share-buttons" data-title='<?php echo $blogDetails['review_title']; ?>'></div>
 
         <br>
+
         <?php if($this->session->userdata('isLoggedin')) { 
-              if($blogDetails['is_reported']==0 || $blogDetails['reported_by']==NULL) { ?>
+              if($isReported['is_reported']== '1') { ?>
+              
                 <center>
-                  <a onclick="report(<?php echo $blogDetails['review_id']; ?>)"
+                  <a onclick="undoReport(<?php echo $isReported['report_id']; ?>)"
                     style="cursor:pointer;color:red;margin:5px;padding:5px;border:1px solid red;border-radius:5px;">
-                    Report
+                    Undo Report
                   </a>
                 </center>
-              <?php } elseif ($blogDetails['is_reported']==1 && $blogDetails['reported_by']==$this->session->userdata('fullname')) { ?>
-                <center>
-                <a href="<?php echo base_url('report/'.$blogDetails['review_id']); ?>" 
-                  style="color:red;margin:5px;padding:5px;border:1px solid red;border-radius:5px;">
-                  Undo Report
-                </a>
-              </center>
               <?php } else { ?>
                 <center>
-                <a href="<?php echo base_url('report/'.$blogDetails['review_id']); ?>" 
-                  style="color:red;margin:5px;padding:5px;border:1px solid red;border-radius:5px;">
+                <a onclick="report(<?php echo $blogDetails['review_id']; ?>)" 
+                  style="cursor:pointer;color:red;margin:5px;padding:5px;border:1px solid red;border-radius:5px;">
                   Report
                 </a>
               </center>
              <?php }?>  
         <?php } ?>
 
-        <div id="reportData"></div>
+
+        <div id="reportData"></div> 
 
         <!-- Share This -->
         <style>.popup_content{display: none !important;}</style>

@@ -21,13 +21,13 @@
               <td><?php echo $blog['user_fullname']; ?></td>
               <td><?php echo $blog['review_title']; ?></td>
               
-              <?php if($blog['is_reported']==1) { ?>
+              <?php if($blog['is_reported']=='1') { ?>
                 <td style="color:red;">Yes</td>
-              <?php } else if($blog['is_reported']==0) { ?>
+              <?php } else if($blog['is_reported']=='0') { ?>
                 <td>No</td>
               <?php } ?>
 
-              <td><?php echo $blog['reported_by']; ?></td>
+              <td><?php echo $blog['report_username']; ?></td>
 
               <td>
                 <a href="<?php echo base_url('blog-details/').$blog['review_id']; ?>" target="_blank">

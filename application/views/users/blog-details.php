@@ -36,7 +36,7 @@
         </p>
         
 
-        <span id="review_id"><?php echo $blogDetails['review_id']; ?></span>
+        <span id="review_id" style="display:none;"><?php echo $blogDetails['review_id']; ?></span>
         
         
         <!-- Share This -->
@@ -44,27 +44,9 @@
 
         <br>
 
-        <?php if($this->session->userdata('isLoggedin')) { 
-              if($isReported['is_reported']== '1') { ?>
-              
-                <center>
-                  <a onclick="undoReport(<?php echo $isReported['report_id']; ?>)"
-                    style="cursor:pointer;color:red;margin:5px;padding:5px;border:1px solid red;border-radius:5px;">
-                    Undo Report
-                  </a>
-                </center>
-              <?php } else { ?>
-                <center>
-                <a onclick="report(<?php echo $blogDetails['review_id']; ?>)" 
-                  style="cursor:pointer;color:red;margin:5px;padding:5px;border:1px solid red;border-radius:5px;">
-                  Report
-                </a>
-              </center>
-             <?php }?>  
-        <?php } ?>
+        
+        <div id="ReportButton"></div>
 
-
-        <div id="reportData"></div> 
 
         <!-- Share This -->
         <style>.popup_content{display: none !important;}</style>

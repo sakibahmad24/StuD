@@ -57,10 +57,28 @@ public function undoReport($id) {
 }
 
 public function getReport($id) {
-    // $username=  $this->session->userdata('fullname');
+
     $blog_id= $id;
     $getReport= $this->M_home->getReport($blog_id);
-    echo json_encode($getReport); 
+
+    if($this->session->userdata('isLoggedin')) { 
+        if($getReport['is_reported']=== '1') {
+            $button= '<a onclick="undoReport(' .$getReport['report_id']. ','.$blog_id.')"
+              style="cursor:pointer;color:red;margin:5px;padding:5px;border:1px solid red;border-radius:5px;">
+              Undo Report
+            </a>';
+        } else { 
+            $button= '<a onclick="report(' .$blog_id. ')" 
+            style="cursor:pointer;color:red;margin:5px;padding:5px;border:1px solid red;border-radius:5px;">
+            Report
+          </a>';
+       }
+    }
+
+    $reportBody= '<center>' . $button . '</center>';
+
+
+    echo json_encode($reportBody);
     // echo "<pre>"; print_r($getReport); exit;
 
 }

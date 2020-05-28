@@ -9,6 +9,7 @@ class M_Blogs extends CI_Model {
         $this->db->from('review');
         $this->db->join('sale', 'sale.sale_id = review.review_sale_id');
         $this->db->join('user', 'user.user_phone = review.review_user_phone');
+        $this->db->join('report', 'report.report_review_id = review.review_id');
         $this->db->order_by("review_id", "desc");
         $query_result=$this->db->get();
       

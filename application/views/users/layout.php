@@ -1029,25 +1029,31 @@ $(document).ready(function(){
       $(".notification").fadeTo(2000, 500).slideUp(1000, function(){
             $(".notification").slideUp(1000);
         });
-        // loadReport();
+        var review_id=  document.getElementById("review_id").innerText;
+        loadReport(review_id);
       });    
-    
-    var review_id=  document.getElementById("review_id").innerText;
 
-    function loadReport(review_id) {
-      $.ajax({
-        type: "get",
-        url: "<?php echo base_url('getReport'); ?>"+ '/' + review_id,
-        data: {review_id:review_id},
-        dataType : 'json',
-        cache: false,
-        success: function(data) {
-          console.log(data);
-          var html= '<p style="text-align:center;">Reported Successfully</p>';
-          $('#reportData').html(html);
-        }
-      });
-    }
+
+      
+
+      function loadReport(review_id) {
+        // alert(review_id);
+        $.ajax({
+          type: "get",
+          url: "<?php echo base_url('getReport'); ?>"+ '/' + review_id,
+          data: {review_id:review_id},
+          dataType : 'json',
+          cache: false,
+          success: function(data) {
+            console.log(data);
+            $('#ReportButton').html(data);
+          }
+        });
+      }  
+    
+    
+
+    
 
     function report(review_id) {
       console.log("<?php echo base_url('report'); ?>"+ '/' + review_id);
@@ -1063,13 +1069,13 @@ $(document).ready(function(){
       });
     }
 
-    function undoReport(review_id) {
-      console.log("<?php echo base_url('undo_report'); ?>"+ '/' + review_id);
-      console.log(review_id);
+    function undoReport(report_id, review_id) {
+      console.log("<?php echo base_url('undo_report'); ?>"+ '/' + report_id);
+      console.log(report_id);
       $.ajax({
         type: "post",
-        url: "<?php echo base_url('undo_report'); ?>"+ '/' + review_id,
-        data: {review_id:review_id},
+        url: "<?php echo base_url('undo_report'); ?>"+ '/' + report_id,
+        data: {report_id:report_id},
         cache: false,
         success: function(val) {
           loadReport(review_id);

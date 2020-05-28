@@ -104,8 +104,6 @@ class M_home extends CI_Model {
             'report_review_id' => $blog_id,
             'updated_at' => current_time()
             );
-
-        // $countRow= "SELECT COUNT(*) AS cnt FROM `report` WHERE report_review_id='$blog_id' AND report_userphone='$userphone'";
         
         $this->db->select('count(*)');
         $this->db->from('report');
@@ -129,22 +127,23 @@ class M_home extends CI_Model {
 
     public function undoReport($username,$userphone,$report_id) {
         $data=array(
-            'is_reported'=> 0,
+            'is_reported'=> '0',
             'report_userphone'=> $userphone,
             'report_username'=> $username,
             'updated_at' => current_time()
             );
-        $this->db->where('report_id', $report_id);    
+        $this->db->where('report_id', $report_id);
         $this->db->update('report', $data);
-        return $this->db->insert_id();
+//        return $this->db->insert_id();
     }
     
     public function getReport($blog_id) {
+        $userphone= $this->session->userdata('phone_number');
 
         $this->db->select('*');
         $this->db->from('report');
-        // $this->db->where('is_reported', 1);
         $this->db->where('report_review_id',$blog_id);
+        $this->db->where('report_userphone',$userphone);
         $query_result=$this->db->get();
       
         $blogDetails = $query_result->row_array();
@@ -152,6 +151,7 @@ class M_home extends CI_Model {
         return $blogDetails;
         
     }
+
     
     public function apiBlogs() {
         $this->db->select('*');

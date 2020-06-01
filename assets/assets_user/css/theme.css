@@ -19793,12 +19793,13 @@ button:focus {
          min-height: 250px;
      }
     .text-custom {
-        width: 100%!important;
-        text-align: center;
-        font-size: 35px;
+        width: 150px!important;
+        padding-top: 30px;
+        text-align: left;
+        font-size: 25px;
     }
     .lead-text-custom {
-        width: 100%!important;
-        font-size: 15px;
+        width: 150px!important;
+        font-size: 10px;
     }
  }

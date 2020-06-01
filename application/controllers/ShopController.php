@@ -17,6 +17,7 @@ class ShopController extends CI_Controller {
         $data['catblog']= $this->M_Shop->catblog($cat);
         $data['catSlider']=$this->M_Shop->catSlider($cat);
         $data['catOffer']=$this->M_Shop->catOffer($cat);
+        $data['cat'] = $cat;
         $data['body']= $this->load->view('users/shop',$data,true);
     	$this->load->view('users/layout',$data);
     }

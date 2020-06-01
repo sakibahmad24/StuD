@@ -38,6 +38,7 @@
               </div>
             </div>
             <!-- /.row -->
+            <input type="hidden" name="seller_email" value="<?php echo $this->session->userdata('email'); ?>">
           </div>
           <!-- /.card-body -->
           <div class="card-footer">

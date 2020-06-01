@@ -83,6 +83,15 @@ public function getReport($id) {
 
 }
 
+public function catBlogs($cat){
+
+	$data['blogs']= $this->M_home->catBlogs($cat);
+	$data['body']= $this->load->view('users/blog',$data,true);
+	$this->load->view('users/layout',$data);
+}
+
+
+
 public function apiBlogs() {
     header('Content-type: application/json; charset=UTF-8');
     $apiBlogs = $this->M_home->apiBlogs();

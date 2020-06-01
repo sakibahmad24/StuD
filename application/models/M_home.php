@@ -152,6 +152,21 @@ class M_home extends CI_Model {
         
     }
 
+    public function catBlogs($cat){
+
+		$this->db->select('*');
+		$this->db->from('review');
+		$this->db->join('sale', 'sale.sale_id = review.review_sale_id');
+		$this->db->where('review.review_sale_cat', $cat);
+		$this->db->order_by("review_id", "DESC");
+
+		$query_result=$this->db->get();
+
+		$blogs = $query_result->result_array();
+
+		return $blogs;
+	}
+
     
     public function apiBlogs() {
         $this->db->select('*');

@@ -127,7 +127,8 @@
             </a>  
         </center>
 
-        
+<!--        for categorized blog view use below code-->
+<!--		  <a href="--><?php //echo base_url('categorized_blogs/').$cat; ?><!--">-->
 
         
       </div>

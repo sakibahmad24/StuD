@@ -102,6 +102,7 @@ class M_Brands extends CI_Model {
 
         $data= array();
         $data['sale_brand_name']= $this->input->post('brand_name',true);
+        $data['sale_sold_by']= $this->input->post('seller_email',true);
         $data['sale_brand_category']= $brand_category['brand_category'];
         $data['sale_phone_number']= $this->input->post('phone',true);
         $data['sale_promocode']= $this->input->post('promocode',true);
@@ -175,16 +176,36 @@ class M_Brands extends CI_Model {
     }
 
     public function allSales(){
+
+        $userType= $this->session->userdata('usertype');
+
+        if($userType== 12) {
+            $soldBy= $this->session->userdata('email');
+
+            $this->db->select('*');
+            $this->db->from('sale');
+            $this->db->where('sale_sold_by',$soldBy);
+            $this->db->order_by("sale_id", "DESC");
+
+            $query_result=$this->db->get();
         
-        $this->db->select('*');
-        $this->db->from('sale');
-        $this->db->order_by("sale_id", "DESC");
+            $allSales = $query_result->result_array();
 
-        $query_result=$this->db->get();
-      
-        $allSales = $query_result->result_array();
+            return $allSales;
+        } 
+        else if($userType== 10) {
+            $this->db->select('*');
+            $this->db->from('sale');
+            $this->db->order_by("sale_id", "DESC");
 
-        return $allSales;
+            $query_result=$this->db->get();
+        
+            $allSales = $query_result->result_array();
+
+            return $allSales;
+        }
+        
+        
     }
 
 }

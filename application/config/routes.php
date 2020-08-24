@@ -5,8 +5,17 @@ $route['default_controller'] = 'HomeController';
 $route['404_override'] = 'HomeController/notFound';
 $route['translate_uri_dashes'] = FALSE;
 
-// api test
+// api routes
 $route['api/blogs'] = 'BlogController/apiBlogs';
+$route['api/home_sliders'] = 'HomeController/apiHomeSliders';
+$route['api/category_sliders/(:any)'] = 'HomeController/apiCategorySliders/$1';
+$route['api/home_offers'] = 'HomeController/apiHomeOffers';
+$route['api/category_offers/(:any)'] = 'HomeController/apiCategoryOffers/$1';
+
+//api register/login
+$route['api/appLogin'] = 'LoginController/appLogin';
+$route['api/appRegistration'] = 'RegistrationController/appRegistration';
+
 
 //route for home pages
 $route['blogs'] = 'BlogController/blogs';

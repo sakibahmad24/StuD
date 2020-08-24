@@ -1,4 +1,22 @@
 <main id="content" role="main">
+
+
+    <!-- Skyscrapper ad left -->
+    <div class="skyScrapperLeft">
+    <i class="fa fa-times-circle skyScrapperLeftClose" aria-hidden="true"></i>
+      <a href="#" target="_blank">
+        <img src="<?php echo base_url('assets/common/ads/skyscrapper.png'); ?>">
+      </a>
+    </div>
+    <!-- Skyscrapper ad right -->
+    <div class="skyScrapperRight">
+    <i class="fa fa-times-circle skyScrapperRightClose" aria-hidden="true"></i>
+      <a href="#" target="_blank">
+        <img src="<?php echo base_url('assets/common/ads/skyscrapper.png'); ?>">
+      </a>
+    </div>
+
+
     <!-- Hero Section -->
     <div class="js-slick-carousel u-slick"
          data-infinite="true"
@@ -55,7 +73,7 @@
         <!-- Title -->
         <div class="w-md-80 w-lg-60 text-center mx-md-auto mb-9">
           <span class="u-label u-label--sm u-label--purple mb-3">What is Stud?</span>
-          <h2 class="h3">Build for Students and provides enjoyable usage</h2>
+          <h2 class="h3">Built for students to make life easier</h2>
         </div>
         <!-- End Title -->
 
@@ -128,38 +146,38 @@
     <!-- End Features Section -->
 
 
-    <div class="container" style="margin-bottom: 30px;">
-    <div class="row" style="margin:30px 0 0 0;">
-      <div class="col-md-6">
-        <a href="#">
-            <div class="large-box">
-                <img src="<?php echo base_url('assets/assets_user/img/win.PNG') ?>" style="height: 100%; width: 100%">
-            </div>
-        </a>
-      </div>
-      <div class="col-md-6">
-          <a href="#">
-            <div class="large-box">
-                <img src="<?php echo base_url('assets/assets_user/img/instore.PNG') ?>" style="height: 100%; width: 100%">
-            </div>
-        </a>
-      </div>
-      <div class="col-md-6">
-          <a href="#">
-            <div class="large-box">
-                <img src="<?php echo base_url('assets/assets_user/img/new.PNG') ?>" style="height: 100%; width: 100%">
-            </div>
-        </a>
-      </div>
-      <div class="col-md-6">
-          <a href="#">
-            <div class="large-box">
-                <img src="<?php echo base_url('assets/assets_user/img/last_chance.PNG') ?>" style="height: 100%; width: 100%">
-            </div>
-        </a>
-      </div>
-    </div>
-  </div>
+  <!--  <div class="container" style="margin-bottom: 30px;">-->
+  <!--  <div class="row" style="margin:30px 0 0 0;">-->
+  <!--    <div class="col-md-6">-->
+  <!--      <a href="#">-->
+  <!--          <div class="large-box">-->
+  <!--              <img src="<?php echo base_url('assets/assets_user/img/win.PNG') ?>" style="height: 100%; width: 100%">-->
+  <!--          </div>-->
+  <!--      </a>-->
+  <!--    </div>-->
+  <!--    <div class="col-md-6">-->
+  <!--        <a href="#">-->
+  <!--          <div class="large-box">-->
+  <!--              <img src="<?php echo base_url('assets/assets_user/img/instore.PNG') ?>" style="height: 100%; width: 100%">-->
+  <!--          </div>-->
+  <!--      </a>-->
+  <!--    </div>-->
+  <!--    <div class="col-md-6">-->
+  <!--        <a href="#">-->
+  <!--          <div class="large-box">-->
+  <!--              <img src="<?php echo base_url('assets/assets_user/img/new.PNG') ?>" style="height: 100%; width: 100%">-->
+  <!--          </div>-->
+  <!--      </a>-->
+  <!--    </div>-->
+  <!--    <div class="col-md-6">-->
+  <!--        <a href="#">-->
+  <!--          <div class="large-box">-->
+  <!--              <img src="<?php echo base_url('assets/assets_user/img/last_chance.PNG') ?>" style="height: 100%; width: 100%">-->
+  <!--          </div>-->
+  <!--      </a>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--</div>-->
 
 
 
@@ -170,8 +188,8 @@
       <div class="container space-2 space-3--lg">
         <!-- Title -->
         <div class="w-md-80 w-lg-60 text-center mx-md-auto mb-9">
-          <h2 class="h3">Read our news &amp; blogs</h2>
-          <p>Our duty towards you is to share our experience we're reaching in our work path with you.</p>
+          <h2 class="h3">Read user reviews</h2>
+          <p>These genuine reviews will help you explore your options and make wiser decisions.</p>
         </div>
         <!-- End Title -->
 
@@ -426,4 +444,3 @@
     <div class="clearfix"></div>
 
   </main>
-

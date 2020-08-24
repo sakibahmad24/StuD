@@ -206,26 +206,26 @@
     
 
     <!-- Divider -->
-    <div class="text-center u-divider-wrapper my-3">
-      <span class="u-divider u-divider--xs u-divider--text">OR</span>
-    </div>
-    <!-- End Divider -->
-
-    <!-- Signup Social Buttons -->
-    <div class="row mx-gutters-2 mb-4">
-      <div class="col-sm-6 mb-2 mb-sm-0">
-        <button type="button" class="btn btn-block btn-sm btn-facebook">
-          <span class="fab fa-facebook-f mr-2"></span>
-          Signup with Facebook
-        </button>
-      </div>
-      <div class="col-sm-6">
-        <button type="button" class="btn btn-block btn-sm btn-twitter">
-          <span class="fab fa-twitter mr-2"></span>
-          Signup with Twitter
-        </button>
-      </div>
-    </div>
+<!--    <div class="text-center u-divider-wrapper my-3">-->
+<!--      <span class="u-divider u-divider--xs u-divider--text">OR</span>-->
+<!--    </div>-->
+<!--    End Divider -->
+<!---->
+<!--    Signup Social Buttons -->
+<!--    <div class="row mx-gutters-2 mb-4">-->
+<!--      <div class="col-sm-6 mb-2 mb-sm-0">-->
+<!--        <button type="button" class="btn btn-block btn-sm btn-facebook">-->
+<!--          <span class="fab fa-facebook-f mr-2"></span>-->
+<!--          Signup with Facebook-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="col-sm-6">-->
+<!--        <button type="button" class="btn btn-block btn-sm btn-twitter">-->
+<!--          <span class="fab fa-twitter mr-2"></span>-->
+<!--          Signup with Twitter-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </div>-->
     <!-- End Signup Social Buttons -->
 
   </form>

@@ -19803,3 +19803,56 @@ button:focus {
         font-size: 10px;
     }
  }
+
+ .skyScrapperLeft {
+    height:520px;
+    width:150px;
+    position:fixed;
+    top:15.5%;
+    left:0;
+    z-index:999;
+ }
+
+ .skyScrapperLeft img {
+     height: 100%;
+     width: 100%;
+ }
+
+ .skyScrapperLeftClose {
+     position: absolute;
+     right: 0;
+     color: red;
+     cursor: pointer;
+ }
+
+ .skyScrapperRight {
+    height:520px;
+    width:150px;
+    position:fixed;
+    top:15.5%;
+    right:0;
+    z-index:999;
+ }
+
+ .skyScrapperRight img {
+     height: 100%;
+     width: 100%;
+ }
+
+ .skyScrapperRightClose {
+     position: absolute;
+     left: 0;
+     color: red;
+     cursor: pointer;
+ }
+
+ @media(max-width:480px) {
+    .skyScrapperLeft, .skyScrapperRight {
+        display: none;
+    }
+}
+@media(max-width:768px) {
+    .skyScrapperLeft, .skyScrapperRight {
+        display: none;
+    }
+}

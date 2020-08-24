@@ -34,8 +34,9 @@ class M_Registration extends CI_Model {
 
       public function entry_profile_pic($data, $phone_user_check)
       {
-          $data = array(
-              'user_profile_pic' => $data
+      	$data = array(
+              'user_profile_pic' => $data,
+			  'user_profile_pic_url' => base_url('/assets/assets_user/profile_pic/').$data
           );
          
           $this->db->update('user', $data, array('user_phone' => $phone_user_check));
@@ -45,7 +46,8 @@ class M_Registration extends CI_Model {
       public function entry_sid_pic($data, $phone_user_check)
       {
           $data = array(
-              'user_sid_pic' => $data
+              'user_sid_pic' => $data,
+			  'user_sid_pic_url' => base_url('/assets/assets_user/sid_pic/').$data
           );
          
           $this->db->update('user', $data, array('user_phone' => $phone_user_check));

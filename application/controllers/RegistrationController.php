@@ -20,7 +20,7 @@ class RegistrationController extends CI_Controller {
     }
 
     public function signup(){
-        // echo "Thi sidasdas";
+
         $data['class']='signup';
         $data['body']= $this->load->view('users/signup','',true);
 	    	$this->load->view('users/layout',$data);
@@ -240,10 +240,47 @@ class RegistrationController extends CI_Controller {
             $result = $this->M_Registration->update_sid_pic($imageData['file_name']);          
         }
       }
-    }  
-    
-    
-    // public function updateUserInfo() {
+    }
+
+
+
+
+
+	public function appRegistration() {
+
+		$promocode = 'stud_'.substr(md5(microtime()), 0, 5);
+
+		$user_reg_info = array(
+			'user_fullname'=>$this->input->post('name'),
+			'user_email'=>$this->input->post('email'),
+			'user_phone'=>$this->input->post('phone'),
+			'user_password'=>md5($this->input->post('password')),
+			'user_created_at'=> current_time()
+		);
+
+		$phone_user = $user_reg_info['user_phone'];
+		$phone_check=$this->M_Registration->phone_check($user_reg_info['user_phone']);
+
+		if($phone_check){
+			$this->M_Registration->register_user($user_reg_info,$promocode);
+			$this->uploadProfilePic($phone_user);
+			$this->uploadSidPic($phone_user);
+			echo json_encode($user_reg_info);
+			$this->session->set_flashdata('notification', 'Registered successfully. Now wait for admin approval to login.');
+			redirect('/');
+		}
+		else{
+			$this->session->set_flashdata('notification_error', 'Your phone number is already in use.');
+			redirect('/');
+
+		}
+		$this->session->set_flashdata('notification_error', 'Error occured,Try again.');
+		redirect('/');
+
+	}
+
+
+	// public function updateUserInfo() {
     //   $user_reg_info = array(
     //     'user_fullname'=>$this->input->post('name'),
     //     'user_email'=>$this->input->post('email'),
@@ -255,6 +292,9 @@ class RegistrationController extends CI_Controller {
     //   $this->session->set_flashdata('notification', 'Your information has been updated!');
     //     redirect('/user/profile/home');
     // }
+
+
+
     
     
 }

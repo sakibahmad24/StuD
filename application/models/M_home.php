@@ -181,6 +181,61 @@ class M_home extends CI_Model {
         return $apiBlogs;
     }
 
-        
+	public function apiHomeSliders() {
+		$this->db->select('*');
+		$this->db->from('slider');
+		$this->db->where('slider_isActive', 1);
+		$this->db->order_by("slider_id", "DESC");
+
+		$query_result=$this->db->get();
+
+		$apiHomeSliders = $query_result->result_array();
+
+		return $apiHomeSliders;
+    }
+    
+
+    public function apiHomeOffers() {
+		$this->db->select('*');
+		$this->db->from('offer');
+		$this->db->where('offer_isFeatured', 1);
+		$this->db->order_by("offer_id", "DESC");
+
+		$query_result=$this->db->get();
+
+		$apiHomeOffers = $query_result->result_array();
+
+		return $apiHomeOffers;
+    }
+	
+	public function apiCategorySliders($cat_name) {
+		$this->db->select('*');
+		$this->db->from('slider');
+		$this->db->where('slider_brand_category', $cat_name);
+		$this->db->where('slider_isActive', 1);
+		$this->db->order_by("slider_id", "DESC");
+
+		$query_result=$this->db->get();
+
+		$apiHomeSliders = $query_result->result_array();
+
+		return $apiHomeSliders;
+	}
+
+    
+
+    public function apiCategoryOffers($cat_name) {
+		$this->db->select('*');
+		$this->db->from('offer');
+		$this->db->where('offer_category', $cat_name);
+		$this->db->where('offer_isFeatured', 1);
+		$this->db->order_by("offer_id", "DESC");
+
+		$query_result=$this->db->get();
+
+		$apiCategoryOffers = $query_result->result_array();
+
+		return $apiCategoryOffers;
+	}    
 
 }

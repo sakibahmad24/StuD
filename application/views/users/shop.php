@@ -58,7 +58,7 @@
         <!-- Title -->
         <div class="w-md-80 w-lg-60 text-center mx-md-auto mb-9">
           <span class="u-label u-label--sm u-label--purple mb-3">What is Stud?</span>
-          <h2 class="h3">Built for Students and provides enjoyable usage</h2>
+          <h2 class="h3">Built for students to make life easier</h2>
         </div>
         <!-- End Title -->
 
@@ -90,8 +90,8 @@
       <div class="container space-2 space-3--lg">
         <!-- Title -->
         <div class="w-md-80 w-lg-60 text-center mx-md-auto mb-9">
-          <h2 class="h3">Read our news &amp; blogs</h2>
-          <p>Our duty towards you is to share our experience we're reaching in our work path with you.</p>
+          <h2 class="h3">Read user reviews</h2>
+          <p>These genuine reviews will help you explore your options and make wiser decisions.</p>
         </div>
         <!-- End Title -->
 

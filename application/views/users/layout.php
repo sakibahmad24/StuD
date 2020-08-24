@@ -19,6 +19,7 @@
 
   <!-- CSS Implementing Plugins -->
   <link rel="stylesheet" href="<?php echo base_url('assets/assets_user/vendor/font-awesome/css/all.min.css'); ?>">
+  <!--<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">-->
   <link rel="stylesheet" href="<?php echo base_url('assets/assets_user/vendor/bootstrap/bootstrap.css'); ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/assets_user/vendor/hs-megamenu/src/hs.megamenu.css'); ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/assets_user/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'); ?>">
@@ -32,7 +33,7 @@
   <link rel="stylesheet" href="<?php echo base_url('/assets/assets_user/css/theme.css'); ?>">
   
   <!-- Share This -->
-  <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5dd4f38b9c8d45001285897f&product=inline-share-buttons&cms=website' async='async'></script>
+  <!--<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5dd4f38b9c8d45001285897f&product=inline-share-buttons&cms=website' async='async'></script>-->
   
   
   
@@ -622,26 +623,26 @@
             </p>
           </div>
           <!-- Divider -->
-          <div class="text-center u-divider-wrapper my-3">
-            <span class="u-divider u-divider--xs u-divider--text">OR</span>
-          </div>
+<!--          <div class="text-center u-divider-wrapper my-3">-->
+<!--            <span class="u-divider u-divider--xs u-divider--text">OR</span>-->
+<!--          </div>-->
           <!-- End Divider -->
 
           <!-- Signin Social Buttons -->
-          <div class="row mx-gutters-2 mb-4">
-            <div class="col-sm-6 mb-2 mb-sm-0">
-              <button type="button" class="btn btn-block btn-facebook">
-                <span class="fab fa-facebook-f mr-2"></span>
-                Signin with Facebook
-              </button>
-            </div>
-            <div class="col-sm-6">
-              <button type="button" class="btn btn-block btn-twitter">
-                <span class="fab fa-twitter mr-2"></span>
-                Signin with Twitter
-              </button>
-            </div>
-          </div>
+<!--          <div class="row mx-gutters-2 mb-4">-->
+<!--            <div class="col-sm-6 mb-2 mb-sm-0">-->
+<!--              <button type="button" class="btn btn-block btn-facebook">-->
+<!--                <span class="fab fa-facebook-f mr-2"></span>-->
+<!--                Signin with Facebook-->
+<!--              </button>-->
+<!--            </div>-->
+<!--            <div class="col-sm-6">-->
+<!--              <button type="button" class="btn btn-block btn-twitter">-->
+<!--                <span class="fab fa-twitter mr-2"></span>-->
+<!--                Signin with Twitter-->
+<!--              </button>-->
+<!--            </div>-->
+<!--          </div>-->
           <!-- End Signin Social Buttons -->
         </div>
         <!-- End Signin -->
@@ -1082,6 +1083,14 @@ $(document).ready(function(){
         }
       });
     }
+
+    $(".skyScrapperLeftClose").click(function () {
+        $(".skyScrapperLeft").hide();
+    });
+
+    $(".skyScrapperRightClose").click(function () {
+        $(".skyScrapperRight").hide();
+    });
 
 
 </script>

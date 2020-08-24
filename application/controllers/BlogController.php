@@ -95,6 +95,11 @@ public function catBlogs($cat){
 public function apiBlogs() {
     header('Content-type: application/json; charset=UTF-8');
     $apiBlogs = $this->M_home->apiBlogs();
+    
+    // foreach($apiBlogs as $blog) {
+    //     echo 'http://studbd.com/assets/assets_user/review_image/'.$blog['review_image'];
+    // }
+    
     echo json_encode($apiBlogs);
 }
 	

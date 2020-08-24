@@ -19,6 +19,37 @@ class HomeController extends CI_Controller {
 		$data['body']= $this->load->view('users/home',$data,true);
 		$this->load->view('users/layout',$data);
 	}
+
+	public function apiHomeSliders(){
+		header('Content-type: application/json; charset=UTF-8');
+		$apiHomeSliders = $this->M_home->apiHomeSliders();
+
+		// foreach($apiBlogs as $blog) {
+		//     echo 'http://studbd.com/assets/assets_user/review_image/'.$blog['review_image'];
+		// }
+
+		echo json_encode($apiHomeSliders);
+	}
+	
+	public function apiCategorySliders($cat_name){
+		header('Content-type: application/json; charset=UTF-8');
+		$apiCategorySliders = $this->M_home->apiCategorySliders($cat_name);
+		echo json_encode($apiCategorySliders);
+	}
+
+	public function apiHomeOffers(){
+		header('Content-type: application/json; charset=UTF-8');
+		$apiHomeOffers = $this->M_home->apiHomeOffers();
+
+
+		echo json_encode($apiHomeOffers);
+	}
+
+	public function apiCategoryOffers($cat_name){
+		header('Content-type: application/json; charset=UTF-8');
+		$apiCategoryOffers = $this->M_home->apiCategoryOffers($cat_name);
+		echo json_encode($apiCategoryOffers);
+	}
 	
 	
 	public function blogDetails($review_id)

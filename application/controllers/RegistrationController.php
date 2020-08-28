@@ -255,7 +255,8 @@ class RegistrationController extends CI_Controller {
 			'user_email'=>$this->input->post('email'),
 			'user_phone'=>$this->input->post('phone'),
 			'user_password'=>md5($this->input->post('password')),
-			'user_created_at'=> current_time()
+			'user_created_at'=> current_time(),
+			'message' => 'Registered successfully. Now wait for admin approval to login.'
 		);
 
 		$phone_user = $user_reg_info['user_phone'];
@@ -266,17 +267,13 @@ class RegistrationController extends CI_Controller {
 			$this->uploadProfilePic($phone_user);
 			$this->uploadSidPic($phone_user);
 			echo json_encode($user_reg_info);
-			$this->session->set_flashdata('notification', 'Registered successfully. Now wait for admin approval to login.');
-			redirect('/');
 		}
 		else{
-			$this->session->set_flashdata('notification_error', 'Your phone number is already in use.');
-			redirect('/');
-
+			$notify['message'] = 'Your Account is not Activated Yet!';
+			echo json_encode($notify);
 		}
-		$this->session->set_flashdata('notification_error', 'Error occured,Try again.');
-		redirect('/');
-
+		$notify['message'] = 'Error occured,Try again.';
+		echo json_encode($notify);
 	}
 
 

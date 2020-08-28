@@ -20,7 +20,8 @@ class M_Sliders extends CI_Model {
             'slider_isActive' => $_POST['slider_isActive'],
             'slider_brand_category' => $slider_brand_category['brand_category'],
             'created_at' => current_time(),
-            'slider_image' => $data
+            'slider_image' => $data,
+            'slider_image_url' => 'http://studbd.com/assets/common/sliders_picture/'.$data
         );
         // echo "<pre>"; print_r($_POST); exit();
         $this->db->insert('slider', $data);
@@ -83,6 +84,7 @@ class M_Sliders extends CI_Model {
             'slider_isActive' => $_POST['slider_isActive'],
             'slider_brand_category' => $slider_brand_category['brand_category'],
             'slider_image' => $data,
+            'slider_image_url' => 'http://studbd.com/assets/common/sliders_picture/'.$data,
             'updated_at' => current_time()
         );    
         // echo "<pre>"; print_r($_POST); exit();

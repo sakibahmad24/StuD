@@ -52,7 +52,7 @@ class M_home extends CI_Model {
         $this->db->from('slider');
         $this->db->where('slider_isActive',1);
         $this->db->order_by("slider_id", "DESC");
-        $this->db->limit(4);
+        // $this->db->limit(4);
 
         $query_result=$this->db->get();
       

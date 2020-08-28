@@ -23,6 +23,7 @@ class M_Brands extends CI_Model {
             'brand_name' => $_POST['brand_name'],
             'brand_category' => $_POST['brand_category'],
             'brand_active' => $_POST['brand_active'],
+            'brand_store_location' => $_POST['brand_store_location'],
             'brand_image' => $data,
             'brand_created_at' => current_time()
         );
@@ -146,6 +147,7 @@ class M_Brands extends CI_Model {
         $data = array(
             'brand_name' => $_POST['brand_name'],
             'brand_category' => $_POST['brand_category'],
+            'brand_store_location' => $_POST['brand_store_location'],
             'brand_active' => $_POST['brand_active'],
             'brand_image' => $data,
             'brand_updated_at' => current_time()

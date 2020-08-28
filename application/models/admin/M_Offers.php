@@ -36,6 +36,7 @@ class M_Offers extends CI_Model {
             'offer_category' => $offer_category['brand_category'],
             'offer_isFeatured' => $_POST['offer_isFeatured'],
             'offer_image' => $data,
+            'offer_image_url' => 'http://studbd.com/assets/common/offers_picture/'.$data,
             'offer_created_at' => current_time()
         );
         // echo "<pre>"; print_r($_POST); exit();
@@ -100,6 +101,7 @@ class M_Offers extends CI_Model {
             'offer_category' => $offer_category['brand_category'],
             'offer_isFeatured' => $_POST['offer_isFeatured'],
             'offer_image' => $data,
+            'offer_image_url' => 'http://studbd.com/assets/common/offers_picture/'.$data,
             'offer_updated_at' => current_time()
         );    
         // echo "<pre>"; print_r($_POST); exit();

@@ -24,6 +24,10 @@
                     
                   </select>
                 </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Brand Store Location</label>
+                    <textarea type="text" name="brand_store_location" class="form-control" id="exampleInputEmail1" placeholder="Enter iFrame code here"><?php echo $editBrand['brand_store_location'];  ?></textarea>
+                </div>
                   <div class="form-group">
                   <label>Status</label>
                   <select class="form-control select2 select2-hidden-accessible" name="brand_active" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">

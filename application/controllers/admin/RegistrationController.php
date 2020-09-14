@@ -84,7 +84,7 @@ class RegistrationController extends CI_Controller {
       $phone_check=$this->M_AdminRegistration->phone_check($user_reg_info['user_phone']);  
 
       if($phone_check){
-        $this->M_AdminRegistration->register_user($user_reg_info,$promocode);
+        $this->M_AdminRegistration->register_user($user_reg_info,$promocode='');
         $this->uploadProfilePic($phone_user);
         $this->session->set_flashdata('notification', 'Registered successfully.');
         redirect('/admin/ManageUserController/viewAllAdmins');

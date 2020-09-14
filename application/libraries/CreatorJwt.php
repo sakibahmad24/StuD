@@ -4,6 +4,7 @@
 
 require APPPATH . '/libraries/JWT.php';
 
+
 class CreatorJwt
 {
 
@@ -11,9 +12,10 @@ class CreatorJwt
 	/*************This function generate token private key**************/
 
 	PRIVATE $key = "54F1AF9187A5F34C63403A1B95BF89C651CBABD3A47C028336F2AF739F01C8A5";
+
 	public function GenerateToken($data)
 	{
-		$jwt = JWT::encode($data, $this->key);
+		$jwt = JWT::encode($data, $this->key, 'HS256');
 		return $jwt;
 	}
 

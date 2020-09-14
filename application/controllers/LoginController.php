@@ -9,6 +9,7 @@ class LoginController extends CI_Controller {
 	{
 		parent::__construct();
 		$this->objOfJwt = new CreatorJwt();
+		header('Access-Control-Allow-Origin: *');
 		header('Accept: application/json');
 		header('Content-Type: application/json');
 	}
@@ -78,58 +79,78 @@ class LoginController extends CI_Controller {
 	{
 		$email= $this->input->post('email',true);
 		$password= md5($this->input->post('password',true));
-		// echo "<pre>"; print_r($email); exit;
+
 		$result= $this->M_Login->login($email,$password);
-		$user_info= array();
-
-
-//		$jwtToken = $this->objOfJwt->GenerateToken($tokenData);
-//		echo json_encode(array('Token'=>$jwtToken));
 
 		if($result) {
-			$tokenData= [
-				'user_id' => $result['user_id'],
-				'fullname'   => $result['user_fullname'],
-				'email'  => $result['user_email'],
-				'promocode' => $result['promocode'],
-				'phone_number' => $result['user_phone'],
-				'password' => $result['user_password'],
-				'user_type' => $result['user_isApproved'],
-				'user_profile_pic' => $result['user_profile_pic'],
-				'user_profile_pic_url' => $result['user_profile_pic_url'],
-				'user_sid_pic' => $result['user_sid_pic'],
-				'user_sid_pic_url' => $result['user_sid_pic_url'],
-				'isLoggedin' => TRUE,
-			];
-			$user_info = [
-				'user_id' => $result['user_id'],
-				'fullname'   => $result['user_fullname'],
-				'email'  => $result['user_email'],
-				'promocode' => $result['promocode'],
-				'phone_number' => $result['user_phone'],
-				'password' => $result['user_password'],
-				'user_type' => $result['user_isApproved'],
-				'user_profile_pic' => $result['user_profile_pic'],
-				'user_profile_pic_url' => $result['user_profile_pic_url'],
-				'user_sid_pic' => $result['user_sid_pic'],
-				'user_sid_pic_url' => $result['user_sid_pic_url'],
-				'isLoggedin' => TRUE,
-				'jwt_token' => $this->objOfJwt->GenerateToken($tokenData),
-				'message' => 'User login successful',
 
-			];
+			$user_info = [
+                'user_id' => $result['user_id'],
+                'fullname'   => $result['user_fullname'],
+				'email'  => $result['user_email'],
+				'promocode' => $result['promocode'],
+				'phone_number' => $result['user_phone'],
+				'user_type' => $result['user_isApproved'],
+				'user_profile_pic' => $result['user_profile_pic'],
+				'user_profile_pic_url' => $result['user_profile_pic_url'],
+				'user_sid_pic' => $result['user_sid_pic'],
+				'user_sid_pic_url' => $result['user_sid_pic_url'],
+				'isLoggedin' => TRUE
+            ];
+
+			$tokenData['uniqueId'] = $result['user_id'];
+			$tokenData['fullname'] = $result['user_fullname'];
+			$tokenData['email'] = $result['user_email'];
+			$tokenData['promocode'] = $result['promocode'];
+			$tokenData['phone_number'] = $result['user_phone'];
+			$tokenData['user_type'] = $result['user_isApproved'];
+			$tokenData['user_profile_pic'] = $result['user_profile_pic'];
+			$tokenData['user_profile_pic_url'] = $result['user_profile_pic_url'];
+			$tokenData['user_sid_pic'] = $result['user_sid_pic'];
+			$tokenData['user_sid_pic_url'] = $result['user_sid_pic_url'];
+			$tokenData['isLoggedin'] = TRUE;
+			$tokenData['timeStamp'] = Date('Y-m-d h:i:s');
+			$jwtToken['Token'] = $this->objOfJwt->GenerateToken($tokenData);
+
+			$notification['success']= true;
+			$notification['message']= "Logged in successful";
+			$notification['errors']= null;
+
+			$sendData= array_merge($notification, array('data' =>  array_merge($jwtToken, array('expiresIn' => 86400), array('user' =>$user_info))));
+
+			$user_info['user_type'] = $result['user_isApproved'];
+
 			if($user_info['user_type']== 1 || $user_info['user_type']== 10) {
-				$this->session->set_userdata($user_info);
-				echo json_encode($user_info);
+				echo json_encode($sendData);
 			}
 			else {
-				$user_info['message'] = 'Your Account is not Activated Yet!';
-				echo json_encode($user_info);
+				$msg['message'] = 'Your Account is not Activated Yet!';
+				echo json_encode($msg);
 			}
 		}
 		else {
-			$user_info['message'] = 'Please enter correct Username and Password!';
-			echo json_encode($user_info);
+			$msg['message'] = 'Please enter correct Username and Password!';
+			echo json_encode($msg);
+		}
+	}
+
+	public function GetTokenData()
+	{
+		$received_Token = $this->input->request_headers('Authorization');
+		try
+		{
+			$jwtData = $this->objOfJwt->DecodeToken($received_Token['Token']);
+			if(Date('Y-m-d h:i:s',strtotime($jwtData['timeStamp']) + (3600*24)) > $jwtData['timeStamp']) {
+				echo json_encode($jwtData);
+			} else {
+				echo "token has been expired";
+			}
+
+		}
+		catch (Exception $e)
+		{
+			http_response_code('401');
+			echo json_encode(array( "status" => false, "message" => $e->getMessage()));exit;
 		}
 	}
     

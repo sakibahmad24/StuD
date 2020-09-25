@@ -1,4 +1,5 @@
-<div class="container">
+<div class="content-wrapper">
+    <div class="container">
     <div class="row">
         <div class="col-12">
         <table class="table table-striped" id="my_table">
@@ -33,4 +34,5 @@
         </table>
         </div>
     </div>
+</div>
 </div>

@@ -2,3 +2,4 @@
 [13-Jul-2020 08:20:27 America/Boise] PHP Fatal error:  Cannot redeclare HomeController::apiHomeSliders() in /home1/technqm3/public_html/studbd/application/controllers/HomeController.php on line 34
 [28-Aug-2020 06:24:22 America/Boise] PHP Fatal error:  Constant expression contains invalid operations in /home1/technqm3/public_html/studbd/application/libraries/CreatorJwt.php on line 13
 [28-Aug-2020 06:29:25 America/Boise] PHP Fatal error:  Constant expression contains invalid operations in /home1/technqm3/public_html/studbd/application/libraries/CreatorJwt.php on line 13
+[16-Sep-2020 11:30:32 America/Boise] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0

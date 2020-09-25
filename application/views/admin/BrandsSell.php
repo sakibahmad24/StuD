@@ -1,4 +1,5 @@
-<div class="container">
+<div class="content-wrapper">
+    <div class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
         <div class="card card-default">
@@ -48,4 +49,5 @@
         </div>
         </div>
     </div>
+</div>
 </div>

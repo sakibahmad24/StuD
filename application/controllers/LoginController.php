@@ -77,8 +77,20 @@ class LoginController extends CI_Controller {
 
 	public function appLogin()
 	{
-		$email= $this->input->post('email',true);
-		$password= md5($this->input->post('password',true));
+	    $incomingContentType= $_SERVER['CONTENT_TYPE'];
+	    
+        if($incomingContentType != 'application/json') {
+            header($_SERVER['SERVER_PROTOCOL'].'500 Internel server error');
+            $msg['error'] = 'Please submit json data!';
+			echo json_encode($msg);
+            exit();
+        }
+        
+        $content= trim(file_get_contents("php://input"));
+        $decoded= json_decode($content, true);
+	    
+		$email= $decoded[0]['email'];
+		$password= md5($decoded[0]['password']);
 
 		$result= $this->M_Login->login($email,$password);
 

@@ -84,7 +84,21 @@ class M_Shop extends CI_Model {
         $total_rows = $this->db->query('SELECT * FROM review');
         return $total_rows->num_rows();
     }
+    
+    // public function appBrandWiseReview($cat_id) {
+    //     $this->db->select('*');
+    //     $this->db->from('review');
+    //     $this->db->join('sale', 'sale.sale_id = review.review_sale_id');
+    //     $this->db->where('review_sale_id',$cat_id);
+    //     $this->db->order_by("review_id", "DESC");
+    //     $this->db->limit(4);
 
+    //     $query_result=$this->db->get();
+      
+    //     $appBrandWiseReview = $query_result->result_array();
+
+    //     return $appBrandWiseReview;
+    // }
         
 
 }

@@ -43,6 +43,20 @@ class M_Search extends CI_Model {
         return $avgReview;
     }
 
+    public function apiAllResults($searchData) {
+        
+        $this->db->select('*');
+        $this->db->from('review');
+        $this->db->like('sale.sale_brand_name', $searchData);
+        $this->db->join('sale', 'sale.sale_id = review.review_sale_id');
+        $this->db->order_by("review_id", "DESC");
+
+        $query_result=$this->db->get();
+      
+        $allResults = $query_result->result_array();
+
+        return $allResults;
+    }
         
 
 }

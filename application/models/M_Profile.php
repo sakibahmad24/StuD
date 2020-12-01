@@ -38,6 +38,7 @@ class M_Profile extends CI_Model {
             'review_body' => $_POST['description'],
             'review_user_phone' => $phone_number,
             'review_image' => $image_data,
+            'review_image_url' => base_url('/assets/assets_user/review_image/').$image_data,
             'review_created_at'=> current_time()
         );
 

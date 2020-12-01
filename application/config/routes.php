@@ -12,9 +12,33 @@ $route['api/category_sliders/(:any)'] = 'HomeController/apiCategorySliders/$1';
 $route['api/home_offers'] = 'HomeController/apiHomeOffers';
 $route['api/category_offers/(:any)'] = 'HomeController/apiCategoryOffers/$1';
 
+// api brands
+$route['api/all_brands'] = 'HomeController/apiAllBrands';
+$route['api/shops/(:num)'] = 'ShopController/appBrandWiseReview/$1';
+$route['api/brand_offer/(:any)'] = 'ShopController/brandWiseOffer/$1';
+
+
+// api shops
+$route['api/shops/(:any)'] = 'HomeApiController/shops/$1';
+
+// api search
+$route['api/search'] = 'HomeApiController/apiSearch';
+
 //api register/login
+$route['api/test'] = 'LoginController/GetTokenData';
+
 $route['api/appLogin'] = 'LoginController/appLogin';
 $route['api/appRegistration'] = 'RegistrationController/appRegistration';
+$route['api/appUpdateProfile'] = 'RegistrationController/appUpdateProfile';
+$route['api/appHome'] = 'ProfileApiController/appHome';
+$route['api/appPromo'] = 'ProfileApiController/appPromo';
+$route['api/appPurchaseHistory'] = 'ProfileApiController/appPurchaseHistory';
+$route['api/appReviewHistory'] = 'ProfileApiController/appReviewHistory';
+$route['api/appReviewDetails/(:num)'] = 'ProfileApiController/appReviewDetails/$1';
+$route['api/appGetSaleId/(:num)'] = 'ProfileApiController/appGetSaleId/$1';
+$route['api/appSaveReview'] = 'ProfileApiController/appSaveReview';
+
+
 
 
 //route for home pages

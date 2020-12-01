@@ -26,7 +26,7 @@
                   </select>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Brand Store Location</label>
+                    <label for="exampleInputEmail1">Brand Store Address</label>
                     <textarea type="text" name="brand_store_location" class="form-control" id="exampleInputEmail1" placeholder="Enter iFrame code here"><?php echo $editBrand['brand_store_location'];  ?></textarea>
                 </div>
                   <div class="form-group">

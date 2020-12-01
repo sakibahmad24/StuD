@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require APPPATH . '/libraries/CreatorJwt.php';
+
 class ProfileController extends CI_Controller {
 
     function __construct() {
@@ -110,11 +112,7 @@ class ProfileController extends CI_Controller {
 
      $data['body']= $this->load->view('users/inc/review_history',$data,true);
      $this->load->view('users/layout',$data);
-}
-
-    
-
-
+    }
 
 
 

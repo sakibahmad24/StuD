@@ -9,9 +9,6 @@ class LoginController extends CI_Controller {
 	{
 		parent::__construct();
 		$this->objOfJwt = new CreatorJwt();
-		header('Access-Control-Allow-Origin: *');
-		header('Accept: application/json');
-		header('Content-Type: application/json');
 	}
 
 
@@ -77,20 +74,22 @@ class LoginController extends CI_Controller {
 
 	public function appLogin()
 	{
-	    $incomingContentType= $_SERVER['CONTENT_TYPE'];
-	    
-        if($incomingContentType != 'application/json') {
-            header($_SERVER['SERVER_PROTOCOL'].'500 Internel server error');
-            $msg['error'] = 'Please submit json data!';
-			echo json_encode($msg);
-            exit();
+	    header('Access-Control-Allow-Origin: *');
+		header('Accept: application/json');
+		header('Content-Type: application/json');
+		
+		$this->form_validation->set_rules('email', 'email', 'required');
+		$this->form_validation->set_rules('password', 'password', 'required', 'required|min_length[8]');
+		
+		if ($this->form_validation->run() == FALSE)
+        {
+            $notify['message'] =  preg_replace("/\r\n|\r|\n/",'', strip_tags(validation_errors()));
+            $this->output->set_status_header(422)->set_content_type('application/json')->set_output(json_encode($notify));
         }
-        
-        $content= trim(file_get_contents("php://input"));
-        $decoded= json_decode($content, true);
-	    
-		$email= $decoded[0]['email'];
-		$password= md5($decoded[0]['password']);
+        else
+        {
+        $email= $this->input->post('email',true);
+        $password= md5($this->input->post('password',true));
 
 		$result= $this->M_Login->login($email,$password);
 
@@ -142,8 +141,10 @@ class LoginController extends CI_Controller {
 		}
 		else {
 			$msg['message'] = 'Please enter correct Username and Password!';
-			echo json_encode($msg);
-		}
+			$this->output->set_status_header(401)->set_content_type('application/json')->set_output(json_encode($msg));
+		  }
+        }
+		
 	}
 
 	public function GetTokenData()

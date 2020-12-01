@@ -1,5 +1,11 @@
 <main id="content" role="main">
-
+    
+    <!-- Topbar offer -->
+    <div class="topBarOffer">
+        <a href="#">
+            <h3>10% OFF at Infinity</h3>
+        </a>
+    </div>
 
     <!-- Skyscrapper ad left -->
     <div class="skyScrapperLeft">
@@ -15,7 +21,6 @@
         <img src="<?php echo base_url('assets/common/ads/skyscrapper.png'); ?>">
       </a>
     </div>
-
 
     <!-- Hero Section -->
     <div class="js-slick-carousel u-slick"
@@ -199,7 +204,7 @@
 
         <div class="card-deck d-block d-lg-flex col-md-6">
           <article class="card border-0 mb-5">
-            <div class="card-body row align-items-stretch no-gutters p-0">
+            <div class="card-body row align-items-stretch no-gutters p-0 ">
               <!-- News Blog Card -->
               <div class="col-7 border border-right-0 rounded-left">
                 <div class="p-5">

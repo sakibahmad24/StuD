@@ -210,4 +210,55 @@ class M_Brands extends CI_Model {
         
     }
 
+    public function apiAllBrands(){
+
+        $this->db->select('*');
+        $this->db->from('brand');
+        $this->db->order_by("brand_id", "DESC");
+
+        $query_result=$this->db->get();
+
+        $apiAllBrands = $query_result->result_array();
+
+//        foreach ($apiAllBrands as $brand){
+//
+//                $this->db->select('AVG(review_rating) as avgReview');
+//                $this->db->from('review');
+//                $this->db->like('sale.sale_brand_name', $brand['brand_name']);
+//                $this->db->join('sale', 'sale.sale_id = review.review_sale_id');
+//                $this->db->order_by("review_id", "DESC");
+//                $ratingquery = $this->db->get();
+//
+////             return   $this->db->last_query();
+//
+//                $ratingResult = $ratingquery->result_array();
+//
+//                $avgReview = $ratingResult[0]['avgReview'];
+//
+//                if($avgReview == ''){
+//                    $avgReview = 0;
+//                }
+//
+//                //return $avgReview;
+//
+//
+//        }
+//        return $avgReview;
+
+        return $apiAllBrands;
+    }
+
+    public function brandOffers($brand_name){
+        $this->db->select('*');
+        $this->db->from('offer');
+        $this->db->where('offer_brand',$brand_name);
+        $this->db->order_by("offer_id", "DESC");
+
+        $query_result=$this->db->get();
+
+        $brandOffer = $query_result->result_array();
+
+        return $brandOffer;
+    }
+
 }

@@ -219,6 +219,29 @@
               </li>
             </ul>
           </li>
+              <li class="nav-item has-treeview">
+                  <a href="#" class="nav-link">
+                      <i class="nav-icon fas fa-chart-pie"></i>
+                      <p>
+                          Topbar
+                          <i class="right fas fa-angle-left"></i>
+                      </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                          <a href="<?php  echo base_url('admin/TopbarController/add') ?>" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Add</p>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a href="<?php  echo base_url('admin/TopbarController/viewAll') ?>" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Manage</p>
+                          </a>
+                      </li>
+                  </ul>
+              </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
@@ -328,7 +351,8 @@
               <i class="nav-icon far fa-circle text-info"></i>
               <p class="text">Blogs</p>
             </a>
-          </li>  
+          </li>
+
           <?php } elseif($this->session->userdata('usertype')== 12) { ?>  
 
           <!-- Seller nav starts-->

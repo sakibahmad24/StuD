@@ -196,8 +196,9 @@ class M_home extends CI_Model {
     
 
     public function apiHomeOffers() {
-		$this->db->select('*');
+		$this->db->select('*, brand.brand_image_url');
 		$this->db->from('offer');
+        $this->db->join('brand', 'brand.brand_name = offer.offer_brand');
 		$this->db->where('offer_isFeatured', 1);
 		$this->db->order_by("offer_id", "DESC");
 

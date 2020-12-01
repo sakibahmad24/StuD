@@ -50,7 +50,7 @@ class ShopController extends CI_Controller {
 	$this->load->view('users/layout',$data);
 }
 
-public function blogDetails($review_id)
+    public function blogDetails($review_id)
 	{
 		$data['class']='home';
 		$data['url']='blog-details';
@@ -59,6 +59,17 @@ public function blogDetails($review_id)
 		$data['body']= $this->load->view('users/blog-details',$data,true);
 		$this->load->view('users/layout',$data);
 	}
+	
+// 	public function appBrandWiseReview($cat_id) {
+//         $appBrandWiseReview= $this->M_Shop->appBrandWiseReview($cat_id);
+//         return json_encode($appBrandWiseReview);
+//     }
+
+    public function brandWiseOffer($brand_name){
+        $getBrandOffers = $this->M_Brands->brandOffers($brand_name);
+
+        echo json_encode($getBrandOffers);
+    }
 	
     
 }

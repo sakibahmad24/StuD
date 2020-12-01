@@ -71,5 +71,12 @@ class HomeController extends CI_Controller {
 		$this->load->view('users/layout',$data);
 	}
 	
+	
+	public  function apiAllBrands(){
+        header('Content-type: application/json; charset=UTF-8');
+        $apiAllBrands = $this->M_Brands->apiAllBrands();
+
+        echo json_encode($apiAllBrands);
+    }
     
 }

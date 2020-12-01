@@ -57,13 +57,21 @@ class M_Registration extends CI_Model {
       public function update_user($data)
       {
           $user_id= $this->input->post('user_id');
+          $pass= $this->input->post('password');
+          
+          if($pass) {
+              $pass= md5($this->input->post('password'));
+          } else {
+              $pass= $this->session->userdata('password');
+          }
+          
           $data=array(
                   'user_fullname'=>$_POST['name'],
                   'user_email'=>$_POST['email'],
                   'user_phone'=>$_POST['phone'],
                   'user_isApproved'=> 1,
                   'user_status'=> 1,
-                  'user_password'=>md5($_POST['password']),
+                  'user_password'=>$pass,
                   'user_modified_at' => current_time(),
                   );
 
@@ -105,6 +113,34 @@ class M_Registration extends CI_Model {
 
           return $this->db->where('user_id', $user_id)->update('user', $password);
           echo $this->db->last_query(); exit;
+      }
+      
+      
+      public function updateInfo($email)
+    	{
+            $this->db->select('*');
+            $this->db->from('user');
+            $this->db->where('user_email',$email);
+            $query_result= $this->db->get();
+            $result= $query_result->row_array();
+            return $result;
+        }
+      
+      public function app_update_user($data)
+      {
+          
+          $data=array(
+                  'user_id'=>$_POST['user_id'],
+                  'user_fullname'=>$_POST['name'],
+                  'user_email'=>$_POST['email'],
+                  'user_phone'=>$_POST['phone'],
+                  'user_isApproved'=> 1,
+                  'user_status'=> 1,
+                  'user_password'=>md5($_POST['password']),
+                  'user_modified_at' => current_time(),
+                  );
+
+          return $this->db->where('user_id', $data['user_id'])->update('user', $data);
       }
 
 }

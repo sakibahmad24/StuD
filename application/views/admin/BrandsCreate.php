@@ -26,8 +26,8 @@
                   </select>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Brand Store Location</label>
-                    <textarea type="text" name="brand_store_location" class="form-control" id="exampleInputEmail1" placeholder="Enter iFrame code here"></textarea>
+                    <label for="exampleInputEmail1">Brand Store Address</label>
+                    <textarea type="text" name="brand_store_location" class="form-control" id="exampleInputEmail1" placeholder="Enter brand address here"></textarea>
                 </div>
                   <!-- <div 
                   <div class="form-group">

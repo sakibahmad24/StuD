@@ -3,3 +3,5 @@
 [28-Aug-2020 06:24:22 America/Boise] PHP Fatal error:  Constant expression contains invalid operations in /home1/technqm3/public_html/studbd/application/libraries/CreatorJwt.php on line 13
 [28-Aug-2020 06:29:25 America/Boise] PHP Fatal error:  Constant expression contains invalid operations in /home1/technqm3/public_html/studbd/application/libraries/CreatorJwt.php on line 13
 [16-Sep-2020 11:30:32 America/Boise] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
+[25-Sep-2020 05:03:51 America/Boise] PHP Fatal error:  Cannot redeclare ProfileApiController::appHome() in /home1/technqm3/public_html/studbd/application/controllers/ProfileApiController.php on line 137
+[25-Sep-2020 05:05:12 America/Boise] PHP Fatal error:  Cannot redeclare ProfileApiController::appHome() in /home1/technqm3/public_html/studbd/application/controllers/ProfileApiController.php on line 137

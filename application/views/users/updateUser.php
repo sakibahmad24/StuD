@@ -64,7 +64,14 @@
 </head>
  <!-- ========== MAIN CONTENT ========== -->
 <body>
+    
+    
+    
 <?php echo form_open_multipart('RegistrationController/updateUserInfo', 'class="js-validate form-signin p-5"'); ?>
+
+    <div style="margin-top:20px;">
+        <?php echo validation_errors(); ?>
+    </div>
  
   <!-- <form class="js-validate form-signin p-5"> -->
     <!-- Logo -->
@@ -94,15 +101,6 @@
                aria-label="name"
                data-msg="Please enter your name."
                value="<?php echo $this->session->userdata('fullname') ?>">
-
-
-
-               <!-- <input type="email" class="form-control form__input" name="name" required
-               placeholder="name"
-               aria-label="name"
-               data-msg="Please enter your name."
-               data-error-class="u-has-error"
-               data-success-class="u-has-success"> -->
       </div>
     </div>
     <!-- End Input -->
@@ -141,8 +139,8 @@
       </div>
     </div>
     <!-- End Input -->
-
-
+    
+    
     <!-- Input -->
     <div class="js-form-message mb-3">
       <div class="js-focus-state input-group form">
@@ -151,33 +149,31 @@
             <span class="fa fa-lock form__text-inner"></span>
           </span>
         </div>
-        <input type="password" class="form-control" name="password" id="password"
-               placeholder="Password"
-               aria-label="Password"
-               data-msg="Your password is invalid. Please try again."
-               data-error-class="u-has-error"
-               data-success-class="u-has-success"
-               required>
+        <input type="password" class="form-control" name="password" 
+               placeholder="password"
+               aria-label="password"
+               data-msg="Please enter your Password.">
       </div>
     </div>
     <!-- End Input -->
-
+    
     <!-- Input -->
     <div class="js-form-message mb-3">
       <div class="js-focus-state input-group form">
         <div class="input-group-prepend form__prepend">
           <span class="input-group-text form__text">
-            <span class="fa fa-key form__text-inner"></span>
+            <span class="fa fa-lock form__text-inner"></span>
           </span>
         </div>
-        <input type="password" class="form-control" name="confirmPassword"
+        <input type="password" class="form-control" name="passwordConfirm" 
                placeholder="Confirm Password"
                aria-label="Confirm Password"
-               data-msg="Password does not match the confirm password."
-               data-error-class="u-has-error"
-               data-success-class="u-has-success">
+               data-msg="Confirm Password.">
       </div>
     </div>
+    <!-- End Input -->
+    
+    
     <!-- End Input -->
 
         <!-- Input -->
@@ -203,6 +199,8 @@
       </div>
     </div>
     <!-- End Input -->
+    
+    
 
     <input type="hidden" name="user_id" value="<?php echo $this->session->userdata('user_id') ?>">
 
@@ -217,30 +215,7 @@
   </form>
   <!-- ========== END MAIN CONTENT ========== -->
 
-  <!-- JS Global Compulsory -->
-  <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="../../assets/vendor/jquery-migrate/dist/jquery-migrate.min.js"></script>
-  <script src="../../assets/vendor/popper.js/dist/umd/popper.min.js"></script>
-  <script src="../../assets/vendor/bootstrap/bootstrap.min.js"></script>
-
-  <!-- JS Implementing Plugins -->
-  <script src="../../assets/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
-
-  <!-- JS Space -->
-  <script src="../../assets/js/hs.core.js"></script>
-  <script src="../../assets/js/components/hs.validation.js"></script>
-  <script src="../../assets/js/helpers/hs.focus-state.js"></script>
-
-  <!-- JS Plugins Init. -->
-  <script>
-    $(document).on('ready', function () {
-      // initialization of forms
-      $.HSCore.helpers.HSFocusState.init();
-
-      // initialization of form validation
-      $.HSCore.components.HSValidation.init('.js-validate');
-    });
-  </script>
+  
 </body>
 </html>  
         </div>

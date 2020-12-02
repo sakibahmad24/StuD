@@ -17011,7 +17011,7 @@ button:focus {
     border: 1px solid #e3e6f0;
     border-top-width: 0.25rem;
     transition: 0.3s;
-    height: 200px;
+    min-height: 200px;
     border-radius: 15px;
     border-top-left-radius: 0px;
 }
@@ -19957,3 +19957,21 @@ button:focus {
 .footerRightBottom li a:hover {
     color: #21c87a;
 }
+
+.customFeaturedImg {
+    height: 200px;
+    width: 100%;
+}
+
+.customFeaturedTitle {
+    text-align: center;
+    padding: 30px 0;
+    font-size: 30px;
+    font-family: 'Roboto';
+}
+
+.customFeaturedDesc {
+    text-align: center;
+    font-weight: bold;
+}
+

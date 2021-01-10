@@ -77,21 +77,27 @@
       <div class="container space-2 space-3--lg">
         <!-- Title -->
         <div class="w-md-80 w-lg-60 text-center mx-md-auto mb-9">
-          <span class="u-label u-label--sm u-label--purple mb-3">What is Stud?</span>
-          <h2 class="h3">Built for students to make life easier</h2>
+          <span class="u-label u-label--sm u-label--purple mb-3">Join StuD</span>
+          <h2 class="h3">Students save with StuD</h2>
         </div>
         <!-- End Title -->
 
         <div class="row">
         <?php foreach($homeoffers as $offer) { ?>
           <div class="col-md-3">
-              <a class="card card-frame mb-3" href="#">
+              <div class="card card-frame mb-3">
                 <div class="card-body p-3">
                     <img class="customFeaturedImg" src="<?php  echo base_url('assets/common/offers_picture/').$offer['offer_image'] ?>">
                     <h4 class="customFeaturedTitle"><?php echo $offer['offer_name'] ?></h4>
                     <p class="customFeaturedDesc"><?php echo $offer['offer_details'] ?></p>
+                    <center>
+                        <p style="visibility: hidden" id="promocode_match<?php echo $offer['offer_id']?>"><?php echo $offer['offer_id']?></p><br>
+
+                        <p id="promocode<?php echo $offer['offer_id']?>"></p><br>
+                        <button id="getOffer" class="btn btn-success" onclick="getOffer('<?php echo $offer['offer_id']?>')">Get Offer</button>
+                    </center>
                 </div>
-              </a>
+              </div>
           </div>
         <?php } ?>
           <!-- <div class="col-md-3">
@@ -232,80 +238,7 @@
     </div>
     <!-- End News Section -->
 
-    <!-- CTA -->
-    <div class="gradient-overlay-half-primary-v1" style="display:none;">
-      <div class="bg-img-hero" style="background-image: url(<?php echo base_url('assets/assets_user/img/bg/bg2.png') ?>);">
-        <div class="container text-center space-2">
-          <!-- Title -->
-          <div class="w-md-80 w-lg-60 text-center mx-md-auto mb-9">
-            <h2 class="h1 text-white">Get started with Space</h2>
-            <p class="lead text-white">Space gives you everything you need to manage business, build great stuff, and reach your goals.</p>
-          </div>
-          <!-- End Title -->
-
-          <!-- Slick Carousel -->
-          <div class="js-slick-carousel u-slick"
-               data-autoplay="true"
-               data-speed="5000"
-               data-infinite="true"
-               data-slides-show="6"
-               data-responsive='[{
-                 "breakpoint": 1200,
-                 "settings": {
-                   "slidesToShow": 4
-                 }
-               }, {
-                 "breakpoint": 992,
-                 "settings": {
-                   "slidesToShow": 4
-                 }
-               }, {
-                 "breakpoint": 768,
-                 "settings": {
-                   "slidesToShow": 3
-                 }
-               }, {
-                 "breakpoint": 576,
-                 "settings": {
-                   "slidesToShow": 3
-                 }
-               }, {
-                 "breakpoint": 480,
-                 "settings": {
-                   "slidesToShow": 2
-                 }
-               }]'>
-            <div class="js-slide">
-              <img class="u-clients" src="<?php echo base_url('assets/assets_user/img/clients/amazon-white.png') ?>" alt="Image Description">
-            </div>
-            <div class="js-slide">
-            <img class="u-clients" src="<?php echo base_url('assets/assets_user/img/clients/google-white.png') ?>" alt="Image Description">
-            </div>
-            <div class="js-slide">
-            <img class="u-clients" src="<?php echo base_url('assets/assets_user/img/clients/paypal-white.png') ?>" alt="Image Description">
-            </div>
-            <div class="js-slide">
-            <img class="u-clients" src="<?php echo base_url('assets/assets_user/img/clients/slack-white.png') ?>" alt="Image Description">
-            </div>
-            <div class="js-slide">
-            <img class="u-clients" src="<?php echo base_url('assets/assets_user/img/clients/samsung-white.png') ?>" alt="Image Description">
-            </div>
-            <div class="js-slide">
-            <img class="u-clients" src="<?php echo base_url('assets/assets_user/img/clients/airbnb-white.png') ?>" alt="Image Description">
-            </div>
-            <div class="js-slide">
-            <img class="u-clients" src="<?php echo base_url('assets/assets_user/img/clients/lenovo-white.png') ?>" alt="Image Description">
-            </div>
-            <div class="js-slide">
-            <img class="u-clients" src="<?php echo base_url('assets/assets_user/img/clients/spotify-white.png') ?>" alt="Image Description">
-            </div>
-          </div>
-          <!-- End Slick Carousel -->
-        </div>
-      </div>
-    </div>
-    <!-- End CTA -->
-
+    
        <!-- FAQ Section -->
        <div class="container space-2 space-3--lg" style="margin-bottom: 100px;">
       <div class="row justify-content-lg-between">
@@ -313,12 +246,11 @@
           <!-- Info -->
           <div class="bg-dark shadow-sm rounded p-5 mt-lg-9">
             <h3 class="text-white">Have a question?</h3>
-            <p class="text-light-70">Call us and we'll be happy to help.</p>
+            <p class="text-light-70">Email us and we'll be happy to help.</p>
 
             <address class="mb-0">
-              <span class="d-block text-light-70 font-weight-medium py-1">+1 (062) 109-9222</span>
+              <span class="d-block text-light-70 font-weight-medium py-1">54, purana palton line, Dhaka metro south market (2nd floor), Dhaka-1000.</span>
               <span class="d-block text-light-70 font-weight-light py-1">Monday - Friday</span>
-              <span class="d-block text-light-70 font-weight-light py-1">9AM - 6PM Eastern Time</span>
             </address>
           </div>
           <!-- End Info -->
@@ -341,7 +273,7 @@
                           data-target="#basicsCollapseOne"
                           aria-expanded="false"
                           aria-controls="basicsCollapseOne">
-                    Do you have any built-in caching?
+                    How to get discounts?
 
                     <span class="card-collapse__btn-arrow">
                       <span class="fa fa-arrow-down card-collapse__btn-arrow-inner"></span>
@@ -353,7 +285,7 @@
                    aria-labelledby="basicsHeadingOne"
                    data-parent="#basicsAccordion">
                 <div class="card-body card-collapse__body">
-                  We aim high at being focused on building relationships with our clients and community. Using our creative gifts drives this foundation. Working together on the daily requires each individual to let the greater good of the team's work surface above their own ego.
+                  Just register and click on the offers to get one.
                 </div>
               </div>
             </div>
@@ -366,7 +298,7 @@
                           data-target="#basicsCollapseTwo"
                           aria-expanded="false"
                           aria-controls="basicsCollapseTwo">
-                    Can I add/upgrade my plan at any time?
+                    Can I add/upgrade my account?
 
                     <span class="card-collapse__btn-arrow">
                       <span class="fa fa-arrow-down card-collapse__btn-arrow-inner"></span>
@@ -378,7 +310,7 @@
                    aria-labelledby="basicsHeadingTwo"
                    data-parent="#basicsAccordion">
                 <div class="card-body card-collapse__body">
-                  It's important to stay detail oriented with every project we tackle. Staying focused allows us to turn every project we complete into something we love. We strive to embrace and drive change in our industry which allows us to keep our clients relevant and ready to adapt.
+                  Not right now.
                 </div>
               </div>
             </div>
@@ -391,7 +323,7 @@
                           data-target="#basicsCollapseThree"
                           aria-expanded="false"
                           aria-controls="basicsCollapseThree">
-                    What access comes with my hosting plan?
+                    Can I purchase online through here?
 
                     <span class="card-collapse__btn-arrow">
                       <span class="fa fa-arrow-down card-collapse__btn-arrow-inner"></span>
@@ -403,7 +335,7 @@
                    aria-labelledby="basicsHeadingThree"
                    data-parent="#basicsAccordion">
                 <div class="card-body card-collapse__body">
-                  As creatives, it's important that we strive to do work outside of obligation. This lets us stay ahead of the curve for our clients and internal projects. At the end of the day, it's important to not let being busy distract us from having fun. Smiling, laughing, and hanging helps us work together to achieve this.
+                 No, we only show the offers.
                 </div>
               </div>
             </div>
@@ -428,7 +360,7 @@
                    aria-labelledby="basicsHeadingFour"
                    data-parent="#basicsAccordion">
                 <div class="card-body card-collapse__body">
-                  Understanding who you are and what you want is our strategy for your brand. We are always figuring out ways to capture your vision, so people can get on board.
+                  Click forget password or change password from user settings.
                 </div>
               </div>
             </div>

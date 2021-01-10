@@ -129,9 +129,10 @@ class RegistrationController extends CI_Controller {
         );
         // UploadSidPic();
       $phone_user = $user_reg_info['user_phone'];
-      $phone_check=$this->M_Registration->phone_check($user_reg_info['user_phone']);  
+      $phone_check=$this->M_Registration->phone_check($user_reg_info['user_phone']);
+      $email_check=$this->M_Registration->email_check($user_reg_info['user_email']);
 
-      if($phone_check){
+      if($phone_check && $email_check){
         $this->M_Registration->register_user($user_reg_info,$promocode);
         $this->uploadProfilePic($phone_user);
         $this->uploadSidPic($phone_user);
@@ -139,7 +140,7 @@ class RegistrationController extends CI_Controller {
         redirect('/');
       }
       else{
-        $this->session->set_flashdata('notification_error', 'Your phone number is already in use.');
+        $this->session->set_flashdata('notification_error', 'Your phone/email is already in use.');
         redirect('/');
        
       }
@@ -357,15 +358,16 @@ class RegistrationController extends CI_Controller {
             );
             $phone_user = $user_reg_info['user_phone'];
     		$phone_check=$this->M_Registration->phone_check($user_reg_info['user_phone']);
+    		$email_check=$this->M_Registration->email_check($user_reg_info['user_email']);
     
-    		if($phone_check){
+    		if($phone_check && $email_check){
     			$this->M_Registration->register_user($user_reg_info,$promocode);
     			$this->uploadProfilePic($phone_user);
     			$this->uploadSidPic($phone_user);
     			$sendData= array_merge(array('message' => 'Registered successfully. Now wait for admin approval to login.'), array('user_reg_info' =>$user_reg_info));
     			echo json_encode($sendData);
     		} else{
-                $notify['message'] = 'This phone number is already registered in our system. Please try with new phone number.';
+                $notify['message'] = 'This phone number/email is already registered in our system. Please try with new phone number.';
                 $this->output->set_status_header(409)->set_content_type('application/json')->set_output(json_encode($notify));
     		}
         }
@@ -374,7 +376,7 @@ class RegistrationController extends CI_Controller {
     
 
     public function appUpdateProfile() {
-        // echo "<pre>"; print_r($_POST); exit;
+        // echo json_encode($_POST);
         
         $received_Token = $this->input->request_headers('Authorization');
         
@@ -382,7 +384,149 @@ class RegistrationController extends CI_Controller {
 		{
 			$jwtData = $this->objOfJwt->DecodeToken($received_Token['Token']);
 		   
-		   $this->form_validation->set_rules('name', 'Name', 'required');
+		$this->form_validation->set_rules('name', 'Name', 'required');
+		$this->form_validation->set_rules('email', 'Email', 'required');
+		$this->form_validation->set_rules('phone', 'Phone', 'required|min_length[11]');
+		$this->form_validation->set_rules('password', 'password');
+		
+
+		if ($this->form_validation->run() == FALSE)
+        {
+            $notify['message'] =  preg_replace("/\r\n|\r|\n/",'', strip_tags(validation_errors()));
+            $this->output->set_status_header(422)->set_content_type('application/json')->set_output(json_encode($notify));
+        }
+        else
+        {
+         
+         $pass= $this->input->post('password');
+         $passCOn= $this->input->post('passwordConfirm');
+         
+         if($pass==$passCOn) {
+        
+      $user_reg_info = array(
+        'user_fullname'=>$this->input->post('name'),
+        'user_email'=>$this->input->post('email'),
+        'user_phone'=>$this->input->post('phone'),
+        'user_password'=>md5($this->input->post('password')),
+        'user_modified_at'=> current_time()
+      );
+      $updateInfo= $this->M_Registration->app_update_user($user_reg_info);
+      
+      $email= $this->input->post('email');
+      $result= $this->M_Registration->updateInfo($email);
+      
+      if($result) {
+         $user_info = [
+                'user_id' => $result['user_id'],
+                'fullname'   => $result['user_fullname'],
+				'email'  => $result['user_email'],
+				'promocode' => $result['promocode'],
+				'phone_number' => $result['user_phone'],
+				'user_type' => $result['user_isApproved'],
+				'user_profile_pic' => $result['user_profile_pic'],
+				'user_profile_pic_url' => $result['user_profile_pic_url'],
+				'user_sid_pic' => $result['user_sid_pic'],
+				'user_sid_pic_url' => $result['user_sid_pic_url'],
+				'isLoggedin' => TRUE
+            ]; 
+      }
+      
+            $notification['success']= true;
+			$notification['message']= "Update successful";
+			$notification['errors']= null;
+			$sendData= array_merge($notification, array('data' => array('user' =>$user_info)));
+			$this->output->set_status_header(200)->set_content_type('application/json')->set_output(json_encode($sendData));
+         } 
+         else {
+            $notification['message']= "Error! Please fillup form properly."; 
+            $this->output->set_status_header(422)->set_content_type('application/json')->set_output(json_encode($notification)); 
+         }
+            
+        }
+		    	
+		}
+        catch (Exception $e)
+		{
+			http_response_code('401');
+			echo json_encode(array( "status" => false, "message" => $e->getMessage()));exit;
+		}
+        
+      
+    }
+    
+    
+    public function appUpdateProfileImage() {
+        // echo json_encode($_POST);
+        
+        $received_Token = $this->input->request_headers('Authorization');
+        
+        try
+		{
+			$jwtData = $this->objOfJwt->DecodeToken($received_Token['Token']);
+		
+		
+		if (empty($_FILES['profile_pic']['name']))
+        {
+            $this->form_validation->set_rules('profile_pic', 'profile pic', 'required');
+        }
+		
+
+		if ($this->form_validation->run() == FALSE)
+        {
+            $notify['message'] =  preg_replace("/\r\n|\r|\n/",'', strip_tags(validation_errors()));
+            $this->output->set_status_header(422)->set_content_type('application/json')->set_output(json_encode($notify));
+        }
+        else
+        {
+            $getProfilePic= $_FILES['profile_pic']['name'];
+            if($getProfilePic) {
+             $this->updateProfilePic();   
+            }
+      
+      $user_id= $this->input->post('user_id');
+      $result= $this->M_Registration->appGetUserInfo($user_id);
+      
+      
+      if($result) {
+         $user_info = [
+                'user_id' => $result['user_id'],
+				'user_type' => $result['user_isApproved'],
+				'user_profile_pic' => $result['user_profile_pic'],
+				'user_profile_pic_url' => $result['user_profile_pic_url'],
+				'isLoggedin' => TRUE
+            ]; 
+      }
+      
+      $user_info= "test ok";
+      
+            $notification['success']= true;
+			$notification['message']= "Update successful";
+			$notification['errors']= null;
+			$sendData= array_merge($notification, array('data' => array('user' =>$user_info)));
+			$this->output->set_status_header(200)->set_content_type('application/json')->set_output(json_encode($sendData));
+            
+        }
+		    	
+		}
+        catch (Exception $e)
+		{
+			http_response_code('401');
+			echo json_encode(array( "status" => false, "message" => $e->getMessage()));exit;
+		}
+        
+      
+    }
+    
+    public function appUpdateSIDImage() {
+        // echo json_encode($_POST);
+        
+        $received_Token = $this->input->request_headers('Authorization');
+        
+        try
+		{
+			$jwtData = $this->objOfJwt->DecodeToken($received_Token['Token']);
+		   
+		$this->form_validation->set_rules('name', 'Name', 'required');
 		$this->form_validation->set_rules('email', 'Email', 'required');
 		$this->form_validation->set_rules('phone', 'Phone', 'required|min_length[11]');
 		$this->form_validation->set_rules('password', 'password');
@@ -412,7 +556,7 @@ class RegistrationController extends CI_Controller {
          
          if($pass==$passCOn) {
              $getProfilePic= $_FILES['profile_pic']['name'];
-      $getSidPic= $_FILES['sid_pic']['name'];
+             $getSidPic= $_FILES['sid_pic']['name'];
 
       if($getProfilePic) {
         $this->updateProfilePic();
@@ -441,7 +585,6 @@ class RegistrationController extends CI_Controller {
 				'email'  => $result['user_email'],
 				'promocode' => $result['promocode'],
 				'phone_number' => $result['user_phone'],
-				'password' => $result['user_password'],
 				'user_type' => $result['user_isApproved'],
 				'user_profile_pic' => $result['user_profile_pic'],
 				'user_profile_pic_url' => $result['user_profile_pic_url'],

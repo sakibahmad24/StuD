@@ -19871,7 +19871,9 @@ button:focus {
 .topBarOffer {
     height: 50px;
     width:100%;
-    background: #21c87a;
+    background: #21b1c8;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 .topBarOffer a {
     text-decoration: none;
@@ -19880,7 +19882,7 @@ button:focus {
     text-align: center;
     color: #fff;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
     padding-top: 10px;
     box-sizing: border-box;
 }
@@ -19889,11 +19891,14 @@ button:focus {
     
 }
 
+a.card.card-frame.mb-3 {
+	height: 500px;
+}
+
 .footerLeftTop {
     margin: 0;
     padding: 0;
 }
-
 .footerLeftTop li  {
     margin: 0;
     padding: 0;
@@ -19959,8 +19964,9 @@ button:focus {
 }
 
 .customFeaturedImg {
-    height: 200px;
-    width: 100%;
+    height: 175px;
+    width: 80%;
+    margin-left: 25px;
 }
 
 .customFeaturedTitle {
@@ -19968,10 +19974,12 @@ button:focus {
     padding: 30px 0;
     font-size: 30px;
     font-family: 'Roboto';
+    color: #105fa3
 }
 
 .customFeaturedDesc {
     text-align: center;
+    color: #220542;
     font-weight: bold;
 }
 

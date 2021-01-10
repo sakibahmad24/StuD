@@ -67,14 +67,9 @@
           <div class="col-md-3">
               <a class="card card-frame mb-3" href="#">
                 <div class="card-body p-3">
-                  <div class="media">
-                    <img class="max-width-6 mr-3" src="<?php  echo base_url('assets/common/offers_picture/').$offer['offer_image'] ?>">
-                      <div class="media-body">
-                      <h4 class="h6 text-dark mb-0"><?php echo $offer['offer_name'] ?></h4>
-                      <!-- <p class="small mb-0"></p> -->
-                    </div>
-                  </div>
-                  <p class="small mb-0" style="text-align:justify;"><?php echo $offer['offer_details'] ?></p>
+                    <img class="customFeaturedImg" src="<?php  echo base_url('assets/common/offers_picture/').$offer['offer_image'] ?>">
+                    <h4 class="customFeaturedTitle"><?php echo $offer['offer_name'] ?></h4>
+                    <p class="customFeaturedDesc"><?php echo $offer['offer_details'] ?></p>
                 </div>
               </a>
           </div>

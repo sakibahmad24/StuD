@@ -94,4 +94,51 @@ class M_AdminRegistration extends CI_Model {
         $this->db->delete('user');
     }
 
+    public function getAllUserCount(){
+        $query = $this->db->query('SELECT * FROM user');
+        return $query->num_rows();
+    }
+
+    public function getAllActiveUserCount(){
+        $query = $this->db->query('SELECT * FROM user where user_isApproved = 1');
+        return $query->num_rows();
+    }
+
+    public function getAllNewUserCount(){
+        $query = $this->db->query('SELECT * FROM user where user_isApproved = 1');
+        return $query->num_rows();
+    }
+
+    public function getSaleCount(){
+        $query = $this->db->query('SELECT * FROM sale');
+        return $query->num_rows();
+    }
+
+    public function getBrandsCount(){
+        $query = $this->db->query('SELECT * FROM brand');
+        return $query->num_rows();
+    }
+
+    public function getReviewsCount(){
+        $query = $this->db->query('SELECT * FROM review');
+        return $query->num_rows();
+    }
+
+    public function getOffersCount(){
+        $query = $this->db->query('SELECT * FROM offer');
+        return $query->num_rows();
+    }
+
+    public function getActiveOffersCount(){
+        $query = $this->db->query('SELECT * FROM offer where offer_isFeatured = 1');
+        return $query->num_rows();
+    }
+
+
+
+
+
+
+
+
 }

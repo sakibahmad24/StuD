@@ -65,6 +65,39 @@ class ProfileApiController extends CI_Controller {
 		}
             
        }
+       
+       public function appGeneratePromocode(){
+        $received_Token = $this->input->request_headers('Authorization');
+		try
+		{
+			$jwtData = $this->objOfJwt->DecodeToken($received_Token['Token']);
+			if(Date('Y-m-d h:i:s',strtotime($jwtData['timeStamp']) + (3600*24)) > $jwtData['timeStamp']) {
+			    
+			    $phone_number = $jwtData['phone_number'];
+			 //   $email= $this->input->post('phone');
+			    $promocode = 'stud_'.substr(md5(microtime()), 0, 5);
+
+                $phone_number = $this->session->userdata('phone');
+        
+                $new_promocode = $this->M_Profile->updatePromocode($phone_number, $promocode);
+        
+                if ($new_promocode) {
+                    echo json_encode(['promocode' => $promocode]);
+                }
+				
+				
+			} else {
+				echo "token has been expired";
+			}
+
+		}
+		catch (Exception $e)
+		{
+			http_response_code('401');
+			echo json_encode(array( "status" => false, "message" => $e->getMessage()));exit;
+		}
+            
+       }
 
        public function appPurchaseHistory(){
        $received_Token = $this->input->request_headers('Authorization');

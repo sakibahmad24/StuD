@@ -16,6 +16,20 @@ class M_Registration extends CI_Model {
         }
        
       }
+      
+      public function email_check($email_check){
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->where('user_email',$email_check);
+        $query=$this->db->get();
+       
+        if($query->num_rows()>0){
+          return false;
+        }else{
+          return true;
+        }
+       
+      }
 
       public function register_user($data,$promocode)
       {
@@ -84,6 +98,7 @@ class M_Registration extends CI_Model {
         //   echo $user_id; exit;
           $data = array(
               'user_profile_pic' => $data,
+              'user_profile_pic_url' => base_url('/assets/assets_user/profile_pic/').$data,
               'user_modified_at'=> current_time()
           );
           $this->db->where('user_id', $user_id)->update('user', $data);
@@ -95,6 +110,7 @@ class M_Registration extends CI_Model {
           $user_id= $this->input->post('user_id');
           $data = array(
               'user_sid_pic' => $data,
+              'user_sid_pic_url' => base_url('/assets/assets_user/sid_pic/').$data,
               'user_modified_at'=> current_time()
           );
           $this->db->where('user_id', $user_id)->update('user', $data);
@@ -127,20 +143,49 @@ class M_Registration extends CI_Model {
         }
       
       public function app_update_user($data)
-      {
+      {   
+          $pass= $_POST['password'];
           
-          $data=array(
+          if($pass) {
+              $data=array(
                   'user_id'=>$_POST['user_id'],
                   'user_fullname'=>$_POST['name'],
                   'user_email'=>$_POST['email'],
                   'user_phone'=>$_POST['phone'],
                   'user_isApproved'=> 1,
                   'user_status'=> 1,
-                  'user_password'=>md5($_POST['password']),
+                  'user_password'=> md5($pass),
                   'user_modified_at' => current_time(),
                   );
-
-          return $this->db->where('user_id', $data['user_id'])->update('user', $data);
+                return $this->db->where('user_id', $data['user_id'])->update('user', $data);
+          } else {
+              $data=array(
+                  'user_id'=>$_POST['user_id'],
+                  'user_fullname'=>$_POST['name'],
+                  'user_email'=>$_POST['email'],
+                  'user_phone'=>$_POST['phone'],
+                  'user_isApproved'=> 1,
+                  'user_status'=> 1,
+                  'user_modified_at' => current_time(),
+                  );
+                return $this->db->where('user_id', $data['user_id'])->update('user', $data);
+          }
+          
+      }
+      
+      public function appGetUserInfo($user_id)
+      {   
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->where('user_id',$user_id);
+        $query=$this->db->get();
+       
+        if($query->num_rows()>0){
+          return false;
+        }else{
+          return true;
+        }
+          
       }
 
 }

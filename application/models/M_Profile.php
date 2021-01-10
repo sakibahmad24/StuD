@@ -116,6 +116,34 @@ class M_Profile extends CI_Model {
         return $last_sale_details = $query_result->row_array();
     }
 
+    public function updatePromocode($phone_number, $promocode){
+
+        $data=array(
+            'promocode'=>$promocode,
+            'user_modified_at' => current_time(),
+        );
+
+        return $this->db->where('user_phone', $phone_number)->update('user', $data);
+
+//        $query_result=$this->db->get();
+//
+//        return $last_sale_details = $query_result->row_array();
+    }
+
+    public function get_user_promocode($phone_number){
+
+        $this->db->select('promocode');
+        $this->db->from('user');
+        $this->db->where('user_phone', $phone_number);
+
+        $query_result=$this->db->get();
+
+        $getUserPromocode = $query_result->row_array();
+
+
+        return $getUserPromocode;
+    }
+
         
 
 }

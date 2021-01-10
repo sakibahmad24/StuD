@@ -40,7 +40,20 @@ class AdminController extends CI_Controller {
 	// }
 	
 	public function home() {
-	    $data['body']= $this->load->view('admin/home','',true);
+
+	    $data['count_all_users'] = $this->M_AdminRegistration->getAllUserCount();
+        $data['count_all_active_users'] = $this->M_AdminRegistration->getAllActiveUserCount();
+        $data['count_all_new_users'] = $this->M_AdminRegistration->getAllNewUserCount();
+        $data['count_all_total_sale'] = $this->M_AdminRegistration->getSaleCount();
+        $data['count_all_brands'] = $this->M_AdminRegistration->getBrandsCount();
+        $data['count_all_reviews'] = $this->M_AdminRegistration->getReviewsCount();
+        $data['count_all_offers'] = $this->M_AdminRegistration->getOffersCount();
+        $data['count_all_active_offers'] = $this->M_AdminRegistration->getActiveOffersCount();
+
+
+
+
+        $data['body']= $this->load->view('admin/home',$data,true);
 		$this->load->view('admin/layout',$data);
 	}
     

@@ -31,6 +31,7 @@ class M_Brands extends CI_Model {
         $this->db->insert('brand', $data);
         return $this->db->insert_id();
     }
+    
 
     public function sell_entry() {
 
@@ -61,8 +62,6 @@ class M_Brands extends CI_Model {
                 $same_brand_last_sale_time = $get_same_sale_time['sale_time'];
             }
         }
-
-
 
 
 //        time difference count

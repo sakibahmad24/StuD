@@ -24,6 +24,7 @@ class ProfileController extends CI_Controller {
             $phone_number = $this->session->userdata('phone_number');
             $data['class']='profile';
             $data['last_sale_details'] = $data['last_promo_details']=$this->M_Profile->get_last_sale($phone_number);
+            $data['promocode'] = $this->M_Profile->get_user_promocode($phone_number);
 //           echo "<pre>"; print_r($last_sale_details); exit;
 
 
@@ -112,6 +113,22 @@ class ProfileController extends CI_Controller {
 
      $data['body']= $this->load->view('users/inc/review_history',$data,true);
      $this->load->view('users/layout',$data);
+    }
+
+    public function getOffer(){
+
+//        echo "hello";
+
+        $promocode = 'stud_'.substr(md5(microtime()), 0, 5);
+
+        $phone_number = $this->session->userdata('phone_number');
+
+        $new_promocode = $this->M_Profile->updatePromocode($phone_number, $promocode);
+
+        if ($new_promocode) {
+            echo json_encode($promocode);
+        }
+
     }
 
 

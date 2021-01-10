@@ -234,6 +234,11 @@
             <div class="customFooter">
                 <ul class="footerLeftTop">
                     <li>
+                        <a href="<?php echo base_url('/about') ?>">
+                            About
+                        </a>
+                    </li>
+                    <li>
                         <a href="">
                             Contact
                         </a>
@@ -283,7 +288,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="terms">
                             Terms of Service
                         </a>
                     </li>
@@ -293,7 +298,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="privacy">
                             Privacy Policy
                         </a>
                     </li>
@@ -1015,6 +1020,31 @@ $(document).ready(function(){
     $(".skyScrapperRightClose").click(function () {
         $(".skyScrapperRight").hide();
     });
+
+
+    function getOffer(offer_id)
+    {
+
+        $.ajax({
+            url: "<?php echo base_url('getOffer'); ?>",
+            type: "GET",
+            dataType: "JSON",
+            success: function(data)
+            {
+                // console.log(data);
+                $('#promocode'+offer_id).text(data)
+
+                let promocode_id = $('#promocode'+offer_id).text()
+                let promocode_match = $('#promocode_match'+offer_id).text()
+
+                console.log(promocode_id)
+                console.log(promocode_match)
+            },
+            error : function() {
+                alert("Data Not Found");
+            }
+        });
+    }
 
 
 </script>

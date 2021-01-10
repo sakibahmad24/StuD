@@ -19,6 +19,13 @@ class HomeController extends CI_Controller {
 		$data['body']= $this->load->view('users/home',$data,true);
 		$this->load->view('users/layout',$data);
 	}
+	
+	public function about()
+	{
+		$data['class']='home';
+		$data['body']= $this->load->view('users/about',$data,true);
+		$this->load->view('users/layout',$data);
+	}
 
 	public function apiHomeSliders(){
 		header('Content-type: application/json; charset=UTF-8');
@@ -77,6 +84,29 @@ class HomeController extends CI_Controller {
         $apiAllBrands = $this->M_Brands->apiAllBrands();
 
         echo json_encode($apiAllBrands);
+    }
+
+    public function apiTopbarSliders(){
+        header('Content-type: application/json; charset=UTF-8');
+        $apiTopbarSliders = $this->M_home->apiTopbarSliders();
+
+        // foreach($apiBlogs as $blog) {
+        //     echo 'http://studbd.com/assets/assets_user/review_image/'.$blog['review_image'];
+        // }
+
+        echo json_encode($apiTopbarSliders);
+    }
+
+    public function privacy(){
+        $data['class']='home';
+        $data['body']= $this->load->view('users/privacy','',true);
+        $this->load->view('users/layout',$data);
+    }
+
+    public function terms(){
+        $data['class']='home';
+        $data['body']= $this->load->view('users/terms','',true);
+        $this->load->view('users/layout',$data);
     }
     
 }

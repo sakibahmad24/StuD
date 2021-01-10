@@ -237,6 +237,19 @@ class M_home extends CI_Model {
 		$apiCategoryOffers = $query_result->result_array();
 
 		return $apiCategoryOffers;
-	}    
+	}
+
+    public function apiTopbarSliders() {
+        $this->db->select('*');
+        $this->db->from('topbar');
+        $this->db->where('topbar_status', 1);
+        $this->db->order_by("topbar_id", "DESC");
+
+        $query_result=$this->db->get();
+
+        $apiTopbarSliders = $query_result->result_array();
+
+        return $apiTopbarSliders;
+    }
 
 }

@@ -9,7 +9,7 @@
                             <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Your Promocode</h5>
-                                <h6 class="card-subtitle mb-2 text-muted"><kbd><?php echo $this->session->userdata('promocode') ?></kbd></h6>
+                                <h6 class="card-subtitle mb-2 text-muted"><kbd><?php echo $promocode['promocode'] ?></kbd></h6>
                             </div>
                             </div>
                         

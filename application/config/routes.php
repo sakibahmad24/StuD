@@ -8,6 +8,7 @@ $route['translate_uri_dashes'] = FALSE;
 // api routes
 $route['api/blogs'] = 'BlogController/apiBlogs';
 $route['api/home_sliders'] = 'HomeController/apiHomeSliders';
+$route['api/topbar_sliders'] = 'HomeController/apiTopbarSliders';
 $route['api/category_sliders/(:any)'] = 'HomeController/apiCategorySliders/$1';
 $route['api/home_offers'] = 'HomeController/apiHomeOffers';
 $route['api/category_offers/(:any)'] = 'HomeController/apiCategoryOffers/$1';
@@ -30,8 +31,11 @@ $route['api/test'] = 'LoginController/GetTokenData';
 $route['api/appLogin'] = 'LoginController/appLogin';
 $route['api/appRegistration'] = 'RegistrationController/appRegistration';
 $route['api/appUpdateProfile'] = 'RegistrationController/appUpdateProfile';
+$route['api/appUpdateProfileImage'] = 'RegistrationController/appUpdateProfileImage';
+$route['api/appUpdateSIDImage'] = 'RegistrationController/appUpdateSIDImage';
 $route['api/appHome'] = 'ProfileApiController/appHome';
 $route['api/appPromo'] = 'ProfileApiController/appPromo';
+$route['api/appGeneratePromocode'] = 'ProfileApiController/appGeneratePromocode';
 $route['api/appPurchaseHistory'] = 'ProfileApiController/appPurchaseHistory';
 $route['api/appReviewHistory'] = 'ProfileApiController/appReviewHistory';
 $route['api/appReviewDetails/(:num)'] = 'ProfileApiController/appReviewDetails/$1';
@@ -50,6 +54,7 @@ $route['search'] = 'SearchController/search';
 $route['report/(:num)'] = 'BlogController/report/$1';
 $route['undo_report/(:num)'] = 'BlogController/undoReport/$1';
 $route['categorized_blogs/(:any)'] = 'BlogController/catBlogs/$1';
+$route['about'] = 'HomeController/about';
 
 // route for onclick Report
 $route['getReport/(:num)'] = 'BlogController/getReport/$1';
@@ -81,9 +86,17 @@ $route['admin/home'] = 'admin/AdminController/home';
 
 //routes for user login
 
+//routes for brand based offer
+
+$route['brand_offers/(:any)'] = 'HomeController/brandOffers/$1';
 
 
+//get offer route for web
+$route['getOffer'] = 'ProfileController/getOffer';
 
+
+$route['privacy'] = 'HomeController/privacy';
+$route['terms'] = 'HomeController/terms';
 
 
 // $routes->group('admin', function($routes) {

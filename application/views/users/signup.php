@@ -174,6 +174,24 @@
     </div>
     <!-- End Input -->
 
+    <!-- Input -->
+    <div class="js-form-message mb-3">
+      <div class="js-focus-state input-group form">
+        <div class="input-group-prepend form__prepend">
+          <span class="input-group-text form__text">
+            <span class="fas fa-university form__text-inner"></span>
+          </span>
+        </div>
+        <select class="form-control" name="university" id="university" required>
+            <option selected="true" disabled="disabled">Select your university</option>
+            <?php foreach($allUniv as $univ){?>
+            <option value="<?php echo $univ['university_name'] ?>"><?php echo $univ['university_name'] ?></option>
+            <?php } ?>
+        </select>
+      </div>
+    </div>
+    <!-- End Input -->
+
         <!-- Input -->
         <div class="">
       <div class="row">

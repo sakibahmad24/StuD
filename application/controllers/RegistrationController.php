@@ -24,7 +24,8 @@ class RegistrationController extends CI_Controller {
     public function signup() 
     {
         $data['class']='signup';
-        $data['body']= $this->load->view('users/signup','',true);
+        $data['allUniv'] = $this->M_Registration->getAllUniversities();
+        $data['body']= $this->load->view('users/signup',$data,true);
 	    $this->load->view('users/layout',$data);
         // $this->load->view('users/layout');
     }
@@ -125,6 +126,7 @@ class RegistrationController extends CI_Controller {
           'user_email'=>$this->input->post('email'),
           'user_phone'=>$this->input->post('phone'),
           'user_password'=>md5($this->input->post('password')),
+          'user_university'=>$this->input->post('university'),
           'user_created_at'=> current_time()
         );
         // UploadSidPic();

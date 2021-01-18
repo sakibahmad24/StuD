@@ -51,6 +51,7 @@ $route['blog-details/(:num)'] = 'HomeController/blogDetails/$1';
 $route['shops/(:any)'] = 'ShopController/shops/$1';
 $route['hot'] = 'ShopController/hot';
 $route['search'] = 'SearchController/search';
+$route['offers-and-reviews/(:any)'] = 'SearchController/searchByBrand/$1';
 $route['report/(:num)'] = 'BlogController/report/$1';
 $route['undo_report/(:num)'] = 'BlogController/undoReport/$1';
 $route['categorized_blogs/(:any)'] = 'BlogController/catBlogs/$1';

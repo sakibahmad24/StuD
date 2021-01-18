@@ -3,7 +3,7 @@
     <!-- Topbar offer -->
     <div class="topBarOffer">
         <a href="#">
-            <h3>10% OFF at Infinity</h3>
+            <h3>Welcome to StuD</h3>
         </a>
     </div>
 
@@ -87,7 +87,9 @@
           <div class="col-md-3">
               <div class="card card-frame mb-3">
                 <div class="card-body p-3">
-                    <img class="customFeaturedImg" src="<?php  echo base_url('assets/common/offers_picture/').$offer['offer_image'] ?>">
+                    <a href="<?php  echo base_url('offers-and-reviews/').$offer['offer_brand'] ?>">
+                        <img class="customFeaturedImg" src="<?php  echo base_url('assets/common/offers_picture/').$offer['offer_image'] ?>">
+                    </a>
                     <h4 class="customFeaturedTitle"><?php echo $offer['offer_name'] ?></h4>
                     <p class="customFeaturedDesc"><?php echo $offer['offer_details'] ?></p>
                     <center>

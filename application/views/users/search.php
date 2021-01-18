@@ -1,4 +1,43 @@
 <main id="content" role="main">
+
+    <?php if($searchOffers) { ?>
+    <!-- Features Section -->
+    <div class="bg-gray-100">
+      <div class="container space-2 space-3--lg">
+        <!-- Title -->
+        <div class="w-md-80 w-lg-60 text-center mx-md-auto mb-9">
+          <span class="u-label u-label--sm u-label--purple mb-3">Offers</span>
+          <h2 class="h3"></h2>
+        </div>
+        <!-- End Title -->
+
+        <div class="row">
+        <?php foreach($searchOffers as $offer) { ?>
+          <div class="col-md-3">
+              <div class="card card-frame mb-3">
+                <div class="card-body p-3">
+                    <a href="<?php  echo base_url('offers-and-reviews/').$offer['offer_brand'] ?>">
+                        <img class="customFeaturedImg" src="<?php  echo base_url('assets/common/offers_picture/').$offer['offer_image'] ?>">
+                    </a>
+                    <h4 class="customFeaturedTitle"><?php echo $offer['offer_name'] ?></h4>
+                    <p class="customFeaturedDesc"><?php echo $offer['offer_details'] ?></p>
+                    <center>
+                        <p style="visibility: hidden" id="promocode_match<?php echo $offer['offer_id']?>"><?php echo $offer['offer_id']?></p><br>
+
+                        <p id="promocode<?php echo $offer['offer_id']?>"></p><br>
+                        <button id="getOffer" class="btn btn-success" onclick="getOffer('<?php echo $offer['offer_id']?>')">Get Offer</button>
+                    </center>
+                </div>
+              </div>
+          </div>
+        <?php } ?>
+
+    </div>
+    <?php } ?>
+    <!-- End Features Section -->
+    
+    <br><br>
+    
     <!-- Hero Section -->
     <div class="container space-2 space-3-top--lg">
       <?php if($allResults) { ?>

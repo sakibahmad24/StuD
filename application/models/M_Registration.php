@@ -37,6 +37,7 @@ class M_Registration extends CI_Model {
                   'user_fullname'=>$_POST['name'],
                   'user_email'=>$_POST['email'],
                   'user_phone'=>$_POST['phone'],
+                  'user_university'=>$_POST['university'],
                   'user_isApproved'=> 0,
                   'promocode'=>$promocode,
                   'user_password'=>md5( $_POST['password']),
@@ -186,6 +187,20 @@ class M_Registration extends CI_Model {
           return true;
         }
           
+      }
+
+      public function getAllUniversities(){
+
+        $this->db->select('*');
+        $this->db->from('university');
+        $this->db->order_by("university_name", "asc");
+
+        $query_result=$this->db->get();
+
+        $allUniv = $query_result->result_array();
+
+        return $allUniv;
+
       }
 
 }
